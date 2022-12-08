@@ -3,15 +3,12 @@ package com.keyin.finalSprint.sword.controller;
 import com.keyin.finalSprint.sword.exceptions.SwordNotFoundException;
 import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/")
 public class SwordController {

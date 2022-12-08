@@ -8,15 +8,22 @@ public class Sword {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sword_id")
+    @Column(name = "sword_id", nullable = false)
     private long sword_id;
 
+    @Column(nullable = false, length = 60)
     private String name;
+    @Column(nullable = false, length = 60)
     private String type;
+    @Column(nullable = false)
     private double length;
+    @Column(nullable = false)
     private double mass;
+    @Column(nullable = false)
     private double price;
+    @Column(nullable = false, columnDefinition = "Text")
     private String description;
+    @Column(nullable = false, length = 80)
     private String image_url;
 
     public Sword() {
