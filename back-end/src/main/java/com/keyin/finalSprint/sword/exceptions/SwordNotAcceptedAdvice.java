@@ -11,7 +11,7 @@ public class SwordNotAcceptedAdvice {
     @ResponseBody
     @ExceptionHandler(SwordNotAcceptedException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-    String tournamentNotAcceptedHandler(SwordNotAcceptedException e) {
+    String swordNotAcceptedHandler(SwordNotAcceptedException e) {
         return e.getMessage();
     }
 }
