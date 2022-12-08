@@ -1,0 +1,27 @@
+/* Designer: David Bishop
+   Top Header
+*/
+
+.topHeaderContainer {
+  display: flex;
+  justify-content: center;
+  /* width: 100vw; */
+
+  background-color: var(--black700Main);
+  border-bottom: 3px solid var(--primary500Main);
+}
+
+.topHeaderContainer h1 {
+  font-family: "Aceking";
+  font-size: 68px;
+  line-height: 66px;
+  color: var(--primary500Main);
+  margin: 1rem 0.5rem 3rem 0;
+}
+
+.topHeaderContainer svg {
+  position: relative;
+  top: 63px;
+  font-size: 64px;
+  color: var(--primary500Main);
+}

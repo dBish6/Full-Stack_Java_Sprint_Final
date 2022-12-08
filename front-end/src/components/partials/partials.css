@@ -1,0 +1,144 @@
+/* Designer: David Bishop
+  <==========================================/ Navigation Start \==========================================>
+*/
+
+.navContainer {
+  /* display: flex; */
+  min-height: 76px;
+}
+
+.navContainer .logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  float: left;
+  margin: 1rem 0.5rem 0 0.5rem;
+}
+
+.navContainer .logoContainer img {
+  width: 38px;
+  height: 43px;
+}
+
+.navContainer .logoContainer div {
+  position: relative;
+  top: 3px;
+}
+
+.navContainer .logoContainer div p:first-child {
+  font-family: "Forsaken";
+  font-size: 21px;
+  line-height: 24px;
+  cursor: default;
+}
+
+.navContainer .logoContainer div p {
+  font-family: "Forsaken";
+  font-size: 12px;
+  cursor: default;
+}
+
+/* ... */
+
+.barsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.barsContainer .topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 2.375rem;
+}
+
+.barsContainer .topBar a {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+
+  color: var(--wordsBlackMain);
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.barsContainer .topBar .activateLink {
+  background-color: var(--black700Main);
+  color: var(--wordsWhiteMain);
+}
+
+.barsContainer .topBarRight {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.barsContainer .topBarRight a:first-of-type {
+  padding: 0;
+  margin-right: 48px;
+}
+
+.barsContainer .topBarRight a {
+  padding: 0.5rem;
+}
+
+/* ... */
+
+.barsContainer .bottomBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 2.375rem;
+  background-color: var(--black700Main);
+}
+
+.barsContainer .bottomBar a {
+  /* display: flex; */
+  padding: 0.5rem 1rem 0.5rem 1rem;
+
+  color: var(--wordsWhiteMain);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* FIXME: */
+.barsContainer .bottomBar a:active {
+  color: var(--activeColour);
+  text-decoration: underline;
+}
+
+.barsContainer .bottomBarRight {
+  display: flex;
+  gap: 82px;
+  margin-right: 2.625rem;
+}
+
+.barsContainer .bottomBarRight input {
+  width: 150px;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  min-height: 24px;
+  background-color: var(--black300);
+  border: 1px solid var(--primary500Main);
+  border-radius: 4px;
+}
+
+/* .barsContainer .bottomBarRight input::placeholder {
+  color: black;
+}
+
+.barsContainer .bottomBarRight input::-moz-placeholder {
+  color: black;
+} */
+
+.barsContainer .bottomBarRight svg {
+  color: var(--primary500Main);
+}
+
+@media only screen and (max-width: 858px) {
+  .barsContainer .bottomBar {
+    flex-direction: row;
+  }
+
+  .barsContainer .bottomBar div:first-of-type {
+    margin-left: 0.5rem;
+  }
+}

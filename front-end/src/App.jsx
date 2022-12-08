@@ -23,10 +23,13 @@ import Navigation from "./components/partials/Navigation";
 import Footer from "./components/partials/Footer";
 
 // *Pages/Views*
-import Home from "./pages/Home";
-import ProductHome from "./pages/ProductHome";
-import About from "./pages/About";
-import Support from "./pages/Support";
+import Home from "./pages/home/Home";
+import About from "./pages/home/About";
+import Support from "./pages/home/Support";
+import LongSwords from "./pages/home/LongSwords";
+import ShortSwordsDaggers from "./pages/home/ShortSwordsDaggers";
+import Maces from "./pages/home/Maces";
+import Administration from "./pages/Administration";
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
 import Profile from "./pages/Profile";
@@ -62,7 +65,12 @@ function App() {
               element={<Profile />}
             />
             <Route path="/home" element={<Home />} />
-            <Route path="/home/swords" element={<ProductHome />} />
+            <Route path="/home/longSwords" element={<LongSwords />} />
+            <Route
+              path="/home/shortSwords_Daggers"
+              element={<ShortSwordsDaggers />}
+            />
+            <Route path="/home/maces" element={<Maces />} />
             <Route path="/home/about" element={<About />} />
             <Route path="/home/support" element={<Support />} />
 
@@ -72,6 +80,7 @@ function App() {
             {/* <Route path="*" render={() => <Navigate to="/error404" />} /> */}
             <Route path="*" element={<Error404 />} />
           </Route>
+          <Route path="/admin" element={<Administration />} />
         </Routes>
       </BrowserRouter>
     </>
