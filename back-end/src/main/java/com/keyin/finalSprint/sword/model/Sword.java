@@ -3,13 +3,13 @@ package com.keyin.finalSprint.sword.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(schema="swords")
+@Table(schema="sword")
 public class Sword {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sword_id")
-    private String sword_id;
+    private long sword_id;
 
     private String name;
     private String type;
@@ -32,7 +32,7 @@ public class Sword {
         this.image_url = image_url;
     }
 
-    public String getSword_id() {
+    public long getSword_id() {
         return sword_id;
     }
 
