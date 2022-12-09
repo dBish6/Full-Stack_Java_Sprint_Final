@@ -9,7 +9,7 @@ public class User {
     @Column(name = "user_id")
     private long id;
 
-    @Column(nullable = false, length = 60)
+    @Column(name = "user_name", nullable = false, length = 60)
     private String userName;
     @Column(nullable = false, length = 60)
     private String password;
