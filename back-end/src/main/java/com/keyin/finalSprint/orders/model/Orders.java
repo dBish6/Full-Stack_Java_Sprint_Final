@@ -2,6 +2,7 @@ package com.keyin.finalSprint.orders.model;
 
 import com.keyin.finalSprint.order_details.model.OrderDetails;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Order;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
-    private long orderId;
+    private long order_id;
 
     @Column(nullable = false)
     private int tax_rate;
@@ -26,12 +27,12 @@ public class Orders {
     @OneToMany(mappedBy = "orders")
     private List<OrderDetails> order_details;
 
+    // Constructors
     public Orders() {
     }
 
-    // Constructors
     public Orders(long order_id, int tax_rate, double order_subtotal, double order_total) {
-        this.orderId = order_id;
+        this.order_id = order_id;
         this.tax_rate = tax_rate;
         this.order_subtotal = order_subtotal;
         this.order_total = order_total;
@@ -44,12 +45,12 @@ public class Orders {
     }
 
     // Getters / Setters
-    public long getOrderId() {
-        return orderId;
+    public long getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
+    public void setOrder_id(long order_id) {
+        this.order_id = order_id;
     }
 
     public int getTax_rate() {
@@ -79,7 +80,7 @@ public class Orders {
     @Override
     public String toString() {
         return "Orders{" +
-                "order_id=" + orderId +
+                "order_id=" + order_id +
                 ", tax_rate=" + tax_rate +
                 ", order_subtotal=" + order_subtotal +
                 ", order_total=" + order_total +
