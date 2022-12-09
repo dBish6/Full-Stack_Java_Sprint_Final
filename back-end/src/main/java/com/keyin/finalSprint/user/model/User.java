@@ -1,23 +1,22 @@
 package com.keyin.finalSprint.user.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 @Entity
 public class User {
     @Id
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 60)
     private String userName;
+    @Column(nullable = false, length = 60)
     private String password;
+    @Column(nullable = false, length = 60)
     private String email;
+    @Column(nullable = false, length = 60)
     private String phone;
-
 
     public User() {
     }
