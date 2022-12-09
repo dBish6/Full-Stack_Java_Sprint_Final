@@ -24,12 +24,13 @@
 @font-face {
   font-family: "RavenHell";
   src: url(./assets/fonts/RavenHell-RegularGothic.ttf);
+  font-weight: 500;
 }
 
 @font-face {
   font-family: "RavenHell";
   src: url(./assets/fonts/RavenHell-MediumGothic.ttf);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 @font-face {

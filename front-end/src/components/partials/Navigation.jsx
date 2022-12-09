@@ -16,19 +16,6 @@ const Navigation = () => {
   const [isClickedSecondLink, toggleIsClickedSecondLink] = useState(false);
   const [isClickedThirdLink, toggleIsClickedThirdLink] = useState(false);
 
-  // useEffect(() => {
-  //   const confirmClicked = () => {
-  //     if (isClickedFirstLink && isClickedSecondLink) {
-  //       toggleIsClickedFirstLink(false);
-  //     } else if (isClickedSecondLink && isClickedThirdLink) {
-  //       toggleIsClickedSecondLink(false);
-  //     } else if (isClickedFirstLink && isClickedThirdLink) {
-  //       toggleIsClickedFirstLink(false);
-  //     }
-  //   };
-  //   confirmClicked();
-  // }, [isClickedFirstLink, isClickedSecondLink, isClickedThirdLink]);
-
   return (
     <div className="navContainer">
       <div className="logoContainer">
