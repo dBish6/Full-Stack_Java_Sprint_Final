@@ -1,17 +1,19 @@
-package com.keyin.finalSprint.order.model;
+package com.keyin.finalSprint.orders.model;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(schema="orders")
-public class Order {
+@Table(schema="order")
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
     private long order_id;
+
     @Column(nullable = false, length = 60)
     private String productName;
+
     @Column(nullable = false)
     private int quantity;
 
@@ -20,6 +22,22 @@ public class Order {
 
     @Column(nullable = false)
     private double totalPrice;
+
+    // Constructors
+    public Orders(String productName, int quantity, double itemTotal, double totalPrice) {
+        this.productName = productName;
+        this.quantity = quantity;
+        this.itemTotal = itemTotal;
+        this.totalPrice = totalPrice;
+    }
+
+    public Orders(long order_id, String productName, int quantity, double itemTotal, double totalPrice) {
+        this.order_id = order_id;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.itemTotal = itemTotal;
+        this.totalPrice = totalPrice;
+    }
 
     // Getters / Setters
     public double getItemTotal() {
