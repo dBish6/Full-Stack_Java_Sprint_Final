@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const FetchAllSwords = () => {
+export const DeleteProduct = () => {
   const [product, setProduct] = useState([]);
   const [loadingProduct, toggleProductLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Gets all swords from database - used in ProductCard.jsx.
+  // Removes a sword from the database.
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -28,13 +28,10 @@ const FetchAllSwords = () => {
       }
     };
     console.log(product);
-    // setTimeout(() => {
-    //   fetchProduct();
-    // }, 120096000);
     fetchProduct();
   }, []);
 
   return [product, loadingProduct];
 };
 
-export default FetchAllSwords;
+export default DeleteProduct;

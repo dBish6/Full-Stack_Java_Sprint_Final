@@ -37,16 +37,16 @@ import Error404 from "./pages/errors/Error404";
 import Error401 from "./pages/errors/Error401";
 import Error500 from "./pages/errors/Error500";
 
-function App() {
-  global.DEBUG = true;
+global.DEBUG = true;
 
+function App() {
   const ShowFooter = () => (
     <>
       <Navigation />
       {/* Nested routes render out here. */}
-      <main>
+      <>
         <Outlet />
-      </main>
+      </>
       <Footer />
     </>
   );
