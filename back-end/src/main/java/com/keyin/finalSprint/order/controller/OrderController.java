@@ -3,11 +3,11 @@ package com.keyin.finalSprint.order.controller;
 import com.keyin.finalSprint.order.model.Order;
 import com.keyin.finalSprint.order.respository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
+@RequestMapping("/api/")
 public class OrderController {
 
     @Autowired
