@@ -9,8 +9,8 @@ public class User {
     @Column(name = "user_id")
     private long id;
 
-    @Column(name = "user_name", nullable = false, length = 60)
-    private String userName;
+    @Column(nullable = false, length = 60)
+    private String username;
     @Column(nullable = false, length = 60)
     private String password;
     @Column(nullable = false, length = 60)
@@ -22,7 +22,7 @@ public class User {
     }
 
     public User(String userName, String password, String email, String phone) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.email = email;
         this.phone = phone;
@@ -37,11 +37,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -72,7 +72,7 @@ public class User {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
