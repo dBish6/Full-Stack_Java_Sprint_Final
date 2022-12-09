@@ -1,13 +1,13 @@
 package com.keyin.finalSprint.user.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "user_id")
+    private long id;
 
     @Column(nullable = false, length = 60)
     private String userName;
