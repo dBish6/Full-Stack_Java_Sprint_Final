@@ -21,8 +21,9 @@ public class OrderDetails {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id")
+    @MapsId
     private Orders orders;
 
     // Constructors

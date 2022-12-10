@@ -24,7 +24,7 @@ public class Orders {
     @Column(nullable = false)
     private double order_total;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetails> order_details;
 
     // Constructors

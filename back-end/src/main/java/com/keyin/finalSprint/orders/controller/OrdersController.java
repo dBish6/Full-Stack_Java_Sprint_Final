@@ -20,6 +20,5 @@ public class OrdersController {
     public void createOrder(@RequestBody Orders order, @RequestBody OrderDetails orderDetails){
 
         orderRepo.save(order);
-//        OrderDetailsController.createOrderDetails
     }
 }
