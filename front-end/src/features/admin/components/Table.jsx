@@ -1,13 +1,17 @@
-import { style } from "@mui/system/Stack/createStack";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 // *API Services Imports*
 import { patchName, patchType } from "../api_services/PatchProduct";
+import DeleteProduct from "../api_services/DeleteProduct";
 
 // *Design Imports*
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
 const Table = (props) => {
+  const navigate = useNavigate();
+  const Delete = DeleteProduct();
+
   return (
     <div
       style={{
@@ -33,7 +37,10 @@ const Table = (props) => {
           {props.product &&
             props.product.map((sword) => {
               return (
-                <tr style={{ borderTop: "8px solid", borderBottom: "8px" }}>
+                <tr
+                  key={sword.sword_id}
+                  style={{ borderTop: "8px solid", borderBottom: "8px" }}
+                >
                   <td>{sword.sword_id}</td>
                   <td>
                     {sword.name}{" "}
@@ -41,7 +48,7 @@ const Table = (props) => {
                       //   onSubmit={
                       //     <PatchProduct name={props.name} id={props.sword_id} />
                       //   }
-                      onSubmit={patchName(props.name, props.sword_id)}
+                      onSubmit={() => patchName(props.name, props.sword_id)}
                     >
                       <input type="text" placeholder="Edit Name" />
                       <button type="submit">Edit</button>
@@ -53,7 +60,7 @@ const Table = (props) => {
                       //   onSubmit={
                       //     <PatchProduct type={props.type} id={props.sword_id} />
                       //   }
-                      onSubmit={patchType(props.type, props.sword_id)}
+                      onSubmit={() => patchType(props.type, props.sword_id)}
                     >
                       <input type="text" placeholder="Edit Type" />
                       <button type="submit">Edit</button>
@@ -131,6 +138,10 @@ const Table = (props) => {
                   >
                     <button
                       style={{ padding: "0.5rem", borderRadius: "0.5rem" }}
+                      onClick={() => {
+                        Delete(sword.sword_id);
+                        navigate("/successfulDelete");
+                      }}
                     >
                       Delete
                     </button>

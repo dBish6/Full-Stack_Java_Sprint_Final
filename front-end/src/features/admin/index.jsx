@@ -11,7 +11,14 @@ const AdminFeature = () => {
   const [product, loadingProduct] = FetchAllSwords();
 
   return (
-    <div style={{ display: "grid", placeContent: "center", margin: "1.5rem" }}>
+    <div
+      style={{
+        display: "grid",
+        placeContent: "center",
+        margin: "1rem",
+        overflowX: "hidden",
+      }}
+    >
       {loadingProduct ? (
         <p style={{ fontSize: "68px" }}>Loading...</p>
       ) : (

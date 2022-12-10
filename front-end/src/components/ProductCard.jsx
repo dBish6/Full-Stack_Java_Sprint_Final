@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 // *API Services Imports*
-import FetchAllSwords from "../api_services/FetchAllSwords";
 
 // *Design Imports*
 import noImage from "../assets/images/no-image.webp";
@@ -9,16 +9,23 @@ import ProductsSkeleton from "../skeletons/ProductsSkeleton";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import "./productCard.css";
 
-const ProductCard = () => {
-  const [product, loadingProduct] = FetchAllSwords();
+const ProductCard = (props) => {
+  const [ifAllSwords, toggleIfAllSwords] = useState(false);
+  const location = useLocation();
+  console.log(location.pathname);
+
+  // TODO: I don't need the if pathname, you can just do if prop.longSwords, ect.
+  // const setPage = () => {
+  //   console.log(location.pathname);
+  // };
 
   return (
     <div className="productGridContainer">
-      {loadingProduct ? (
+      {props.isLoading ? (
         <ProductsSkeleton />
       ) : (
-        product &&
-        product.map((sword) => {
+        props.product &&
+        props.product.map((sword) => {
           return (
             <div className="productContainer" key={sword.sword_id}>
               <div className="imageContainer">
@@ -29,7 +36,7 @@ const ProductCard = () => {
                 )}
               </div>
               <div className="contentContainer">
-                <h2 className={sword.name.length >= 13 && "fontSize"}>
+                <h2 className={sword.name.length >= 13 ? "fontSize" : ""}>
                   {sword.name}
                 </h2>
                 <div>

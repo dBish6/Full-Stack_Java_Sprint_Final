@@ -10,7 +10,7 @@ const TopHeader = () => {
   return (
     <header className="topHeaderContainer">
       {/* Type name from API. */}
-      <h1>Long Swords</h1>
+      <h1>All Swords</h1>
       <ExpandMore />
     </header>
   );

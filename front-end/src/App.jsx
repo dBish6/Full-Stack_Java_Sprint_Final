@@ -30,6 +30,7 @@ import LongSwords from "./pages/home/LongSwords";
 import ShortSwordsDaggers from "./pages/home/ShortSwordsDaggers";
 import Maces from "./pages/home/Maces";
 import Administration from "./pages/Administration";
+import SuccessfullyDeleted from "./features/admin/pages/SuccessfullyDeleted";
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
 import Profile from "./pages/Profile";
@@ -81,6 +82,7 @@ function App() {
             <Route path="*" element={<Error404 />} />
           </Route>
           <Route path="/admin" element={<Administration />} />
+          <Route path="/successfulDelete" element={<SuccessfullyDeleted />} />
         </Routes>
       </BrowserRouter>
     </>
