@@ -1,9 +1,13 @@
 package com.keyin.finalSprint.orders.model;
 
+import com.keyin.finalSprint.order_details.model.OrderDetails;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Order;
+
+import java.util.List;
 
 @Entity
-@Table(schema="order")
+@Table(name="orders")
 public class Orders {
 
     @Id
@@ -11,72 +15,75 @@ public class Orders {
     @Column(name = "order_id", nullable = false)
     private long order_id;
 
-    @Column(nullable = false, length = 60)
-    private String productName;
+    @Column(nullable = false)
+    private int tax_rate;
 
     @Column(nullable = false)
-    private int quantity;
+    private double order_subtotal;
 
     @Column(nullable = false)
-    private double itemTotal;
+    private double order_total;
 
-    @Column(nullable = false)
-    private double totalPrice;
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetails> order_details;
 
     // Constructors
-    public Orders(String productName, int quantity, double itemTotal, double totalPrice) {
-        this.productName = productName;
-        this.quantity = quantity;
-        this.itemTotal = itemTotal;
-        this.totalPrice = totalPrice;
+    public Orders() {
     }
 
-    public Orders(long order_id, String productName, int quantity, double itemTotal, double totalPrice) {
+    public Orders(long order_id, int tax_rate, double order_subtotal, double order_total) {
         this.order_id = order_id;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.itemTotal = itemTotal;
-        this.totalPrice = totalPrice;
+        this.tax_rate = tax_rate;
+        this.order_subtotal = order_subtotal;
+        this.order_total = order_total;
+    }
+
+    public Orders(int tax_rate, double order_subtotal, double order_total) {
+        this.tax_rate = tax_rate;
+        this.order_subtotal = order_subtotal;
+        this.order_total = order_total;
     }
 
     // Getters / Setters
-    public double getItemTotal() {
-        return itemTotal;
-    }
-
-    public void setItemTotal(double itemTotal) {
-        this.itemTotal = itemTotal;
-    }
-
-    public long getId() {
+    public long getOrder_id() {
         return order_id;
     }
 
-    public void setId(long id) {
-        order_id = id;
+    public void setOrder_id(long order_id) {
+        this.order_id = order_id;
     }
 
-    public String getProductName() {
-        return productName;
+    public int getTax_rate() {
+        return tax_rate;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setTax_rate(int tax_rate) {
+        this.tax_rate = tax_rate;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getOrder_subtotal() {
+        return order_subtotal;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setOrder_subtotal(double order_subtotal) {
+        this.order_subtotal = order_subtotal;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getOrder_total() {
+        return order_total;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setOrder_total(double order_total) {
+        this.order_total = order_total;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "order_id=" + order_id +
+                ", tax_rate=" + tax_rate +
+                ", order_subtotal=" + order_subtotal +
+                ", order_total=" + order_total +
+                '}';
     }
 }
