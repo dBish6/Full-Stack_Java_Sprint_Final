@@ -36,8 +36,13 @@ public class SwordController {
     }
 
     @PutMapping("/sword/{id}")
-    public void editSword(@RequestBody Sword swordReplacement, @PathVariable String id){
+    public void replaceSword(@RequestBody Sword swordReplacement, @PathVariable String id){
         SS.replaceSword(swordReplacement,id);
+    }
+
+    @PatchMapping("/sword/{id}")
+    public void editSword(@RequestBody Sword swordUpdate, @PathVariable String id){
+        SS.editSword(swordUpdate,id);
     }
 
     @DeleteMapping("/sword/{id}")
