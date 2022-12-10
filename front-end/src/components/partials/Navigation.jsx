@@ -5,6 +5,9 @@ import { NavLink } from "react-router-dom";
 
 // *API Services Imports*
 
+// *Modal Import"
+import PasswordModal from "../modals/PasswordModal";
+
 // *Design Imports*
 import blackRavenLogo from "../../assets/images/blackRavenLogo-DesignEvo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartTwoTone";
@@ -15,6 +18,10 @@ const Navigation = () => {
   const [isClickedFirstLink, toggleIsClickedFirstLink] = useState(true);
   const [isClickedSecondLink, toggleIsClickedSecondLink] = useState(false);
   const [isClickedThirdLink, toggleIsClickedThirdLink] = useState(false);
+
+  const [isClickedLongSwords, toggleIsClickedLongSwords] = useState(false);
+  const [isClickedShortSwords, toggleIsClickedShortSwords] = useState(false);
+  const [isClickedMaces, toggleIsClickedMaces] = useState(false);
 
   return (
     <div className="navContainer">
@@ -32,7 +39,7 @@ const Navigation = () => {
           <div>
             <NavLink
               to="/home"
-              className={isClickedFirstLink && "activateLink"}
+              className={isClickedFirstLink ? "activateLink" : ""}
               onClick={() => {
                 toggleIsClickedFirstLink(true);
                 toggleIsClickedSecondLink(false);
@@ -43,7 +50,7 @@ const Navigation = () => {
             </NavLink>
             <NavLink
               to="/home/about"
-              className={isClickedSecondLink && "activateLink"}
+              className={isClickedSecondLink ? "activateLink" : ""}
               onClick={() => {
                 toggleIsClickedSecondLink(true);
                 toggleIsClickedFirstLink(false);
@@ -54,7 +61,7 @@ const Navigation = () => {
             </NavLink>
             <NavLink
               to="/home/support"
-              className={isClickedThirdLink && "activateLink"}
+              className={isClickedThirdLink ? "activateLink" : ""}
               onClick={() => {
                 toggleIsClickedThirdLink(true);
                 toggleIsClickedFirstLink(false);
@@ -65,7 +72,7 @@ const Navigation = () => {
             </NavLink>
           </div>
           <div className="topBarRight">
-            <NavLink to="/admin">Administration</NavLink>
+            <PasswordModal />
             <NavLink to="/login">login</NavLink>
             <p>|</p>
             <NavLink to="/register">Sign Up</NavLink>
@@ -73,11 +80,39 @@ const Navigation = () => {
         </div>
         <div className="bottomBar">
           <div>
-            <NavLink to="/home/longSwords">Long Swords</NavLink>
-            <NavLink to="/home/shortSwords_Daggers">
+            <NavLink
+              to="/home/longSwords"
+              className={isClickedLongSwords ? "activeLink" : ""}
+              onClick={() => {
+                toggleIsClickedLongSwords(true);
+                toggleIsClickedShortSwords(false);
+                toggleIsClickedMaces(false);
+              }}
+            >
+              Long Swords
+            </NavLink>
+            <NavLink
+              to="/home/shortSwords_Daggers"
+              className={isClickedShortSwords ? "activeLink" : ""}
+              onClick={() => {
+                toggleIsClickedLongSwords(false);
+                toggleIsClickedShortSwords(true);
+                toggleIsClickedMaces(false);
+              }}
+            >
               Short Swords/Daggers
             </NavLink>
-            <NavLink to="/home/maces">Maces</NavLink>
+            <NavLink
+              to="/home/maces"
+              className={isClickedMaces ? "activeLink" : ""}
+              onClick={() => {
+                toggleIsClickedLongSwords(false);
+                toggleIsClickedShortSwords(false);
+                toggleIsClickedMaces(true);
+              }}
+            >
+              Maces
+            </NavLink>
           </div>
           <div className="bottomBarRight">
             <input type="text" name="search" placeholder="Search" />

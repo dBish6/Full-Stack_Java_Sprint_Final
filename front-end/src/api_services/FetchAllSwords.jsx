@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const FetchAllSwords = () => {
-  const [product, setProduct] = useState([]);
+  const [products, setProduct] = useState([]);
   const [loadingProduct, toggleProductLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -27,14 +27,14 @@ const FetchAllSwords = () => {
         navigate("/error500");
       }
     };
-    console.log(product);
+    console.log(products);
     // setTimeout(() => {
     //   fetchProduct();
     // }, 120096000);
     fetchProduct();
   }, []);
 
-  return [product, loadingProduct];
+  return [products, loadingProduct];
 };
 
 export default FetchAllSwords;

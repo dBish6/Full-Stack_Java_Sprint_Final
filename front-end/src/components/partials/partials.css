@@ -60,6 +60,7 @@
   text-decoration: none;
 }
 
+/* Event */
 .barsContainer .topBar .activateLink {
   background-color: var(--black700Main);
   color: var(--wordsWhiteMain);
@@ -69,11 +70,6 @@
   display: flex;
   align-items: center;
   margin-right: 24px;
-}
-
-.barsContainer .topBarRight a:first-of-type {
-  padding: 0;
-  margin-right: 48px;
 }
 
 .barsContainer .topBarRight a {
@@ -99,8 +95,8 @@
   text-decoration: none;
 }
 
-/* FIXME: */
-.barsContainer .bottomBar a:active {
+/* Event */
+.barsContainer .bottomBar .activeLink {
   color: var(--activeColour);
   text-decoration: underline;
 }

@@ -6,7 +6,6 @@ const PostProduct = async (e) => {
   const navigate = useNavigate();
   e.preventDefault();
   try {
-    toggleProductLoading(true);
     const res = await axios({
       method: "POST",
       url: "http://localhost:8080/api/sword",
