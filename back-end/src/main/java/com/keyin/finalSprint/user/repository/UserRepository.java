@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    List<User> findByUserName(@Param("userName") String userName);
+    // List<User> findByUserName(@Param("username") String username);
 
 }
 

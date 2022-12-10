@@ -35,7 +35,7 @@ public class UserController {
         if (returnValue.isPresent()) {
             userToUpdate = returnValue.get();
 
-            userToUpdate.setUserName(user.getUserName());
+            userToUpdate.setUsername(user.getUsername());
 
             userRepo.save(userToUpdate);
         } else {
