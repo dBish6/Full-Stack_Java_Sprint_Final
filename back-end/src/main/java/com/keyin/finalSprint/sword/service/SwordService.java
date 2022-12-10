@@ -44,4 +44,27 @@ public class SwordService {
             throw new SwordNotFoundException(Long.parseLong(id));
         }
     }
+
+    public void editSword(Sword sword, String id){
+        Optional<Sword> swordReturned = swordRepo.findById(Long.parseLong(id));
+        Sword swordUpdated;
+        if(swordReturned.isPresent()){
+            swordUpdated = swordReturned.get();
+            if(sword.getType() != null){
+                swordUpdated.setType(sword.getType());
+            }
+            if(sword.getName() != null){
+                swordUpdated.setName(sword.getName());
+            }
+            if(sword.getPrice() != 0){
+                swordUpdated.setPrice(sword.getPrice());
+            }
+            if(sword.getDescription() != null){
+                swordUpdated.setDescription(sword.getDescription());
+            }
+            swordRepo.save(swordUpdated);
+        } else {
+            throw new SwordNotFoundException(Long.parseLong(id));
+        }
+    }
 }

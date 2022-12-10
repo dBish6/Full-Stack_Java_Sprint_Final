@@ -3,12 +3,12 @@ package com.keyin.finalSprint.sword.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(schema="sword")
+@Table(name = "sword")
 public class Sword {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sword_id", nullable = false)
+    @Column(name = "sword_id")
     private long sword_id;
 
     @Column(nullable = false, length = 60)
