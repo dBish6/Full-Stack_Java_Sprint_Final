@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 // *Custom Hooks Imports*
 
@@ -22,6 +22,20 @@ const Navigation = () => {
   const [isClickedLongSwords, toggleIsClickedLongSwords] = useState(false);
   const [isClickedShortSwords, toggleIsClickedShortSwords] = useState(false);
   const [isClickedMaces, toggleIsClickedMaces] = useState(false);
+  const location = useLocation();
+
+  // Stops bottom links from being active when users goes to all swords, about, support.
+  useEffect(() => {
+    if (
+      location.pathname === "/home" ||
+      location.pathname === "/home/about" ||
+      location.pathname === "/home/support"
+    ) {
+      toggleIsClickedLongSwords(false);
+      toggleIsClickedShortSwords(false);
+      toggleIsClickedMaces(false);
+    }
+  }, [location.pathname]);
 
   return (
     <div className="navContainer">

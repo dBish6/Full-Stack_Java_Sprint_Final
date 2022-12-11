@@ -25,4 +25,84 @@
   top: 63px;
   font-size: 64px;
   color: var(--primary500Main);
+  cursor: pointer;
+  transition: 0.7s ease;
+}
+
+.topHeaderContainer .expandLess {
+  transform: rotate(180deg) scaleX(-1);
+}
+
+.topHeaderContainer svg:hover {
+  color: var(--primary400);
+}
+
+.topHeaderContainer p {
+  display: none;
+}
+
+/* FIXME: */
+.topHeaderContainer svg:hover + .topHeaderContainer p {
+  display: block;
+  color: red;
+}
+
+.dropdownContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownContainer .dropdown {
+  max-width: 732px;
+  background-color: var(--black700Main);
+  border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+  animation: fade 1.2s ease backwards;
+}
+
+.dropdownContainer .dropdown .dropdownContent {
+  margin: 1rem 2rem 1rem 2rem;
+}
+
+.dropdownContainer .dropdown .dropdownContent h3 {
+  font-family: "Raven Hell";
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 50px;
+  letter-spacing: 0.02em;
+  color: var(--wordsWhiteMain);
+  -webkit-text-stroke: 2px var(--primary500Main);
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--primary500Main);
+}
+
+.dropdownContainer .dropdown .dropdownContent .description {
+  font-size: 15px;
+  color: var(--wordsWhiteMain);
+  padding: 1rem;
+}
+
+.dropdownContainer .dropdown .dropdownContent .sincerely {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropdownContainer .dropdown .dropdownContent .sincerely p {
+  font-family: "Freehand", cursive;
+  font-size: 18px;
+  color: var(--redColour);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }

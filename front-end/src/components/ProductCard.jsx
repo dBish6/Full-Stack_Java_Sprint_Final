@@ -54,7 +54,7 @@ const ProductCard = (props) => {
                 </div>
                 <div className="priceBuyNowContainer">
                   <p>${sword.price}</p>
-                  <button>Buy Now</button>
+                  <button>Add to Cart</button>
                 </div>
               </div>
             </div>
