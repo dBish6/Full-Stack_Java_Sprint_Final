@@ -4,8 +4,12 @@ import com.keyin.finalSprint.sword.exceptions.SwordNotFoundException;
 import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 // The service class is where all your "business logic" goes for your controllers. Basically, all the
@@ -16,7 +20,7 @@ public class SwordService {
     @Autowired
     SwordRepository swordRepo;
 
-    public Sword serveSword(String id){
+    public Sword serveSwordByID(String id){
         Optional<Sword> swordReturned = swordRepo.findById(Long.parseLong(id));
         Sword swordFound;
         if(swordReturned.isPresent()){
@@ -24,6 +28,21 @@ public class SwordService {
             return swordFound;
         } else {
             throw new SwordNotFoundException(Long.parseLong(id));
+        }
+    }
+
+    public List<Sword> serveSwordByType(String type){
+        List<Sword> completeList = swordRepo.findAll();
+        List<Sword> filteredList = new ArrayList<>();
+        completeList.forEach((sword)->{
+            if(Objects.equals(sword.getType(), type)){
+                filteredList.add(sword);
+            }
+        });
+        if(filteredList.isEmpty()){
+            throw new SwordNotFoundException();
+        } else {
+            return filteredList;
         }
     }
 

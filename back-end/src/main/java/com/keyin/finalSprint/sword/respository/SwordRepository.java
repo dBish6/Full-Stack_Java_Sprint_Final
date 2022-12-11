@@ -9,8 +9,5 @@ import java.util.List;
 //@RepositoryRestResource(collectionResourceRel = "swords",path = "swords")
 @Repository
 public interface SwordRepository extends JpaRepository<Sword, Long> {
-//
-//    Sword findById(@Param("id") long id);
-//
-//    List<Sword> findAll();
+
 }

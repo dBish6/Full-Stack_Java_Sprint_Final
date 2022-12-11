@@ -1,13 +1,11 @@
 package com.keyin.finalSprint.sword.controller;
 
-import com.keyin.finalSprint.sword.exceptions.SwordNotFoundException;
 import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
 import com.keyin.finalSprint.sword.service.SwordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -27,7 +25,12 @@ public class SwordController {
 
     @GetMapping("/sword/{id}")
     public Sword getSwordById(@PathVariable String id){
-        return SS.serveSword(id);
+        return SS.serveSwordByID(id);
+    }
+
+    @GetMapping("/sword/type/{type}")
+    public List<Sword> getSwordByType(@PathVariable String type){
+        return SS.serveSwordByType(type);
     }
 
     @PostMapping("/sword")
