@@ -1,7 +1,14 @@
 import React from "react";
 
+// *Feature*
+import RegisterFeature from "../../features/authentication/RegisterIndex";
+
 const Register = () => {
-  return <div>Register</div>;
+  return (
+    <>
+      <RegisterFeature />
+    </>
+  );
 };
 
 export default Register;

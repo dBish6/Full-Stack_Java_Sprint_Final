@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./passwordModal.css";
 
 const PasswordModal = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const inputRef = useRef("");
+
+  const handleSubmit = () => {
+    inputRef.current.value === "admin123" && navigate("/admin");
+  };
 
   return (
     <>
@@ -21,11 +28,16 @@ const PasswordModal = () => {
               <button className="closeBtn" onClick={() => setShow(false)}>
                 Close
               </button>
-              <form onSubmit>
-                <input name="password" type="text" />
+              <form onSubmit={() => handleSubmit()}>
+                <input
+                  name="password"
+                  type="text"
+                  autoComplete="off"
+                  ref={inputRef}
+                />
                 <label htmlFor="password">Admin Password</label>
                 <div className="btnContainer">
-                  <button onClick={() => setShow(false)}>Submit</button>
+                  <button type="submit">Submit</button>
                 </div>
               </form>
             </div>

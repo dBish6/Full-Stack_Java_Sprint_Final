@@ -1,0 +1,131 @@
+/* Designer: David Bishop
+   Register
+*/
+
+.regGridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+/* .leftSide {
+} */
+
+.topSpan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 1.5rem 0 1rem;
+}
+
+.topSpan .logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.topSpan .logoContainer img {
+  width: 38px;
+  height: 43px;
+}
+
+.topSpan .logoContainer div {
+  position: relative;
+  top: 3px;
+}
+
+.topSpan .logoContainer div p:first-child {
+  font-family: "Forsaken";
+  font-size: 21px;
+  line-height: 24px;
+  cursor: default;
+}
+
+.topSpan .logoContainer div p {
+  font-family: "Forsaken";
+  font-size: 12px;
+  cursor: default;
+}
+
+.topSpan a {
+  font-family: "Montserrat", sans-serif;
+  color: var(--wordsBlackMain);
+  text-decoration: underline;
+  text-decoration-color: var(--primary500Main);
+}
+
+.topSpan a:hover {
+  color: var(--black600);
+}
+
+/* ... */
+
+.registerForm {
+  display: grid;
+  place-content: center;
+  /* min-height: 50%; */
+}
+
+.registerForm h1 {
+  font-family: "Raven Hell";
+  font-weight: 600;
+  font-size: 48px;
+  /* letter-spacing: 0.04em; */
+  color: var(--secondary500Main);
+  -webkit-text-stroke: 2px var(--wordsBlackMain);
+}
+
+.registerForm .formMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.registerForm .formMain label {
+  /* position: relative;
+  left: 3px;
+  bottom: 2rem; */
+  pointer-events: none;
+  transition: 0.38s ease all;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: var(--wordsBlackMain);
+}
+
+/* Label focus */
+.loginFlexContainer .loginFormContainer .loginBox .inputDiv input:focus ~ label,
+.loginFlexContainer
+  .loginFormContainer
+  .loginBox
+  .inputDiv
+  input:not(:focus):valid
+  ~ label {
+  /* bottom: 3.625rem; */
+  /* bottom: 3.75rem; */
+  bottom: 3.85rem;
+  font-size: 14px;
+}
+
+.registerForm .formMain input {
+  color: var(--wordsBlackMain);
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+
+  margin: 1rem 0 3px 0;
+  height: 42px;
+  width: 384px;
+  padding: 0.5rem;
+  /* min-width: 8%; */
+  border-bottom: 2px solid var(--black700Main);
+  background: transparent;
+  transition: 0.38s ease all;
+}
+
+/* ... */
+
+.rightSide {
+  background-color: var(--secondary500Main);
+}

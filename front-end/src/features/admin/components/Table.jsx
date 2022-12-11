@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // *API Services Imports*
-import { patchName, patchType } from "../api_services/PatchProduct";
+// import { patchName, patchType } from "../api_services/PatchProduct";
+import PatchProduct from "../api_services/PatchProduct";
 import DeleteProduct from "../api_services/DeleteProduct";
 
 // *Design Imports*
@@ -10,6 +11,7 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 
 const Table = (props) => {
   const navigate = useNavigate();
+  const { patchName, patchType } = PatchProduct();
   const Delete = DeleteProduct();
 
   return (
@@ -48,6 +50,18 @@ const Table = (props) => {
                       //   onSubmit={
                       //     <PatchProduct name={props.name} id={props.sword_id} />
                       //   }
+                      // onSubmit={() =>
+                      //   patchName(
+                      //     props.name,
+                      //     props.type,
+                      //     props.length,
+                      //     props.mass,
+                      //     props.price,
+                      //     props.description,
+                      //     props.image_url,
+                      //     props.sword_id
+                      //   )
+                      // }
                       onSubmit={() => patchName(props.name, props.sword_id)}
                     >
                       <input type="text" placeholder="Edit Name" />

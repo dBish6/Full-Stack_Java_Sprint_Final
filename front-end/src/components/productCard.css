@@ -157,7 +157,7 @@
   .priceBuyNowContainer
   button {
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   padding: 0.5rem 1rem 0.5rem 1rem;
   background-color: var(--secondary500Main);
   color: var(--wordsWhiteMain);
