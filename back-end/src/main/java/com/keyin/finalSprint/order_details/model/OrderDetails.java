@@ -1,5 +1,6 @@
 package com.keyin.finalSprint.order_details.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.keyin.finalSprint.orders.model.Orders;
 import jakarta.persistence.*;
 
@@ -7,9 +8,9 @@ import jakarta.persistence.*;
 @Table(name="order_details")
 public class OrderDetails {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_details_id", nullable = false)
+    @Id
     private long order_details_id;
 
     @Column(nullable = false)
@@ -21,9 +22,8 @@ public class OrderDetails {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="order_id")
-    @MapsId
     private Orders orders;
 
     // Constructors

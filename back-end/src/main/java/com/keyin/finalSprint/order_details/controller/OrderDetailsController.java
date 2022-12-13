@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/api/")
 public class OrderDetailsController {
         @Autowired
         private OrderDetailsRepository orderDetailsRepo;
 
-        public void createOrderDetails(OrderDetails orderDetails){
+        @PostMapping("/order-details")
+        public void createOrderDetails(@RequestBody OrderDetails orderDetails){
 
+//                System.out.println(orderDetails);
             orderDetailsRepo.save(orderDetails);
         }
 }
