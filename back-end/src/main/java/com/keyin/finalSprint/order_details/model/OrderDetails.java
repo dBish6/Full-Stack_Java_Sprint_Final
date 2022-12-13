@@ -21,7 +21,7 @@ public class OrderDetails {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="order_id")
     @MapsId
     private Orders orders;
