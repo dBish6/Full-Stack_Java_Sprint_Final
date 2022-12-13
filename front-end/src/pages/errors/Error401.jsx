@@ -1,7 +1,15 @@
 import React from "react";
 
+// *Components*
+import TopHeader from "../../components/TopHeader";
+
 const Error401 = () => {
-  return <div>Error401</div>;
+  return (
+    <main>
+      <TopHeader />
+      <p>Error 401: You're not authorized to be here.</p>
+    </main>
+  );
 };
 
 export default Error401;

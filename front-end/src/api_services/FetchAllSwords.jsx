@@ -28,9 +28,6 @@ const FetchAllSwords = () => {
       }
     };
     console.log(products);
-    // setTimeout(() => {
-    //   fetchProduct();
-    // }, 120096000);
     fetchProduct();
   }, []);
 

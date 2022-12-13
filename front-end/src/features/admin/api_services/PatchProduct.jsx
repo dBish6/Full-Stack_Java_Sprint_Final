@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// FIXME:
 // Edits a new sword from the database.
 const PatchProduct = () => {
+  const navigate = useNavigate();
   // const patchName = async (
   //   name,
   //   type,
@@ -35,8 +37,7 @@ const PatchProduct = () => {
   //   }
   // };
 
-  const patchName = async (name, sword_id) => {
-    //   const navigate = useNavigate();
+  const PATCHname = async (name, sword_id) => {
     try {
       const res = await axios({
         method: "PATCH",
@@ -48,12 +49,11 @@ const PatchProduct = () => {
       console.log(res.data);
     } catch (error) {
       console.error(error);
-      // navigate("/error500");
+      navigate("/error500");
     }
   };
 
-  const patchType = async (type, sword_id) => {
-    //   const navigate = useNavigate();
+  const PATCHtype = async (type, sword_id) => {
     try {
       const res = await axios({
         method: "PATCH",
@@ -65,11 +65,11 @@ const PatchProduct = () => {
       console.log(res.data);
     } catch (error) {
       console.error(error);
-      // navigate("/error500");
+      navigate("/error500");
     }
   };
 
-  return { patchName, patchType };
+  return { PATCHname, PATCHtype };
 };
 
 export default PatchProduct;

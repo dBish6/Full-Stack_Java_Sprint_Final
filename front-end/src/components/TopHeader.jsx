@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // *API Services Imports*
@@ -9,17 +9,76 @@ import "./topHeader.css";
 
 const TopHeader = () => {
   const [dropdown, toggleDropdown] = useState(false);
+  const [dropdownArrow, toggleDropdownArrow] = useState(false);
   const flipRef = useRef(null);
-  // TODO: This is probably where we can use useLocation; the descriptions.
   const location = useLocation();
   console.log(location.pathname);
+
+  // FIXME:
+  useEffect(() => {
+    const mainPaths = [
+      "/home",
+      "/home/longSwords",
+      "/home/shortSwords",
+      "/home/daggers",
+      "/home/maces",
+      "/home/about",
+      "/home/support",
+    ];
+
+    const ifPathIncludesMainPaths = () => {
+      // toggleDropdownArrow(false);
+      mainPaths.some((path) => {
+        // console.log(path);
+        // console.log("dropdown");
+        if (location.pathname.includes(path)) {
+          // console.log("dropdown");
+          return toggleDropdownArrow(true);
+        } else {
+          console.log("dropdown");
+          return toggleDropdownArrow(false);
+        }
+      });
+    };
+    ifPathIncludesMainPaths();
+  }, [location.pathname]);
 
   return (
     <>
       <header className="topHeaderContainer">
         {/* Type name from API. */}
-        <h1>All Swords</h1>
+        {location.pathname === "/home" ? (
+          <h1>All Swords</h1>
+        ) : location.pathname === "/home/longSwords" ? (
+          <h1>Long Swords</h1>
+        ) : location.pathname === "/home/shortSwords" ? (
+          <h1>Short Swords</h1>
+        ) : location.pathname === "/home/daggers" ? (
+          <h1>Daggers</h1>
+        ) : location.pathname === "/home/maces" ? (
+          <h1>Maces</h1>
+        ) : location.pathname === "/home/about" ? (
+          <h1>About Us</h1>
+        ) : location.pathname === "/home/support" ? (
+          <h1>Support</h1>
+        ) : (
+          <h1>Error</h1>
+        )}
         {/* {console.log(flipRef.current.className)} */}
+        {/* {dropdownArrow ? (
+          <div>
+            <ExpandMore
+              className={dropdown ? "expandLess" : ""}
+              ref={flipRef}
+              onClick={() => {
+                !flipRef.current.classList.contains("expandLess")
+                  ? toggleDropdown(true)
+                  : toggleDropdown(false);
+              }}
+            />
+            <p>More Information</p>
+          </div>
+        ) : undefined} */}
         <div>
           <ExpandMore
             className={dropdown ? "expandLess" : ""}
@@ -29,18 +88,16 @@ const TopHeader = () => {
                 ? toggleDropdown(true)
                 : toggleDropdown(false);
             }}
-            // WHY DON'T THIS WORK!
-            title="More Information"
           />
           <p>More Information</p>
         </div>
       </header>
       {dropdown && (
         <div className="dropdownContainer">
-          {location.pathname === "/home" ? (
-            <div className="dropdown">
-              <div className="dropdownContent">
-                <h3>Background</h3>
+          <div className="dropdown">
+            <div className="dropdownContent">
+              <h3>Background</h3>
+              {location.pathname === "/home" ? (
                 <p className="description">
                   A sword is an edged, bladed weapon intended for manual cutting
                   or thrusting. Its blade, longer than a knife or dagger, is
@@ -59,12 +116,24 @@ const TopHeader = () => {
                   Migration Period sword, and only in the High Middle Ages,
                   developed into the classical arming sword with crossguard.
                 </p>
-                <div className="sincerely">
-                  <p>Sincerely, Wikipedia</p>
-                </div>
+              ) : location.pathname === "/home/longSwords" ? (
+                <p className="description">
+                  The term long sword comes from europe. The term was prevalent
+                  during the late medieval and Renaissance periods
+                  (approximately 1350 to 1550), with early and late use reaching
+                  into the 12th and 17th centuries. The long sword has a
+                  straight double-edged blade of around 80 to 110 cm (31 to 43
+                  in) with a grip for primarily two-handed use around 15 to 30
+                  cm (6 to 12 in).
+                </p>
+              ) : location.pathname === "/home/shortSwords" ? (
+                <p className="description"></p>
+              ) : undefined}
+              <div className="sincerely">
+                <p>Sincerely, Wikipedia</p>
               </div>
             </div>
-          ) : undefined}
+          </div>
         </div>
       )}
     </>

@@ -27,10 +27,12 @@ import Home from "./pages/home/Home";
 import About from "./pages/home/About";
 import Support from "./pages/home/Support";
 import LongSwords from "./pages/home/LongSwords";
-import ShortSwordsDaggers from "./pages/home/ShortSwordsDaggers";
+import ShortSwordsDaggers from "./pages/home/ShortSwords";
+import Daggers from "./pages/home/Daggers";
 import Maces from "./pages/home/Maces";
 import Administration from "./pages/Administration";
 import SuccessfullyDeleted from "./features/admin/pages/SuccessfullyDeleted";
+import Create from "./features/admin/pages/Create";
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
 import Profile from "./pages/Profile";
@@ -67,10 +69,8 @@ function App() {
             />
             <Route path="/home" element={<Home />} />
             <Route path="/home/longSwords" element={<LongSwords />} />
-            <Route
-              path="/home/shortSwords_Daggers"
-              element={<ShortSwordsDaggers />}
-            />
+            <Route path="/home/shortSwords" element={<ShortSwordsDaggers />} />
+            <Route path="/home/daggers" element={<Daggers />} />
             <Route path="/home/maces" element={<Maces />} />
             <Route path="/home/about" element={<About />} />
             <Route path="/home/support" element={<Support />} />
@@ -82,7 +82,11 @@ function App() {
             <Route path="*" element={<Error404 />} />
           </Route>
           <Route path="/admin" element={<Administration />} />
-          <Route path="/successfulDelete" element={<SuccessfullyDeleted />} />
+          <Route
+            path="/admin/successfulDelete"
+            element={<SuccessfullyDeleted />}
+          />
+          <Route path="/admin/create" element={<Create />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,21 +1,21 @@
 import React from "react";
 
 // *API Services Imports*
-import FetchAllSwords from "../../api_services/FetchAllSwords";
+import FetchDaggers from "../../api_services/FetchDaggers";
 
 // *Components*
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
-const Home = () => {
-  const [products, loadingProduct] = FetchAllSwords();
+const Daggers = () => {
+  const [daggers, loadingDaggers] = FetchDaggers();
 
   return (
     <main>
       <TopHeader />
-      <ProductCard products={products} isLoading={loadingProduct} />
+      <ProductCard products={daggers} isLoading={loadingDaggers} />
     </main>
   );
 };
 
-export default Home;
+export default Daggers;

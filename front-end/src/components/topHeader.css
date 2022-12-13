@@ -27,6 +27,7 @@
   color: var(--primary500Main);
   cursor: pointer;
   transition: 0.7s ease;
+  z-index: 1;
 }
 
 .topHeaderContainer .expandLess {
@@ -41,10 +42,19 @@
   display: none;
 }
 
-/* FIXME: */
-.topHeaderContainer svg:hover + .topHeaderContainer p {
+/* FIXME: .productGridContainer .productContainer .contentContainer h2 moves up when hovered:( */
+.topHeaderContainer svg:hover + p {
   display: block;
-  color: red;
+  position: absolute;
+  /* top: 157px;
+  right: 600px; */
+  padding: 0.3rem;
+  opacity: 0.5;
+
+  font-size: 12px;
+  color: var(--wordsWhiteMain);
+  background-color: var(--black800);
+  border-radius: 0.5rem;
 }
 
 .dropdownContainer {

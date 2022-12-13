@@ -14,7 +14,7 @@ const FetchLongSwords = () => {
         toggleLongSwordsLoading(true);
         const res = await axios({
           method: "GET",
-          url: "http://localhost:8080/api/sword/Long Sword",
+          url: "http://localhost:8080/api/sword/type/Long Sword",
         });
         console.log(res.data);
         toggleLongSwordsLoading(false);

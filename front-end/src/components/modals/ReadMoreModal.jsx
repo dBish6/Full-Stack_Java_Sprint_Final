@@ -1,33 +1,40 @@
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import React, { useState, useEffect } from "react";
 
-import React from "react";
+// *Design Imports*
+import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import "./passwordModal.css";
 
-const ReadMoreModal = () => {
+const ReadMoreModal = (props) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    show
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [show]);
+
   return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+    <>
+      <ReadMoreIcon onClick={() => setShow(true)} />
+      {show && (
+        <>
+          <div className="darkBG" onClick={() => setShow(false)} />
+          <div className="centered">
+            <div className="readMoreModal">
+              <div className="modalHeader">
+                <h3>Full Description</h3>
+              </div>
+              <button className="closeBtn" onClick={() => setShow(false)}>
+                Close
+              </button>
+              <div className="descriptionContainer">
+                <p>{props.description}</p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import React from "react";
 // *Components*
 import TopSpan from "./components/register/TopSpan";
 import RegisterForm from "./components/register/RegisterForm";
+import RegisterWelcome from "./components/register/RegisterWelcome";
 
 // *Design Imports*
 import "./register.css";
@@ -18,7 +19,9 @@ const RegisterIndex = () => {
         <TopSpan />
         <RegisterForm />
       </div>
-      <div className="rightSide"></div>
+      <div className="rightSide">
+        <RegisterWelcome />
+      </div>
     </main>
   );
 };

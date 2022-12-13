@@ -1,31 +1,21 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 
-// *API Services Imports*
+// *Modal Import"
+import ReadMoreModal from "./modals/ReadMoreModal";
 
 // *Design Imports*
 import noImage from "../assets/images/no-image.webp";
 import ProductsSkeleton from "../skeletons/ProductsSkeleton";
-import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import "./productCard.css";
 
 const ProductCard = (props) => {
-  const [ifAllSwords, toggleIfAllSwords] = useState(false);
-  const location = useLocation();
-  console.log(location.pathname);
-
-  // TODO: I don't need the if pathname, you can just do if prop.longSwords, ect.
-  // const setPage = () => {
-  //   console.log(location.pathname);
-  // };
-
   return (
     <div className="productGridContainer">
       {props.isLoading ? (
         <ProductsSkeleton />
       ) : (
-        props.product &&
-        props.product.map((sword) => {
+        props.products &&
+        props.products.map((sword) => {
           return (
             <div className="productContainer" key={sword.sword_id}>
               <div className="imageContainer">
@@ -41,7 +31,8 @@ const ProductCard = (props) => {
                 </h2>
                 <div>
                   <p className="description">{sword.description}</p>
-                  <ReadMoreIcon />
+                  <ReadMoreModal description={sword.description} />
+                  <p className="readMore">Read More</p>
                 </div>
                 <hr />
                 <div className="widthHeightContainer">
