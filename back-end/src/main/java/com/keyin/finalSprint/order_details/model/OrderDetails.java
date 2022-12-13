@@ -2,6 +2,7 @@ package com.keyin.finalSprint.order_details.model;
 
 import com.keyin.finalSprint.orders.model.Orders;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Order;
 
 @Entity
 @Table(name="order_details")
