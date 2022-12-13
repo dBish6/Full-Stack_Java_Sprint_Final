@@ -2,8 +2,8 @@ package com.keyin.finalSprint.sword.service;
 
 import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -11,13 +11,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class SwordServiceTest {
 
     @Mock
-    SwordRepository swordRepo;
+    private SwordRepository swordRepo;
 
-    @Test
-    public void replaceSwordTest(){
+    @InjectMocks
+    private SwordService SS;
 
-        Sword swordReplacement = new Sword("name","type",12,20,99.99,"This is a test","https://www.test.com");
+    Sword swordUpdated;
 
-        // to be continued....
-    }
+
 }

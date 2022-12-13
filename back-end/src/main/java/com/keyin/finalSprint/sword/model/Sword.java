@@ -38,6 +38,16 @@ public class Sword {
         this.description = description;
         this.image_url = image_url;
     }
+    public Sword(long id,String name, String type, double length, double mass, double price, String description, String image_url) {
+        this.sword_id = id;
+        this.name = name;
+        this.type = type;
+        this.length = length;
+        this.mass = mass;
+        this.price = price;
+        this.description = description;
+        this.image_url = image_url;
+    }
 
     public long getSword_id() {
         return sword_id;

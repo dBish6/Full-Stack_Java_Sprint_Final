@@ -46,7 +46,7 @@ public class SwordService {
         }
     }
 
-    public void replaceSword(Sword swordReplacement, String id){
+    public Sword replaceSword(Sword swordReplacement, String id){
         Optional<Sword> swordReturned = swordRepo.findById(Long.parseLong(id));
         Sword swordUpdated;
         if(swordReturned.isPresent()){
@@ -59,6 +59,7 @@ public class SwordService {
             swordUpdated.setPrice(swordReplacement.getPrice());
             swordUpdated.setImage_url(swordReplacement.getImage_url());
             swordRepo.save(swordUpdated);
+            return swordUpdated;
         } else {
             throw new SwordNotFoundException(Long.parseLong(id));
         }
