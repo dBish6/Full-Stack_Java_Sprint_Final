@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./passwordModal.css";
@@ -7,6 +7,12 @@ const PasswordModal = () => {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const inputRef = useRef("");
+
+  useEffect(() => {
+    show
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [show]);
 
   const handleSubmit = () => {
     inputRef.current.value === "admin123" && navigate("/admin");
@@ -21,9 +27,9 @@ const PasswordModal = () => {
         <>
           <div className="darkBG" onClick={() => setShow(false)} />
           <div className="centered">
-            <div className="modal">
+            <div className="passwordModal">
               <div className="modalHeader">
-                <h3 className="heading">Required Access</h3>
+                <h3>Required Access</h3>
               </div>
               <button className="closeBtn" onClick={() => setShow(false)}>
                 Close
@@ -33,6 +39,7 @@ const PasswordModal = () => {
                   name="password"
                   type="text"
                   autoComplete="off"
+                  placeholder=" "
                   ref={inputRef}
                 />
                 <label htmlFor="password">Admin Password</label>

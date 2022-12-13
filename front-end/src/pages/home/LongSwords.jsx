@@ -1,7 +1,21 @@
 import React from "react";
 
+// *API Services Imports*
+import FetchLongSwords from "../../api_services/FetchLongSwords";
+
+// *Components*
+import TopHeader from "../../components/TopHeader";
+import ProductCard from "../../components/ProductCard";
+
 const LongSwords = () => {
-  return <div>LongSwords</div>;
+  const [longSwords, loadingLongSwords] = FetchLongSwords();
+
+  return (
+    <main>
+      <TopHeader />
+      <ProductCard products={longSwords} isLoading={loadingLongSwords} />
+    </main>
+  );
 };
 
 export default LongSwords;

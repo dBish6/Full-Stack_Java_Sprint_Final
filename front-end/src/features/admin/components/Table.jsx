@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 // *API Services Imports*
@@ -9,10 +9,14 @@ import DeleteProduct from "../api_services/DeleteProduct";
 // *Design Imports*
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
+// *Component Imports*
+import Create from "../pages/Create";
+
 const Table = (props) => {
   const navigate = useNavigate();
-  const { patchName, patchType } = PatchProduct();
-  const Delete = DeleteProduct();
+  const idRef = useRef(null);
+  const { PATCHname, PATCHtype } = PatchProduct();
+  const DELETE = DeleteProduct();
 
   return (
     <div
@@ -62,7 +66,7 @@ const Table = (props) => {
                       //     props.sword_id
                       //   )
                       // }
-                      onSubmit={() => patchName(props.name, props.sword_id)}
+                      onSubmit={() => PATCHname(props.name, props.sword_id)}
                     >
                       <input type="text" placeholder="Edit Name" />
                       <button type="submit">Edit</button>
@@ -71,10 +75,7 @@ const Table = (props) => {
                   <td>
                     {sword.type}{" "}
                     <form
-                      //   onSubmit={
-                      //     <PatchProduct type={props.type} id={props.sword_id} />
-                      //   }
-                      onSubmit={() => patchType(props.type, props.sword_id)}
+                      onSubmit={() => PATCHtype(props.type, props.sword_id)}
                     >
                       <input type="text" placeholder="Edit Type" />
                       <button type="submit">Edit</button>
@@ -83,38 +84,27 @@ const Table = (props) => {
                   <td>
                     {sword.length}
                     <form
-                    //   onSubmit={
-                    //     <PatchProduct
-                    //       length={props.length}
-                    //       id={props.sword_id}
-                    //     />
                     //   onSubmit={PatchProduct(props.length, props.sword_id)}
                     >
-                      <input type="text" placeholder="Edit Length" />
+                      <input type="number" placeholder="Edit Length" />
                       <button type="submit">Edit</button>
                     </form>
                   </td>
                   <td>
                     {sword.mass}{" "}
                     <form
-                    //   onSubmit={
-                    //     <PatchProduct mass={props.mass} id={props.sword_id} />
-                    //   }
                     //   onSubmit={PatchProduct(props.mass, props.sword_id)}
                     >
-                      <input type="text" placeholder="Edit Mass" />
+                      <input type="number" placeholder="Edit Mass" />
                       <button type="submit">Edit</button>
                     </form>
                   </td>
                   <td>
                     {sword.price}{" "}
                     <form
-                    //   onSubmit={
-                    //     <PatchProduct price={props.price} id={props.sword_id} />
-                    //   }
                     //   onSubmit={PatchProduct(props.price, props.sword_id)}
                     >
-                      <input type="text" placeholder="Edit Price" />
+                      <input type="number" placeholder="Edit Price" />
                       <button type="submit">Edit</button>
                     </form>
                   </td>
@@ -131,19 +121,13 @@ const Table = (props) => {
                   <td>
                     {sword.image_url}{" "}
                     <form
-                    //   onSubmit={
-                    //     <PatchProduct
-                    //       image_url={props.image_url}
-                    //       id={props.sword_id}
-                    //     />
-                    //   }
                     //   onSubmit={PatchProduct(props.image_url, props.sword_id)}
                     >
                       <input type="text" placeholder="Edit Image Url" />
                       <button type="submit">Edit</button>
                     </form>
                   </td>
-                  <div
+                  <td
                     style={{
                       display: "flex",
                       gap: "0.5rem",
@@ -153,13 +137,13 @@ const Table = (props) => {
                     <button
                       style={{ padding: "0.5rem", borderRadius: "0.5rem" }}
                       onClick={() => {
-                        Delete(sword.sword_id);
-                        navigate("/successfulDelete");
+                        DELETE(sword.sword_id);
+                        navigate("/admin/successfulDelete");
                       }}
                     >
                       Delete
                     </button>
-                  </div>
+                  </td>
                 </tr>
               );
             })}
@@ -177,7 +161,10 @@ const Table = (props) => {
           </tr>
         </tfoot>
       </table>
-      <button style={{ padding: "0.5rem", borderRadius: "0.5rem" }}>
+      <button
+        style={{ padding: "0.5rem", borderRadius: "0.5rem" }}
+        onClick={() => navigate("/admin/create")}
+      >
         Create New <PostAddIcon />
       </button>
 
@@ -188,7 +175,7 @@ const Table = (props) => {
       >
         <textarea cols="30" rows="10" placeholder="Edit Description" />
         <label htmlFor="Id">Specify The Id of Product to Edit</label>
-        <input name="Id" type="text" placeholder="Id" />
+        <input name="Id" type="text" placeholder="Id" ref={idRef} />
         <button type="submit">Edit</button>
       </form>
     </div>

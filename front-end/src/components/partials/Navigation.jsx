@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-// *Custom Hooks Imports*
-
-// *API Services Imports*
-
 // *Modal Import"
 import PasswordModal from "../modals/PasswordModal";
 
@@ -15,16 +11,17 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import "./partials.css";
 
 const Navigation = () => {
-  const [isClickedFirstLink, toggleIsClickedFirstLink] = useState(true);
+  const [isClickedFirstLink, toggleIsClickedFirstLink] = useState(false);
   const [isClickedSecondLink, toggleIsClickedSecondLink] = useState(false);
   const [isClickedThirdLink, toggleIsClickedThirdLink] = useState(false);
 
   const [isClickedLongSwords, toggleIsClickedLongSwords] = useState(false);
   const [isClickedShortSwords, toggleIsClickedShortSwords] = useState(false);
+  const [isClickedDaggers, toggleIsClickedDaggers] = useState(false);
   const [isClickedMaces, toggleIsClickedMaces] = useState(false);
   const location = useLocation();
 
-  // Stops bottom links from being active when users goes to all swords, about, support.
+  // Stops bottom links from being active when the user clicks on the top bar links.
   useEffect(() => {
     if (
       location.pathname === "/home" ||
@@ -33,7 +30,63 @@ const Navigation = () => {
     ) {
       toggleIsClickedLongSwords(false);
       toggleIsClickedShortSwords(false);
+      toggleIsClickedDaggers(false);
       toggleIsClickedMaces(false);
+    }
+
+    // Top Bar Links
+    if (location.pathname === "/home") {
+      toggleIsClickedFirstLink(true);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(false);
+    } else if (location.pathname === "/home/about") {
+      toggleIsClickedFirstLink(false);
+      toggleIsClickedSecondLink(true);
+      toggleIsClickedThirdLink(false);
+    } else if (location.pathname === "/home/support") {
+      toggleIsClickedFirstLink(false);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(true);
+    }
+
+    // Bottom Bar Links
+    if (location.pathname === "/home/longSwords") {
+      // Keeps sword tab active when user clicks on bottom links for certain swords.
+      toggleIsClickedFirstLink(true);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(false);
+
+      toggleIsClickedLongSwords(true);
+      toggleIsClickedShortSwords(false);
+      toggleIsClickedDaggers(false);
+      toggleIsClickedMaces(false);
+    } else if (location.pathname === "/home/shortSwords") {
+      toggleIsClickedFirstLink(true);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(false);
+
+      toggleIsClickedLongSwords(false);
+      toggleIsClickedShortSwords(true);
+      toggleIsClickedDaggers(false);
+      toggleIsClickedMaces(false);
+    } else if (location.pathname === "/home/daggers") {
+      toggleIsClickedFirstLink(true);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(false);
+
+      toggleIsClickedLongSwords(false);
+      toggleIsClickedShortSwords(false);
+      toggleIsClickedDaggers(true);
+      toggleIsClickedMaces(false);
+    } else if (location.pathname === "/home/maces") {
+      toggleIsClickedFirstLink(true);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(false);
+
+      toggleIsClickedLongSwords(false);
+      toggleIsClickedShortSwords(false);
+      toggleIsClickedDaggers(false);
+      toggleIsClickedMaces(true);
     }
   }, [location.pathname]);
 
@@ -54,33 +107,18 @@ const Navigation = () => {
             <NavLink
               to="/home"
               className={isClickedFirstLink ? "activateLink" : ""}
-              onClick={() => {
-                toggleIsClickedFirstLink(true);
-                toggleIsClickedSecondLink(false);
-                toggleIsClickedThirdLink(false);
-              }}
             >
               Swords
             </NavLink>
             <NavLink
               to="/home/about"
               className={isClickedSecondLink ? "activateLink" : ""}
-              onClick={() => {
-                toggleIsClickedSecondLink(true);
-                toggleIsClickedFirstLink(false);
-                toggleIsClickedThirdLink(false);
-              }}
             >
               About
             </NavLink>
             <NavLink
               to="/home/support"
               className={isClickedThirdLink ? "activateLink" : ""}
-              onClick={() => {
-                toggleIsClickedThirdLink(true);
-                toggleIsClickedFirstLink(false);
-                toggleIsClickedSecondLink(false);
-              }}
             >
               Support
             </NavLink>
@@ -97,33 +135,24 @@ const Navigation = () => {
             <NavLink
               to="/home/longSwords"
               className={isClickedLongSwords ? "activeLink" : ""}
-              onClick={() => {
-                toggleIsClickedLongSwords(true);
-                toggleIsClickedShortSwords(false);
-                toggleIsClickedMaces(false);
-              }}
             >
               Long Swords
             </NavLink>
             <NavLink
-              to="/home/shortSwords_Daggers"
+              to="/home/shortSwords"
               className={isClickedShortSwords ? "activeLink" : ""}
-              onClick={() => {
-                toggleIsClickedLongSwords(false);
-                toggleIsClickedShortSwords(true);
-                toggleIsClickedMaces(false);
-              }}
             >
-              Short Swords/Daggers
+              Short Swords
+            </NavLink>
+            <NavLink
+              to="/home/daggers"
+              className={isClickedDaggers ? "activeLink" : ""}
+            >
+              Daggers
             </NavLink>
             <NavLink
               to="/home/maces"
               className={isClickedMaces ? "activeLink" : ""}
-              onClick={() => {
-                toggleIsClickedLongSwords(false);
-                toggleIsClickedShortSwords(false);
-                toggleIsClickedMaces(true);
-              }}
             >
               Maces
             </NavLink>

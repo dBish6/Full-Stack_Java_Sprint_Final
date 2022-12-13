@@ -16,7 +16,7 @@ const TopSpan = () => {
           <p>Blacksmith Co.</p>
         </div>
       </div>
-      <Link>Contact Support</Link>
+      <Link to="/home/support">Contact Support</Link>
     </div>
   );
 };

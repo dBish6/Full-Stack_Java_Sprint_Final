@@ -5,7 +5,7 @@ import axios from "axios";
 const DeleteProduct = () => {
   const navigate = useNavigate();
 
-  const Delete = async (sword_id) => {
+  const DELETE = async (sword_id) => {
     try {
       const res = await axios({
         method: "DELETE",
@@ -17,7 +17,7 @@ const DeleteProduct = () => {
       navigate("/error500");
     }
   };
-  return Delete;
+  return DELETE;
 };
 
 export default DeleteProduct;
