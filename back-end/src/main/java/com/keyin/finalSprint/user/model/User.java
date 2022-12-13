@@ -1,6 +1,8 @@
 package com.keyin.finalSprint.user.model;
 
 import jakarta.persistence.*;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 @Entity
 public class User {
@@ -66,7 +68,12 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
+    private void authenticate(HttpServletRequest request){
+        String upd=request.getHeader("authorization");
+        String pair=new String(Base64.decodeBase64(upd.substring(6)));
+        String userName=pair.split(":")[0];
+        String password=pair.split(":")[1];
+    }
 
     @Override
     public String toString() {
