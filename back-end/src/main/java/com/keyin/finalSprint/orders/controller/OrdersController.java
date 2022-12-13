@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.keyin.finalSprint.order_details.model.OrderDetails;
+import com.keyin.finalSprint.order_details.respository.OrderDetailsRepository;
 import com.keyin.finalSprint.orders.model.Orders;
 import com.keyin.finalSprint.orders.respository.OrdersRepository;
 import org.aspectj.weaver.ast.Or;
@@ -21,6 +22,9 @@ public class OrdersController {
     @Autowired
     private OrdersRepository orderRepo;
 
+    @Autowired
+    private OrderDetailsRepository orderDetailsRepo;
+
     @PostMapping("/order")
     public void createOrder(@RequestBody String file){
 
@@ -36,7 +40,12 @@ public class OrdersController {
             thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));
             thisOrder.setOrder_total((Double) order.get("order_total"));
 
-//            orderRepo.save(thisOrder);
+            // Saving Order Details to Order Table
+            orderRepo.save(thisOrder);
+
+//            long orderId = thisOrder.getOrder_id();
+//
+//            System.out.println(orderId);
 
             // Creating JSON Array for Order Details
             JSONArray orderDetails = (JSONArray) order.get("order_details");
@@ -51,7 +60,8 @@ public class OrdersController {
 
                 System.out.println(orderDetailsItem);
 
-
+                // Saving Order Details to OrderDetails table
+                orderDetailsRepo.save(orderDetailsItem);
             }
 
         } catch (JSONException e) {
