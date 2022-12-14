@@ -2,14 +2,15 @@ package com.keyin.finalSprint.order_details.model;
 
 import com.keyin.finalSprint.orders.model.Orders;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Order;
 
 @Entity
 @Table(name="order_details")
 public class OrderDetails {
 
+    @Column(name = "order_details_id", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_details_id", nullable = false)
     private long order_details_id;
 
     @Column(nullable = false)
@@ -21,9 +22,8 @@ public class OrderDetails {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="order_id")
-    @MapsId
     private Orders orders;
 
     // Constructors

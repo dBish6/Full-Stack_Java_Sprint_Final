@@ -10,9 +10,9 @@ import java.util.List;
 @Table(name="orders")
 public class Orders {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
+    @Id
     private long order_id;
 
     @Column(nullable = false)
@@ -24,7 +24,7 @@ public class Orders {
     @Column(nullable = false)
     private double order_total;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.PERSIST)
     private List<OrderDetails> order_details;
 
     // Constructors
