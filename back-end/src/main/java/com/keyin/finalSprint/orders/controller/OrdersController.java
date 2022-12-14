@@ -28,8 +28,6 @@ public class OrdersController {
     @PostMapping("/order")
     public void createOrder(@RequestBody String file){
 
-        System.out.println(file);
-
         try {
             JSONObject order = new JSONObject(file);
 
@@ -43,22 +41,18 @@ public class OrdersController {
             // Saving Order Details to Order Table
             orderRepo.save(thisOrder);
 
-//            long orderId = thisOrder.getOrder_id();
-//
-//            System.out.println(orderId);
-
             // Creating JSON Array for Order Details
             JSONArray orderDetails = (JSONArray) order.get("order_details");
 
             for(int i = 0; i < orderDetails.length(); i++){
+                // Getting each item for order
+                // Creating an Order Details object and saving to Order Details Table
                 OrderDetails orderDetailsItem = new OrderDetails();
 
                 orderDetailsItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
                 orderDetailsItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
                 orderDetailsItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
                 orderDetailsItem.setOrders(thisOrder);
-
-                System.out.println(orderDetailsItem);
 
                 // Saving Order Details to OrderDetails table
                 orderDetailsRepo.save(orderDetailsItem);
@@ -67,38 +61,5 @@ public class OrdersController {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
-
-//        try{
-//            ObjectMapper mapper = new ObjectMapper();
-//            String json = mapper.writeValueAsString(file);
-//            JsonNode jsonNode = mapper.readTree(json);
-//
-//            // Get the tax Rate
-//            JsonNode taxRateNode = jsonNode.get("tax_rate");
-//            int tax_rate = taxRateNode.asInt();
-//
-//            // Get the Order Subtotal
-//            JsonNode orderSubtotalNode = jsonNode.get("order_subtotal");
-//            double orderSubtotal = orderSubtotalNode.asDouble();
-//
-//            // Get the Order Total
-//            JsonNode orderTotalNode = jsonNode.get("order_total");
-//            double orderTotal = orderTotalNode.asDouble();
-//
-//            // Order Details
-//            JsonNode orderDetailsNode = jsonNode.get("orderDetails");
-//
-//            System.out.println(orderDetailsNode);
-//
-//            // Printing out values
-//            System.out.println("Tax Rate: " + tax_rate);
-//            System.out.println("Order Subtotal: " + orderSubtotal);
-//            System.out.println("Order Total: " + orderTotal);
-//
-//        } catch (JsonProcessingException e) {
-//            throw new RuntimeException(e);
-//        }
-//        orderRepo.save(thisOrder);
     }
 }
