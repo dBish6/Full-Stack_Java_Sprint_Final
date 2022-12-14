@@ -49,6 +49,10 @@ public class Sword {
         this.image_url = image_url;
     }
 
+    public void setSword_id(long sword_id) {
+        this.sword_id = sword_id;
+    }
+
     public long getSword_id() {
         return sword_id;
     }

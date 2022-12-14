@@ -1,5 +1,4 @@
 package com.keyin.finalSprint.sword.controller;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.keyin.finalSprint.sword.model.Sword;
@@ -9,25 +8,20 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
@@ -62,7 +56,7 @@ public class SwordControllerTest {
     @Test
     public void getAllSwordsTest_Success() throws Exception{
 
-        Mockito.when(swordRepo.findAll()).thenReturn(allSwords);
+        when(swordRepo.findAll()).thenReturn(allSwords);
 
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/swords")
@@ -74,7 +68,7 @@ public class SwordControllerTest {
     @Test
     public void getSwordByIdTest_Success() throws Exception{
 
-        Mockito.when(SS.serveSwordByID("1")).thenReturn(sword1);
+        when(SS.serveSwordByID("1")).thenReturn(sword1);
 
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/sword/1")
@@ -89,7 +83,7 @@ public class SwordControllerTest {
         Sword sword4 = new Sword(4,"sword 4","LongSword",36,12,129.99,"Another real long sword","https://www.longsword.com");
         List<Sword> longSwords = new ArrayList<>(Arrays.asList(sword1,sword4));
 
-        Mockito.when(SS.serveSwordByType("LongSword")).thenReturn(longSwords);
+        when(SS.serveSwordByType("LongSword")).thenReturn(longSwords);
 
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/sword/type/LongSword")
@@ -100,16 +94,12 @@ public class SwordControllerTest {
 
     // Need to fix...
     @Test
-    public void addSwordTest_Success() throws Exception{
+    public void addSwordTest_Success() throws Exception {
 
-        Sword sword5 = new Sword(5,"sword 5","Dagger",12,1,49.99,"Short and pointy","https://www.daggers.com");
-
-        Mockito.when(swordRepo.save(sword5)).thenReturn(sword5);
-
+        Sword sword5 = new Sword("sword 5","Dagger",12,4,12.99,"is this even a sword","https://dagger.cpm");
         String postedSword = objectWriter.writeValueAsString(sword5);
 
-        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-                .post("/api/sword")
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/sword")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(postedSword);
@@ -117,7 +107,28 @@ public class SwordControllerTest {
         mockMvc.perform(mockRequest)
                 .andExpect(status().isOk())
                 .andExpect(result -> containsString("sword 5"));
+    }
 
+    @Test
+    public void editSwordTest_Success() throws Exception {
+
+        Sword swordUpdate = new Sword();
+        swordUpdate.setType("Dagger");
+        String postedSword = objectWriter.writeValueAsString(swordUpdate);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.patch("/api/sword/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(postedSword);
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isOk())
+                .andExpect(result -> containsString("Dagger"));
+    }
+
+    @Test
+    public void deleteSwordTest_Success(){
+        // to be continued
     }
 
 
