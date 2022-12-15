@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-// TODO: Need to make them not allowed to enter this page when they didn't enter password.
-
-const SuccessfullyDeleted = () => {
+const SuccessfullyPatched = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,10 +15,10 @@ const SuccessfullyDeleted = () => {
 
   return (
     <div>
-      <p>Successfully Deleted</p>
+      <p>Successful Edit</p>
       <Link to="/admin">View</Link>
     </div>
   );
 };
 
-export default SuccessfullyDeleted;
+export default SuccessfullyPatched;

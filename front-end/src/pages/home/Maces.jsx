@@ -3,7 +3,7 @@ import React from "react";
 // *API Services Imports*
 import FetchMaces from "../../api_services/FetchMaces";
 
-// *Components*
+// *Component Imports*
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
