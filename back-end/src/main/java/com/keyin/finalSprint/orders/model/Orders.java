@@ -2,7 +2,6 @@ package com.keyin.finalSprint.orders.model;
 
 import com.keyin.finalSprint.order_details.model.OrderDetails;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Order;
 
 import java.util.List;
 
