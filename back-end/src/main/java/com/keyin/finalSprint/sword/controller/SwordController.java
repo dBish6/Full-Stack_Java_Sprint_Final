@@ -34,18 +34,18 @@ public class SwordController {
     }
 
     @PostMapping("/sword")
-    public void addSword(@RequestBody Sword sword){
-        swordRepo.save(sword);
+    public Sword addSword(@RequestBody Sword sword){
+        return swordRepo.save(sword);
     }
 
     @PutMapping("/sword/{id}")
-    public void replaceSword(@RequestBody Sword swordReplacement, @PathVariable String id){
-        SS.replaceSword(swordReplacement,id);
+    public Sword replaceSword(@RequestBody Sword swordReplacement, @PathVariable String id){
+        return  SS.replaceSword(swordReplacement,id);
     }
 
     @PatchMapping("/sword/{id}")
-    public void editSword(@RequestBody Sword swordUpdate, @PathVariable String id){
-        SS.editSword(swordUpdate,id);
+    public Sword editSword(@RequestBody Sword swordUpdate, @PathVariable String id){
+        return SS.editSword(swordUpdate,id);
     }
 
     @DeleteMapping("/sword/{id}")

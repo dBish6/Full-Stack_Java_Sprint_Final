@@ -1,10 +1,6 @@
 import React from "react";
 
-// *Custom Hooks Imports*
-
-// *API Services Imports*
-
-// *Components*
+// *Component Imports*
 import TopSpan from "./components/register/TopSpan";
 import RegisterForm from "./components/register/RegisterForm";
 import RegisterWelcome from "./components/register/RegisterWelcome";

@@ -27,9 +27,9 @@ const FetchDaggers = () => {
         navigate("/error500");
       }
     };
-    console.log(daggers);
     fetchProduct();
   }, []);
+  // console.log(daggers);
 
   return [daggers, loadingDaggers];
 };

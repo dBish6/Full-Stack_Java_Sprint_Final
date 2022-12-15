@@ -46,7 +46,7 @@ public class SwordService {
         }
     }
 
-    public void replaceSword(Sword swordReplacement, String id){
+    public Sword replaceSword(Sword swordReplacement, String id){
         Optional<Sword> swordReturned = swordRepo.findById(Long.parseLong(id));
         Sword swordUpdated;
         if(swordReturned.isPresent()){
@@ -59,12 +59,13 @@ public class SwordService {
             swordUpdated.setPrice(swordReplacement.getPrice());
             swordUpdated.setImage_url(swordReplacement.getImage_url());
             swordRepo.save(swordUpdated);
+            return swordUpdated;
         } else {
             throw new SwordNotFoundException(Long.parseLong(id));
         }
     }
 
-    public void editSword(Sword sword, String id){
+    public Sword editSword(Sword sword, String id){
         Optional<Sword> swordReturned = swordRepo.findById(Long.parseLong(id));
         Sword swordUpdated;
         if(swordReturned.isPresent()){
@@ -78,10 +79,19 @@ public class SwordService {
             if(sword.getPrice() != 0){
                 swordUpdated.setPrice(sword.getPrice());
             }
+            if(sword.getMass() != 0){
+                swordUpdated.setMass(sword.getMass());
+            }
+            if(sword.getLength() != 0){
+                swordUpdated.setLength(sword.getLength());
+            }
             if(sword.getDescription() != null){
                 swordUpdated.setDescription(sword.getDescription());
             }
-            swordRepo.save(swordUpdated);
+            if(sword.getImage_url() != null){
+                swordUpdated.setImage_url(sword.getImage_url());
+            }
+            return swordRepo.save(swordUpdated);
         } else {
             throw new SwordNotFoundException(Long.parseLong(id));
         }

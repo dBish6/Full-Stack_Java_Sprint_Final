@@ -27,9 +27,9 @@ const FetchLongSwords = () => {
         navigate("/error500");
       }
     };
-    console.log(longSwords);
     fetchProduct();
   }, []);
+  // console.log(longSwords);
 
   return [longSwords, loadingLongSwords];
 };

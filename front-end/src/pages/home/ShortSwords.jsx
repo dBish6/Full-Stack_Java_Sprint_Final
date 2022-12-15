@@ -3,7 +3,7 @@ import React from "react";
 // *API Services Imports*
 import FetchShortSwords from "../../api_services/FetchShortSwords";
 
-// *Components*
+// *Component Imports*
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
