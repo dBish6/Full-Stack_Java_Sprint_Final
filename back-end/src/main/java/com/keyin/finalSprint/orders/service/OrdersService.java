@@ -23,28 +23,18 @@ public class OrdersService {
         try {
             JSONObject order = new JSONObject(file);
 
-            // Creating the orders object for this order
-            Orders thisOrder = new Orders();
-
-            thisOrder.setTax_rate((Integer) order.get("tax_rate"));
-            thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));
-            thisOrder.setOrder_total((Double) order.get("order_total"));
+            Orders thisOrder = createOrdersObject(order);
 
             // Saving Order Details to Order Table
             orderRepo.save(thisOrder);
 
             // Creating JSON Array for Order Details
-            JSONArray orderDetails = (JSONArray) order.get("order_details");
+            JSONArray orderDetails = createOrderDetailsJsonArray(order);
 
             for(int i = 0; i < orderDetails.length(); i++){
                 // Getting each item for order
                 // Creating an Order Details object and saving to Order Details Table
-                OrderDetails orderDetailsItem = new OrderDetails();
-
-                orderDetailsItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
-                orderDetailsItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
-                orderDetailsItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
-                orderDetailsItem.setOrders(thisOrder);
+                OrderDetails orderDetailsItem = createOrderDetailsObject(thisOrder, orderDetails, i);
 
                 // Saving Order Details to OrderDetails table
                 orderDetailsRepo.save(orderDetailsItem);
@@ -53,8 +43,33 @@ public class OrdersService {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    private static OrderDetails createOrderDetailsObject(Orders thisOrder, JSONArray orderDetails, int i) throws JSONException {
+        // Creates the OrderDetails Object and Returns
+        OrderDetails orderDetailsItem = new OrderDetails();
 
+        orderDetailsItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
+        orderDetailsItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
+        orderDetailsItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
+        orderDetailsItem.setOrders(thisOrder);
+        return orderDetailsItem;
+    }
+
+    private static JSONArray createOrderDetailsJsonArray(JSONObject order) throws JSONException {
+        // Creates & Returns orderDetails JSONArray
+        JSONArray orderDetails = (JSONArray) order.get("order_details");
+        return orderDetails;
+    }
+
+    private static Orders createOrdersObject(JSONObject order) throws JSONException {
+        // Creating the Orders Object for this order
+        Orders thisOrder = new Orders();
+
+        thisOrder.setTax_rate((Integer) order.get("tax_rate"));
+        thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));
+        thisOrder.setOrder_total((Double) order.get("order_total"));
+        return thisOrder;
     }
 
 }
