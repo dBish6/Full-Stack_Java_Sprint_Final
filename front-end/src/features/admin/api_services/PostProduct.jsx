@@ -2,26 +2,34 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Adds a new sword to the database.
-const PostProduct = (props) => {
+const PostProduct = () => {
   const navigate = useNavigate();
 
-  const POST = async (e) => {
-    e.preventDefault();
+  const POST = async (
+    name,
+    type,
+    length,
+    mass,
+    price,
+    description,
+    imageUrl
+  ) => {
     try {
       const res = await axios({
         method: "POST",
         url: "http://localhost:8080/api/sword",
         data: {
-          name: props.name,
-          type: props.type,
-          length: props.length,
-          mass: props.mass,
-          price: props.price,
-          description: props.description,
-          image_url: props.imageUrl,
+          name: name,
+          type: type,
+          length: length,
+          mass: mass,
+          price: price,
+          description: description,
+          image_url: imageUrl,
         },
       });
-      console.log(res.data);
+      res && navigate("/admin/successfulPost");
+      console.log(res);
     } catch (error) {
       console.error(error);
       navigate("/error500");

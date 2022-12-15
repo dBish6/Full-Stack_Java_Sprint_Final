@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 // *Modal Import"
 import ReadMoreModal from "./modals/ReadMoreModal";
@@ -8,7 +9,12 @@ import noImage from "../assets/images/no-image.webp";
 import ProductsSkeleton from "../skeletons/ProductsSkeleton";
 import "./productCard.css";
 
+// *Redux Action Import*
+import { ADD_TO_CART } from "../features/shoppingCart/redux/cartSlice";
+
 const ProductCard = (props) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="productGridContainer">
       {props.isLoading ? (
@@ -45,7 +51,9 @@ const ProductCard = (props) => {
                 </div>
                 <div className="priceBuyNowContainer">
                   <p>${sword.price}</p>
-                  <button>Add to Cart</button>
+                  <button onClick={() => dispatch(ADD_TO_CART(sword))}>
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>

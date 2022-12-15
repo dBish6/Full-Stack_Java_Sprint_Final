@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 // *API Services Imports*
 import FetchAllSwords from "../../api_services/FetchAllSwords";
@@ -9,6 +9,16 @@ import Table from "./components/Table";
 
 const AdminFeature = () => {
   const [product, loadingProduct] = FetchAllSwords();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!window.sessionStorage.getItem("admin")) {
+      navigate("/home");
+      setTimeout(() => {
+        alert("You are not an Admin user.");
+      }, 1000);
+    }
+  }, [navigate]);
 
   return (
     <div

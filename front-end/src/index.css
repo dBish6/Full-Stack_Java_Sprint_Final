@@ -73,6 +73,15 @@ code {
   box-sizing: border-box;
 }
 
+.Toastify__toast-body > div:last-child {
+  font-family: "Montserrat", sans-serif;
+}
+
+.Toastify__toast-theme--dark {
+  background-color: var(--black800) !important;
+  color: var(--wordsWhiteMain) !important;
+}
+
 :root {
   --backgroundColour: #bbbbbb;
 

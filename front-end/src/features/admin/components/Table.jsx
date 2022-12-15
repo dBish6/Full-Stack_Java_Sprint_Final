@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // *API Services Imports*
@@ -9,14 +9,29 @@ import DeleteProduct from "../api_services/DeleteProduct";
 // *Design Imports*
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
-// *Component Imports*
-import Create from "../pages/Create";
-
 const Table = (props) => {
-  const navigate = useNavigate();
-  const idRef = useRef(null);
-  const { PATCHname, PATCHtype } = PatchProduct();
+  const [swordId, setSwordId] = useState(0);
+  const [editName, setEditName] = useState("");
+  const [editType, setEditType] = useState("");
+  const [editLength, setEditLength] = useState(0);
+  const [editMass, setEditMass] = useState(0);
+  const [editPrice, setEditPrice] = useState(0);
+  const [editDescription, setEditDescription] = useState("");
+  const [editImageUrl, setEditImageUrl] = useState("");
+  const {
+    PATCHname,
+    PATCHtype,
+    PATCHlength,
+    PATCHmass,
+    PATCHprice,
+    PATCHdescription,
+    PATCHimageUrl,
+  } = PatchProduct();
   const DELETE = DeleteProduct();
+
+  const navigate = useNavigate();
+
+  // TODO: Could have an array of all types of swords and if it's not one of those types, error and so on.
 
   return (
     <div
@@ -49,64 +64,85 @@ const Table = (props) => {
                 >
                   <td>{sword.sword_id}</td>
                   <td>
-                    {sword.name}{" "}
-                    <form
-                      //   onSubmit={
-                      //     <PatchProduct name={props.name} id={props.sword_id} />
-                      //   }
-                      // onSubmit={() =>
-                      //   patchName(
-                      //     props.name,
-                      //     props.type,
-                      //     props.length,
-                      //     props.mass,
-                      //     props.price,
-                      //     props.description,
-                      //     props.image_url,
-                      //     props.sword_id
-                      //   )
-                      // }
-                      onSubmit={() => PATCHname(props.name, props.sword_id)}
+                    {sword.name} <br />
+                    <input
+                      type="text"
+                      placeholder="Edit Name"
+                      autoComplete="off"
+                      onChange={(e) => setEditName(e.target.value)}
+                      onBlur={() => setSwordId(sword.sword_id)}
+                    />
+                    <button
+                      type="submit"
+                      disabled={editName === "" ? true : false}
+                      onClick={() => PATCHname(editName, swordId)}
                     >
-                      <input type="text" placeholder="Edit Name" />
-                      <button type="submit">Edit</button>
-                    </form>
+                      Edit
+                    </button>
                   </td>
                   <td>
-                    {sword.type}{" "}
-                    <form
-                      onSubmit={() => PATCHtype(props.type, props.sword_id)}
+                    {sword.type} <br />
+                    <input
+                      type="text"
+                      placeholder="Edit Type"
+                      autoComplete="off"
+                      onChange={(e) => setEditType(e.target.value)}
+                      onBlur={() => setSwordId(sword.sword_id)}
+                    />
+                    <button
+                      disabled={editType === "" ? true : false}
+                      onClick={() => PATCHtype(editType, swordId)}
                     >
-                      <input type="text" placeholder="Edit Type" />
-                      <button type="submit">Edit</button>
-                    </form>
+                      Edit
+                    </button>
                   </td>
                   <td>
-                    {sword.length}
-                    <form
-                    //   onSubmit={PatchProduct(props.length, props.sword_id)}
+                    {sword.length} <br />
+                    <input
+                      type="number"
+                      placeholder="Edit Length"
+                      autoComplete="off"
+                      onChange={(e) => setEditLength(e.target.value)}
+                      onBlur={() => setSwordId(sword.sword_id)}
+                    />
+                    <button
+                      disabled={editLength === 0 ? true : false}
+                      onClick={() => PATCHlength(editLength, swordId)}
                     >
-                      <input type="number" placeholder="Edit Length" />
-                      <button type="submit">Edit</button>
-                    </form>
+                      Edit
+                    </button>
                   </td>
                   <td>
-                    {sword.mass}{" "}
-                    <form
-                    //   onSubmit={PatchProduct(props.mass, props.sword_id)}
+                    {sword.mass} <br />
+                    <input
+                      type="number"
+                      placeholder="Edit Mass"
+                      autoComplete="off"
+                      onChange={(e) => setEditMass(e.target.value)}
+                      onBlur={() => setSwordId(sword.sword_id)}
+                    />
+                    <button
+                      disabled={editMass === 0 ? true : false}
+                      onClick={() => PATCHmass(editMass, swordId)}
                     >
-                      <input type="number" placeholder="Edit Mass" />
-                      <button type="submit">Edit</button>
-                    </form>
+                      Edit
+                    </button>
                   </td>
                   <td>
-                    {sword.price}{" "}
-                    <form
-                    //   onSubmit={PatchProduct(props.price, props.sword_id)}
+                    {sword.price} <br />
+                    <input
+                      type="number"
+                      placeholder="Edit Price"
+                      autoComplete="off"
+                      onChange={(e) => setEditPrice(e.target.value)}
+                      onBlur={() => setSwordId(sword.sword_id)}
+                    />
+                    <button
+                      disabled={editPrice === 0 ? true : false}
+                      onClick={() => PATCHprice(editPrice, swordId)}
                     >
-                      <input type="number" placeholder="Edit Price" />
-                      <button type="submit">Edit</button>
-                    </form>
+                      Edit
+                    </button>
                   </td>
                   <td
                     style={{
@@ -119,13 +155,20 @@ const Table = (props) => {
                     {sword.description}
                   </td>
                   <td>
-                    {sword.image_url}{" "}
-                    <form
-                    //   onSubmit={PatchProduct(props.image_url, props.sword_id)}
+                    {sword.image_url} <br />
+                    <input
+                      type="text"
+                      placeholder="Edit Image Url"
+                      autoComplete="off"
+                      onChange={(e) => setEditImageUrl(e.target.value)}
+                      onBlur={() => setSwordId(sword.sword_id)}
+                    />
+                    <button
+                      disabled={editImageUrl === "" ? true : false}
+                      onClick={() => PATCHimageUrl(editImageUrl, swordId)}
                     >
-                      <input type="text" placeholder="Edit Image Url" />
-                      <button type="submit">Edit</button>
-                    </form>
+                      Edit
+                    </button>
                   </td>
                   <td
                     style={{
@@ -161,23 +204,70 @@ const Table = (props) => {
           </tr>
         </tfoot>
       </table>
-      <button
-        style={{ padding: "0.5rem", borderRadius: "0.5rem" }}
-        onClick={() => navigate("/admin/create")}
-      >
-        Create New <PostAddIcon />
-      </button>
 
-      <form
-      // onSubmit={
-      //   <PatchProduct description={props.description} id={props.sword_id} />
-      // }
-      >
-        <textarea cols="30" rows="10" placeholder="Edit Description" />
-        <label htmlFor="Id">Specify The Id of Product to Edit</label>
-        <input name="Id" type="text" placeholder="Id" ref={idRef} />
-        <button type="submit">Edit</button>
-      </form>
+      <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
+        <button
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "0.5rem",
+            borderRadius: "0.5rem",
+          }}
+          onClick={() => navigate("/admin/create")}
+        >
+          Create New <PostAddIcon />
+        </button>
+        {/* TODO: */}
+        <button
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "0.5rem",
+            borderRadius: "0.5rem",
+          }}
+          onClick={() => navigate("/admin/replace")}
+        >
+          Replace all Fields of a Sword <PostAddIcon />
+        </button>
+      </div>
+
+      <div style={{ marginTop: "0.5rem" }}>
+        <textarea
+          style={{ float: "left", marginRight: "0.5rem" }}
+          cols="20"
+          rows="3"
+          placeholder="Edit Description"
+          onChange={(e) => setEditDescription(e.target.value)}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            maxWidth: "8rem",
+          }}
+        >
+          <label htmlFor="Id">
+            Specify The Product Id to Edit the Description:
+          </label>
+          <div>
+            <input
+              style={{ maxWidth: "4rem" }}
+              name="Id"
+              type="number"
+              placeholder="Id"
+              onChange={(e) => setSwordId(e.target.value)}
+            />
+            <button
+              style={{ maxWidth: "1.5rem" }}
+              type="submit"
+              disabled={editDescription === "" ? true : false}
+              onClick={() => PATCHdescription(editDescription, swordId)}
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

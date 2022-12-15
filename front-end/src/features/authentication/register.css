@@ -85,10 +85,10 @@
   bottom: 33px;
   pointer-events: none;
   transition: 0.38s ease all;
-  line-height: 19px;
 
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  line-height: 19px;
   color: var(--wordsBlackMain);
 }
 
@@ -136,7 +136,8 @@
   padding: 0.5rem;
   /* min-width: 8%; */
   border-bottom: 2px solid var(--black700Main);
-  box-shadow: 0 0 0 2px solid var(--secondary500Main);
+  /* FIXME: */
+  /* box-shadow: 0 0 0 2px solid var(--secondary500Main); */
   background: transparent;
   transition: 0.38s ease all;
 }
@@ -210,6 +211,8 @@
   max-width: 541px;
   min-height: 940px;
   z-index: -1;
+  /* FIXME: */
+  overflow: hidden;
 
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
