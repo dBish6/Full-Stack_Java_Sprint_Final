@@ -19,6 +19,16 @@ public class User {
     @Column(nullable = false, length = 60)
     private String phone;
 
+    public User() {
+    }
+
+    public User(String username, String password, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public Long getId() {
         return id;
     }
