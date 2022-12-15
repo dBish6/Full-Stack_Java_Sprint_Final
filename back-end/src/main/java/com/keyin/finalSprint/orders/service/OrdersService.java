@@ -33,28 +33,32 @@ public class OrdersService {
             // Saving Order Details to Order Table
             orderRepo.save(thisOrder);
 
-            // Creating JSON Array for Order Details
-            JSONArray orderDetails = (JSONArray) order.get("order_details");
-
-            for(int i = 0; i < orderDetails.length(); i++){
-                // Getting each item for order
-                // Creating an Order Details object and saving to Order Details Table
-                OrderDetails orderDetailsItem = new OrderDetails();
-
-                orderDetailsItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
-                orderDetailsItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
-                orderDetailsItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
-                orderDetailsItem.setOrders(thisOrder);
-
-                // Saving Order Details to OrderDetails table
-                orderDetailsRepo.save(orderDetailsItem);
-            }
+            saveOrderDetailsItems(order, thisOrder);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
 
 
+    }
+
+    private void saveOrderDetailsItems(JSONObject order, Orders thisOrder) throws JSONException {
+        // Creating JSON Array for Order Details
+        JSONArray orderDetails = (JSONArray) order.get("order_details");
+
+        for(int i = 0; i < orderDetails.length(); i++){
+            // Getting each item for order
+            // Creating an Order Details object and saving to Order Details Table
+            OrderDetails orderDetailsItem = new OrderDetails();
+
+            orderDetailsItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
+            orderDetailsItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
+            orderDetailsItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
+            orderDetailsItem.setOrders(thisOrder);
+
+            // Saving Order Details to OrderDetails table
+            orderDetailsRepo.save(orderDetailsItem);
+        }
     }
 
 }
