@@ -4,6 +4,7 @@ import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
 import com.keyin.finalSprint.sword.service.SwordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -31,6 +32,11 @@ public class SwordController {
     @GetMapping("/sword/type/{type}")
     public List<Sword> getSwordByType(@PathVariable String type){
         return SS.serveSwordByType(type);
+    }
+
+    @GetMapping("/swords/search/{param}")
+    public List<Sword> swordSearch(@PathVariable String param){
+        return swordRepo.query(param);
     }
 
     @PostMapping("/sword")
