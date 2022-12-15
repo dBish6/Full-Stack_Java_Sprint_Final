@@ -3,6 +3,7 @@ package com.keyin.finalSprint.user.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,16 +18,6 @@ public class User {
     private String email;
     @Column(nullable = false, length = 60)
     private String phone;
-
-    public User() {
-    }
-
-    public User(String username, String password, String email, String phone) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-    }
 
     public Long getId() {
         return id;
@@ -66,7 +57,6 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
 
     @Override
     public String toString() {

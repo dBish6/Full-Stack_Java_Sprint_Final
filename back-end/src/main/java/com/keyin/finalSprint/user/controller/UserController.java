@@ -1,50 +1,58 @@
 package com.keyin.finalSprint.user.controller;
 
+
 import com.keyin.finalSprint.user.model.User;
 import com.keyin.finalSprint.user.repository.UserRepository;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
-@RestController
+@Controller
 @RequestMapping("/api/")
 public class UserController {
     @Autowired
     UserRepository userRepo;
 
     @GetMapping("/users")
-    public List<User> getAllUser() {
-        return  userRepo.findAll();
+    public void listUsers(User user) {
+        List<User> listUsers = userRepo.findAll();
+
     }
 
-    @PostMapping("/user")
-    public void createUser(@RequestBody User user) {
-        userRepo.save(user);
-    }
-
-    @PutMapping("/user/{id}")
-    public void updateUser(@PathVariable String id, @RequestBody User user, HttpServletResponse response) {
-        Optional<User> returnValue = userRepo.findById(Long.parseLong(id));
-        User userToUpdate;
-
-        if (returnValue.isPresent()) {
-            userToUpdate = returnValue.get();
-
-            userToUpdate.setUsername(user.getUsername());
-
-            userRepo.save(userToUpdate);
+    @PostMapping("/login")
+    public void addNote(@RequestBody User user, HttpServletRequest request) {
+        List<String> sessions = (List<String>) request.getSession().getAttribute("SESSION");
+        if(sessions == null) {
+            sessions = new ArrayList<>();
+            request.getSession().setAttribute("SESSION", user.getId());
         } else {
-            try {
-                response.sendError(404, "User with id: " + user.getId() + " not found.");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            sessions.add(Long.toString(user.getId()));
+            request.getSession().setAttribute("SESSION", user.getId());
+
         }
+
+    }
+    @PostMapping("/logout")
+    public void destroySession(HttpServletRequest request) {
+        request.getSession().invalidate();
+
+    }
+
+    @PostMapping("/register")
+    public User processRegister(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+       return userRepo.save(user);
+
     }
 
 }
+
