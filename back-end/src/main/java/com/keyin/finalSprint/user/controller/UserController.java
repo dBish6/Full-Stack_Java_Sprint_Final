@@ -37,7 +37,6 @@ public class UserController {
 
         }
 
-
     }
     @PostMapping("/logout")
     public void destroySession(HttpServletRequest request) {

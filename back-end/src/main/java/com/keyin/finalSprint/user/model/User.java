@@ -58,7 +58,6 @@ public class User {
         this.phone = phone;
     }
 
-
     @Override
     public String toString() {
         return "Person{" +
