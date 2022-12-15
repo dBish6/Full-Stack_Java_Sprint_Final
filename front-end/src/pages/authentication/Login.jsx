@@ -1,7 +1,12 @@
-import React from "react";
+// *Feature*
+import LoginFeature from "../../features/authentication/LoginIndex";
 
 const Login = () => {
-  return <div>Login</div>;
+  return (
+    <>
+      <LoginFeature />
+    </>
+  );
 };
 
 export default Login;

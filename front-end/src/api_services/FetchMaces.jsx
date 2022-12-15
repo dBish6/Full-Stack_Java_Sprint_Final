@@ -27,9 +27,9 @@ const FetchMaces = () => {
         navigate("/error500");
       }
     };
-    console.log(maces);
     fetchProduct();
   }, []);
+  // console.log(maces);
 
   return [maces, loadingMaces];
 };

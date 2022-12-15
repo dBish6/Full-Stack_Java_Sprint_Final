@@ -1,6 +1,6 @@
 import React from "react";
 
-// *Components*
+// *Component Imports*
 import TopHeader from "../../components/TopHeader";
 
 const Error401 = () => {

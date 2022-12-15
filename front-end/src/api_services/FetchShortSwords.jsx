@@ -27,9 +27,9 @@ const FetchShortSwords = () => {
         navigate("/error500");
       }
     };
-    console.log(shortSwords);
     fetchProduct();
   }, []);
+  // console.log(shortSwords);
 
   return [shortSwords, loadingShortSwords];
 };

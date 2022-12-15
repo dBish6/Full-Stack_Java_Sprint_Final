@@ -15,7 +15,10 @@ const PasswordModal = () => {
   }, [show]);
 
   const handleSubmit = () => {
-    inputRef.current.value === "admin123" && navigate("/admin");
+    if (inputRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD) {
+      window.sessionStorage.setItem("admin", true);
+      navigate("/admin");
+    }
   };
 
   return (
@@ -34,19 +37,28 @@ const PasswordModal = () => {
               <button className="closeBtn" onClick={() => setShow(false)}>
                 Close
               </button>
-              <form onSubmit={() => handleSubmit()}>
-                <input
-                  name="password"
-                  type="text"
-                  autoComplete="off"
-                  placeholder=" "
-                  ref={inputRef}
-                />
-                <label htmlFor="password">Admin Password</label>
-                <div className="btnContainer">
-                  <button type="submit">Submit</button>
+              {!sessionStorage.getItem("admin") === true ? (
+                <form onSubmit={() => handleSubmit()}>
+                  <input
+                    name="password"
+                    type="text"
+                    autoComplete="off"
+                    placeholder=" "
+                    ref={inputRef}
+                  />
+                  <label htmlFor="password">Admin Password</label>
+                  <div className="btnContainer">
+                    <button type="submit">Confirm</button>
+                  </div>
+                </form>
+              ) : (
+                <div className="ifAdmin">
+                  <p>You are already sign in as an Admin!</p>
+                  <div className="btnContainer">
+                    <button onClick={() => navigate("/admin")}>Proceed</button>
+                  </div>
                 </div>
-              </form>
+              )}
             </div>
           </div>
         </>

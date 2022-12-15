@@ -25,9 +25,9 @@
 
 /* FIXME: Screws up ReadMoreModel. */
 /* z-index: -1; */
-.productGridContainer .productContainer:hover {
+/* .productGridContainer .productContainer:hover {
   transform: scale(1.1);
-}
+} */
 
 .productGridContainer .productContainer .imageContainer {
   display: flex;

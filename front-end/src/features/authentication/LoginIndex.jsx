@@ -1,7 +1,17 @@
 import React from "react";
 
+// *Component Imports*
+import LoginForm from "./components/login/LoginForm";
+
+// *Design Imports*
+import "./login.css";
+
 const LoginIndex = () => {
-  return <div>LoginIndex</div>;
+  return (
+    <div className="loginGridContainer">
+      <LoginForm />
+    </div>
+  );
 };
 
 export default LoginIndex;

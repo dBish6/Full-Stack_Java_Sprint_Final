@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
 // *Modal Import"
 import PasswordModal from "../modals/PasswordModal";
@@ -19,6 +19,7 @@ const Navigation = () => {
   const [isClickedShortSwords, toggleIsClickedShortSwords] = useState(false);
   const [isClickedDaggers, toggleIsClickedDaggers] = useState(false);
   const [isClickedMaces, toggleIsClickedMaces] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
 
   // Stops bottom links from being active when the user clicks on the top bar links.
@@ -159,7 +160,7 @@ const Navigation = () => {
           </div>
           <div className="bottomBarRight">
             <input type="text" name="search" placeholder="Search" />
-            <ShoppingCartIcon />
+            <ShoppingCartIcon onClick={() => navigate("/cart")} />
           </div>
         </div>
       </div>

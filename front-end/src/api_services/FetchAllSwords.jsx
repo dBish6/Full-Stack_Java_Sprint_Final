@@ -27,9 +27,9 @@ const FetchAllSwords = () => {
         navigate("/error500");
       }
     };
-    console.log(products);
     fetchProduct();
   }, []);
+  // console.log(products);
 
   return [products, loadingProduct];
 };
