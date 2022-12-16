@@ -1,21 +1,21 @@
-package com.keyin.finalSprint.orders.controller;
+package com.keyin.finalSprint.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.keyin.finalSprint.orders.service.OrdersService;
+import com.keyin.finalSprint.order.service.OrderService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")
-public class OrdersController {
+public class OrderController {
 
     @Autowired
-    OrdersService ordersService;
+    OrderService orderService;
 
     @PostMapping("/order")
     public void createOrder(@RequestBody String file){
 
-        ordersService.savePostRequestToDb(file);
+        orderService.savePostRequestToDb(file);
     }
 
 }
