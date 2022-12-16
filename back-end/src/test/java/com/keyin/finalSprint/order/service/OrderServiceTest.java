@@ -34,11 +34,13 @@ public class OrderServiceTest {
                 "    [\n" +
                 "    {\n" +
                 "        \"sword_id\": 6,\n" +
+                "        \"sword_name\": Seax,\n" +
                 "        \"unit_price\": 99.99,\n" +
                 "        \"quantity\": 2\n" +
                 "    },\n" +
                 "    {\n" +
                 "        \"sword_id\": 9,\n" +
+                "        \"sword_id\": Masonic,\n" +
                 "        \"unit_price\": 149.99,\n" +
                 "        \"quantity\": 1\n" +
                 "    }\n" +
@@ -46,8 +48,8 @@ public class OrderServiceTest {
                 "}";
 
         Order testOrder = new Order(0, 349.97, 349.97);
-        OrderDetail item1 = new OrderDetail(6, 99.99, 2, testOrder);
-        OrderDetail item2 = new OrderDetail(9, 149.99, 1, testOrder);
+        OrderDetail item1 = new OrderDetail(6, 99.99, 2, "Seax", testOrder );
+        OrderDetail item2 = new OrderDetail(9, 149.99, 1, "Masonic", testOrder);
 
 
 

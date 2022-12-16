@@ -51,6 +51,7 @@ public class OrderService {
 
         orderDetailItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
         orderDetailItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
+        orderDetailItem.setSword_name((String) orderDetails.getJSONObject(i).get("sword_name"));
         orderDetailItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
         orderDetailItem.setOrders(thisOrder);
         return orderDetailItem;
