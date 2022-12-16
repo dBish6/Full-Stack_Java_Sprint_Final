@@ -22,7 +22,6 @@ public class UserController {
     @GetMapping("/users")
     public void listUsers(User user) {
         List<User> listUsers = userRepo.findAll();
-
     }
 
     @PostMapping("/login")
