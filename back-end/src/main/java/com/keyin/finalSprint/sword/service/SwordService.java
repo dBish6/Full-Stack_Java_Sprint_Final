@@ -1,5 +1,6 @@
 package com.keyin.finalSprint.sword.service;
 
+import com.keyin.finalSprint.sword.exceptions.SwordNotAcceptedException;
 import com.keyin.finalSprint.sword.exceptions.SwordNotFoundException;
 import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
@@ -89,9 +90,16 @@ public class SwordService {
                 swordUpdated.setDescription(sword.getDescription());
             }
             if(sword.getImage_url() != null){
-                swordUpdated.setImage_url(sword.getImage_url());
+                String url = sword.getImage_url();
+                if(url.startsWith("http://") || url.startsWith("https://")){
+                    swordUpdated.setImage_url(sword.getImage_url());
+                } else {
+                    throw new SwordNotAcceptedException("ERROR - Invalid url ( include http:// or https:// )");
+                }
+
             }
-            return swordRepo.save(swordUpdated);
+            swordRepo.save(swordUpdated);
+            return swordUpdated;
         } else {
             throw new SwordNotFoundException(Long.parseLong(id));
         }

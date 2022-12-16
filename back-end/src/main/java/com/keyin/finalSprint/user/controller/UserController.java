@@ -20,8 +20,9 @@ public class UserController {
     UserRepository userRepo;
 
     @GetMapping("/users")
-    public List<User> listUsers() {
-        return userRepo.findAll();
+    public void listUsers(User user) {
+        List<User> listUsers = userRepo.findAll();
+        
     }
 
     @PostMapping("/login")
