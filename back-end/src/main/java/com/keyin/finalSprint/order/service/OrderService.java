@@ -1,9 +1,9 @@
-package com.keyin.finalSprint.orders.service;
+package com.keyin.finalSprint.order.service;
 
-import com.keyin.finalSprint.order_details.model.OrderDetails;
-import com.keyin.finalSprint.order_details.respository.OrderDetailsRepository;
-import com.keyin.finalSprint.orders.model.Orders;
-import com.keyin.finalSprint.orders.respository.OrdersRepository;
+import com.keyin.finalSprint.order_detail.model.OrderDetail;
+import com.keyin.finalSprint.order_detail.respository.OrderDetailRepository;
+import com.keyin.finalSprint.order.model.Order;
+import com.keyin.finalSprint.order.respository.OrderRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,19 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrdersService {
+public class OrderService {
 
     @Autowired
-    private OrdersRepository orderRepo;
+    private OrderRepository orderRepo;
 
     @Autowired
-    private OrderDetailsRepository orderDetailsRepo;
+    private OrderDetailRepository orderDetailsRepo;
 
     public void savePostRequestToDb(String file){
         try {
             JSONObject order = new JSONObject(file);
 
-            Orders thisOrder = createOrdersObject(order);
+            Order thisOrder = createOrdersObject(order);
 
             // Saving Order Details to Order Table
             orderRepo.save(thisOrder);
@@ -34,10 +34,10 @@ public class OrdersService {
             for(int i = 0; i < orderDetails.length(); i++){
                 // Getting each item for order
                 // Creating an Order Details object and saving to Order Details Table
-                OrderDetails orderDetailsItem = createOrderDetailsObject(thisOrder, orderDetails, i);
+                OrderDetail orderDetailItem = createOrderDetailsObject(thisOrder, orderDetails, i);
 
                 // Saving Order Details to OrderDetails table
-                orderDetailsRepo.save(orderDetailsItem);
+                orderDetailsRepo.save(orderDetailItem);
             }
 
         } catch (JSONException e) {
@@ -45,15 +45,15 @@ public class OrdersService {
         }
     }
 
-    private static OrderDetails createOrderDetailsObject(Orders thisOrder, JSONArray orderDetails, int i) throws JSONException {
+    private static OrderDetail createOrderDetailsObject(Order thisOrder, JSONArray orderDetails, int i) throws JSONException {
         // Creates the OrderDetails Object and Returns
-        OrderDetails orderDetailsItem = new OrderDetails();
+        OrderDetail orderDetailItem = new OrderDetail();
 
-        orderDetailsItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
-        orderDetailsItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
-        orderDetailsItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
-        orderDetailsItem.setOrders(thisOrder);
-        return orderDetailsItem;
+        orderDetailItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
+        orderDetailItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
+        orderDetailItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
+        orderDetailItem.setOrders(thisOrder);
+        return orderDetailItem;
     }
 
     private static JSONArray createOrderDetailsJsonArray(JSONObject order) throws JSONException {
@@ -62,9 +62,9 @@ public class OrdersService {
         return orderDetails;
     }
 
-    private static Orders createOrdersObject(JSONObject order) throws JSONException {
+    private static Order createOrdersObject(JSONObject order) throws JSONException {
         // Creating the Orders Object for this order
-        Orders thisOrder = new Orders();
+        Order thisOrder = new Order();
 
         thisOrder.setTax_rate((Integer) order.get("tax_rate"));
         thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));

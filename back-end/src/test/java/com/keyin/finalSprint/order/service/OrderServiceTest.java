@@ -1,25 +1,22 @@
-package com.keyin.finalSprint.orders.service;
+package com.keyin.finalSprint.order.service;
 
-import com.keyin.finalSprint.order_details.model.OrderDetails;
-import com.keyin.finalSprint.orders.model.Orders;
-import com.keyin.finalSprint.orders.respository.OrdersRepository;
-import org.junit.jupiter.api.BeforeAll;
+import com.keyin.finalSprint.order_detail.model.OrderDetail;
+import com.keyin.finalSprint.order.model.Order;
+import com.keyin.finalSprint.order.respository.OrderRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class OrdersServiceTest {
+public class OrderServiceTest {
 
     @InjectMocks
-    OrdersService ordersService;
+    OrderService orderService;
 
     @Mock
-    OrdersRepository ordersRepo;
+    OrderRepository ordersRepo;
 
 //    @BeforeAll
 //    public void init(){
@@ -48,9 +45,9 @@ public class OrdersServiceTest {
                 "    ]\n" +
                 "}";
 
-        Orders testOrder = new Orders(0, 349.97, 349.97);
-        OrderDetails item1 = new OrderDetails(6, 99.99, 2, testOrder);
-        OrderDetails item2 = new OrderDetails(9, 149.99, 1, testOrder);
+        Order testOrder = new Order(0, 349.97, 349.97);
+        OrderDetail item1 = new OrderDetail(6, 99.99, 2, testOrder);
+        OrderDetail item2 = new OrderDetail(9, 149.99, 1, testOrder);
 
 
 

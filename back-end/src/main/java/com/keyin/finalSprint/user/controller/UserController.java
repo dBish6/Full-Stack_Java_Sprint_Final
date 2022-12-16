@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
-@Controller
+@RestController
 @RequestMapping("/api/")
 public class UserController {
     @Autowired
@@ -22,21 +22,22 @@ public class UserController {
     @GetMapping("/users")
     public void listUsers(User user) {
         List<User> listUsers = userRepo.findAll();
+        
     }
 
     @PostMapping("/login")
     public void addNote(@RequestBody User user, HttpServletRequest request) {
-        List<String> sessions = (List<String>) request.getSession().getAttribute("SESSION");
-        if(sessions == null) {
-            sessions = new ArrayList<>();
-            request.getSession().setAttribute("SESSION", user.getId());
+        @SuppressWarnings("unchecked")
+        List<String> messages = (List<String>) request.getSession().getAttribute("SESSION_MESSAGE");
+        if(messages == null) {
+            messages = new ArrayList<>();
+            request.getSession().setAttribute("SESSION", messages);
         } else {
-            sessions.add(Long.toString(user.getId()));
-            request.getSession().setAttribute("SESSION", user.getId());
-
+            messages.add(Long.toString(user.getId()));
+            request.getSession().setAttribute("SESSION", messages);
         }
-
     }
+
     @PostMapping("/logout")
     public void destroySession(HttpServletRequest request) {
         request.getSession().invalidate();
@@ -44,7 +45,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User processRegister(User user) {
+    public User processRegister(@RequestBody User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -54,4 +55,3 @@ public class UserController {
     }
 
 }
-

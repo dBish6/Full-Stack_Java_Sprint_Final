@@ -1,11 +1,11 @@
-package com.keyin.finalSprint.order_details.model;
+package com.keyin.finalSprint.order_detail.model;
 
-import com.keyin.finalSprint.orders.model.Orders;
+import com.keyin.finalSprint.order.model.Order;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="order_details")
-public class OrderDetails {
+public class OrderDetail {
 
     @Column(name = "order_details_id", nullable = false)
     @Id
@@ -23,21 +23,21 @@ public class OrderDetails {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="order_id")
-    private Orders orders;
+    private Order orders;
 
     // Constructors
 
-    public OrderDetails() {
+    public OrderDetail() {
     }
 
-    public OrderDetails(long sword_id, double unit_price, int quantity, Orders orders) {
+    public OrderDetail(long sword_id, double unit_price, int quantity, Order orders) {
         this.sword_id = sword_id;
         this.unit_price = unit_price;
         this.quantity = quantity;
         this.orders = orders;
     }
 
-    public OrderDetails(long order_details_id, long sword_id, double unit_price, int quantity, Orders orders) {
+    public OrderDetail(long order_details_id, long sword_id, double unit_price, int quantity, Order orders) {
         this.order_details_id = order_details_id;
         this.sword_id = sword_id;
         this.unit_price = unit_price;
@@ -78,11 +78,11 @@ public class OrderDetails {
         this.quantity = quantity;
     }
 
-    public Orders getOrders() {
+    public Order getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
+    public void setOrders(Order orders) {
         this.orders = orders;
     }
 

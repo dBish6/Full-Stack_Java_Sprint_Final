@@ -1,0 +1,11 @@
+version: '3'
+services:
+  myapp-main:
+    image: finalsprint_raven_api:1.0.0
+    ports:
+      - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:mysql://finalsprint-raven-db-rds.ccdx65e3xwha.us-east-1.rds.amazonaws.com/s4_finalsprint?createDatabaseIfNotExist=true
+#     - spring.datasource.url=jdbc:mysql://host.docker.internal:3306/spring_2022
+      - spring.datasource.username=${DB_USERNAME}
+      - spring.datasource.password=${DB_PASSWORD}
