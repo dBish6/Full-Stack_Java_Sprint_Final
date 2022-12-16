@@ -16,6 +16,9 @@ public class OrderDetail {
     private long sword_id;
 
     @Column(nullable = false)
+    private String sword_name;
+
+    @Column(nullable = false)
     private double unit_price;
 
     @Column(nullable = false)
@@ -30,16 +33,18 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(long sword_id, double unit_price, int quantity, Order orders) {
+    public OrderDetail(long sword_id, double unit_price, int quantity, String sword_name, Order orders) {
         this.sword_id = sword_id;
+        this.sword_name = sword_name;
         this.unit_price = unit_price;
         this.quantity = quantity;
         this.orders = orders;
     }
 
-    public OrderDetail(long order_details_id, long sword_id, double unit_price, int quantity, Order orders) {
+    public OrderDetail(long order_details_id, long sword_id, double unit_price, int quantity, String sword_name, Order orders) {
         this.order_details_id = order_details_id;
         this.sword_id = sword_id;
+        this.sword_name = sword_name;
         this.unit_price = unit_price;
         this.quantity = quantity;
         this.orders = orders;
@@ -60,6 +65,14 @@ public class OrderDetail {
 
     public void setSword_id(long sword_id) {
         this.sword_id = sword_id;
+    }
+
+    public String getSword_name() {
+        return sword_name;
+    }
+
+    public void setSword_name(String sword_name) {
+        this.sword_name = sword_name;
     }
 
     public double getUnit_price() {
@@ -88,9 +101,10 @@ public class OrderDetail {
 
     @Override
     public String toString() {
-        return "OrderDetails{" +
+        return "OrderDetail{" +
                 "order_details_id=" + order_details_id +
                 ", sword_id=" + sword_id +
+                ", sword_name='" + sword_name + '\'' +
                 ", unit_price=" + unit_price +
                 ", quantity=" + quantity +
                 ", orders=" + orders +
