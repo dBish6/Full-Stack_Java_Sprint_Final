@@ -1,7 +1,6 @@
-package com.keyin.finalSprint.orders.model;
+package com.keyin.finalSprint.order.model;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 public class OrdersTest {
@@ -15,7 +14,7 @@ public class OrdersTest {
         double orderTotal = 115.00;
 
         // Test 1 Constructor - With order_id
-        Orders testOrder1 = new Orders(orderId, taxRate, orderSubtotal, orderTotal);
+        Order testOrder1 = new Order(orderId, taxRate, orderSubtotal, orderTotal);
 
         Assertions.assertEquals(orderId, testOrder1.getOrder_id());
         Assertions.assertEquals(taxRate, testOrder1.getTax_rate());
@@ -35,7 +34,7 @@ public class OrdersTest {
         double orderSubtotal = 500.00;
         double orderTotal = 525.00;
 
-        Orders testOrder2 = new Orders(taxRate, orderSubtotal, orderTotal);
+        Order testOrder2 = new Order(taxRate, orderSubtotal, orderTotal);
 
         Assertions.assertEquals(taxRate, testOrder2.getTax_rate());
         Assertions.assertEquals(orderSubtotal, testOrder2.getOrder_subtotal());
@@ -54,7 +53,7 @@ public class OrdersTest {
         double orderSubtotal = 100.00;
         double orderTotal = 115.00;
 
-        Orders testOrder3 = new Orders();
+        Order testOrder3 = new Order();
 
         // Result before Setters are used
         Assertions.assertNotEquals(orderId, testOrder3.getOrder_id());
