@@ -3,11 +3,11 @@ package com.keyin.finalSprint.user.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
+    @Column(name = "user_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
     private long id;
 
     @Column(nullable = false, length = 60)
@@ -29,7 +29,7 @@ public class User {
         this.phone = phone;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
