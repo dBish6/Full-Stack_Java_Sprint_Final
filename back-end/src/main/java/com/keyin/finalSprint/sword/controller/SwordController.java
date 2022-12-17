@@ -34,8 +34,8 @@ public class SwordController {
         return SS.serveSwordByType(type);
     }
 
-    @GetMapping("/swords/search/{param}")
-    public List<Sword> swordSearch(@PathVariable String param){
+    @GetMapping("/swords/search")
+    public List<Sword> swordSearch(@RequestParam(name = "name") String param){
         return swordRepo.query(param);
     }
 

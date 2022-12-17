@@ -13,8 +13,8 @@ import java.util.List;
 public interface SwordRepository extends JpaRepository<Sword, Long> {
 
     @Query(
-            value = "SELECT * FROM sword WHERE (name LIKE CONCAT(\"%\",:param,\"%\") || description LIKE CONCAT(\"%\",:param,\"%\"));",
+            value = "SELECT * FROM sword WHERE (name LIKE CONCAT(\"%\",:param,\"%\"));",
             nativeQuery = true)
-    List<Sword> query(@Param("param") String param);
+    List<Sword> query(String param);
 
 }
