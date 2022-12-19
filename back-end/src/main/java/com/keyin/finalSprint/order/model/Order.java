@@ -15,7 +15,7 @@ public class Order {
     private long order_id;
 
     @Column(nullable = false)
-    private int tax_rate;
+    private double tax_rate;
 
     @Column(nullable = false)
     private double order_subtotal;
@@ -30,14 +30,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(long order_id, int tax_rate, double order_subtotal, double order_total) {
+    public Order(long order_id, double tax_rate, double order_subtotal, double order_total) {
         this.order_id = order_id;
         this.tax_rate = tax_rate;
         this.order_subtotal = order_subtotal;
         this.order_total = order_total;
     }
 
-    public Order(int tax_rate, double order_subtotal, double order_total) {
+    public Order(double tax_rate, double order_subtotal, double order_total) {
         this.tax_rate = tax_rate;
         this.order_subtotal = order_subtotal;
         this.order_total = order_total;
@@ -52,11 +52,11 @@ public class Order {
         this.order_id = order_id;
     }
 
-    public int getTax_rate() {
+    public double getTax_rate() {
         return tax_rate;
     }
 
-    public void setTax_rate(int tax_rate) {
+    public void setTax_rate(double tax_rate) {
         this.tax_rate = tax_rate;
     }
 

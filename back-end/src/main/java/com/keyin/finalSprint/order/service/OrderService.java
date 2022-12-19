@@ -67,7 +67,7 @@ public class OrderService {
         // Creating the Orders Object for this order
         Order thisOrder = new Order();
 
-        thisOrder.setTax_rate((Integer) order.get("tax_rate"));
+        thisOrder.setTax_rate((Double) order.get("tax_rate"));
         thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));
         thisOrder.setOrder_total((Double) order.get("order_total"));
         return thisOrder;
