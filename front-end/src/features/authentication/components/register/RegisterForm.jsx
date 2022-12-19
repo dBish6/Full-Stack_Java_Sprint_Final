@@ -25,16 +25,15 @@ const RegisterForm = () => {
       phone: "",
     },
   });
-  const { postRegister } = PostUsers();
+  const { postRegister, userConflictErr } = PostUsers();
   console.log(watch());
 
   // Error message which shows in real time.
   const handlePhoneErrorMsg = (e) => {
-    // FIXME: Has to include a letter not equal.
     console.log(e.target.value);
-    /^[A-Za-z]+$/.test(e.target.value)
-      ? setErrorMsg("Must only include numbers.")
-      : setErrorMsg(null);
+    /^[0-9()-\s]*$/.test(e.target.value)
+      ? setErrorMsg(null)
+      : setErrorMsg("Must only include numbers.");
   };
 
   return (
@@ -52,6 +51,9 @@ const RegisterForm = () => {
       <div className="formMain">
         <h1>Sign Up</h1>
 
+        {userConflictErr ? (
+          <small className="userConflictErr">User already exists.</small>
+        ) : undefined}
         <input
           {...register("username", {
             required: "Username is required.",
@@ -81,7 +83,6 @@ const RegisterForm = () => {
             pattern: { value: /^\S+@\S+$/i, message: "Invalid email address." },
           })}
           name="email"
-          type="email"
           autoComplete="off"
           placeholder=" "
         />
@@ -118,13 +119,8 @@ const RegisterForm = () => {
         <input
           {...register("phone", {
             required: false,
-            // Doesn't show in real time.
-            // pattern: {
-            //   value: /^[0-9]+$/,
-            //   message: "Must only include numbers.",
-            // },
             minLength: {
-              value: 15,
+              value: 14,
               message: "Must be at least 10 digits long.",
             },
             onChange: (e) => {

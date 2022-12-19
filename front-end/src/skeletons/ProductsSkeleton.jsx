@@ -71,9 +71,9 @@ const ProductsSkeleton = () => {
             <Skeleton className="descripSkeleton" count={8} />
           </p>
           <div>
-            <Skeleton width={70} height={35} />
+            <Skeleton height={35} />
 
-            <Skeleton width={90} height={35} />
+            <Skeleton height={35} />
           </div>
         </div>
       </div>

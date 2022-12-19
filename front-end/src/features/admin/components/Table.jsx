@@ -217,7 +217,7 @@ const Table = (props) => {
         >
           Create New <PostAddIcon />
         </button>
-        {/* TODO: */}
+        {/* TODO: PUT */}
         <button
           style={{
             display: "flex",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 // *Design Imports*
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import "./passwordModal.css";
+import "./modals.css";
 
 const ReadMoreModal = (props) => {
   const [show, setShow] = useState(false);

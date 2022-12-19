@@ -21,7 +21,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 // *Custom Hooks*
 import useChangeTitle from "./hooks/useChangeTitle";
-import useAuth from "./features/authentication/hooks/context/UseAuth";
 
 // *Component Imports*
 import Navigation from "./components/partials/Navigation";
@@ -35,6 +34,7 @@ import LongSwords from "./pages/home/LongSwords";
 import ShortSwordsDaggers from "./pages/home/ShortSwords";
 import Daggers from "./pages/home/Daggers";
 import Maces from "./pages/home/Maces";
+import Search from "./pages/home/Search";
 
 import Administration from "./pages/Administration";
 import SuccessfullyDeleted from "./features/admin/pages/SuccessfullyDeleted";
@@ -44,15 +44,13 @@ import Create from "./features/admin/pages/Create";
 
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
-import Profile from "./pages/Profile";
 
 import Cart from "./pages/shoppingCart/Cart";
+import OrderReceived from "./features/shoppingCart/pages/OrderReceived";
 
 import Error404 from "./pages/errors/Error404";
 import Error401 from "./pages/errors/Error401";
 import Error500 from "./pages/errors/Error500";
-
-global.DEBUG = true;
 
 function App() {
   const ShowFooter = () => (
@@ -66,11 +64,6 @@ function App() {
     </>
   );
 
-  // const AuthGate = ({ children }) => {
-  //   const { userAuth } = useAuth();
-  //   return userAuth === true ? children : <Navigate to="/login" replace />;
-  // };
-
   return (
     <>
       <BrowserRouter>
@@ -80,21 +73,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/order" element={<OrderReceived />} />
           <Route element={<ShowFooter />}>
-            <Route
-              path="/user/profile"
-              // element={!window.localStorage.getItem("USER_STATUS") ? <Navigate to={<Login />} : <Profile />}
-              element={
-                // <AuthGate>
-                <Profile />
-                // </AuthGate>
-              }
-            />
             <Route path="/home" element={<Home />} />
             <Route path="/home/longSwords" element={<LongSwords />} />
             <Route path="/home/shortSwords" element={<ShortSwordsDaggers />} />
             <Route path="/home/daggers" element={<Daggers />} />
             <Route path="/home/maces" element={<Maces />} />
+            <Route path="/home/search" element={<Search />} />
             <Route path="/home/about" element={<About />} />
             <Route path="/home/support" element={<Support />} />
 

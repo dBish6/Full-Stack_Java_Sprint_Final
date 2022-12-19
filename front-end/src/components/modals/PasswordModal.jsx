@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./passwordModal.css";
+import "./modals.css";
 
 const PasswordModal = () => {
   const [show, setShow] = useState(false);

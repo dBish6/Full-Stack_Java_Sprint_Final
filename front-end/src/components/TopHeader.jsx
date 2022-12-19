@@ -12,9 +12,8 @@ const TopHeader = () => {
   const [dropdownArrow, toggleDropdownArrow] = useState(false);
   const flipRef = useRef(null);
   const location = useLocation();
-  console.log(location.pathname);
 
-  // FIXME:
+  // Have the dropdown arrow at these locations.
   useEffect(() => {
     const mainPaths = [
       "/home",
@@ -27,18 +26,7 @@ const TopHeader = () => {
     ];
 
     const ifPathIncludesMainPaths = () => {
-      // toggleDropdownArrow(false);
-      mainPaths.some((path) => {
-        // console.log(path);
-        // console.log("dropdown");
-        if (location.pathname.includes(path)) {
-          // console.log("dropdown");
-          return toggleDropdownArrow(true);
-        } else {
-          console.log("dropdown");
-          return toggleDropdownArrow(false);
-        }
-      });
+      toggleDropdownArrow(mainPaths.includes(location.pathname));
     };
     ifPathIncludesMainPaths();
   }, [location.pathname]);
@@ -46,7 +34,6 @@ const TopHeader = () => {
   return (
     <>
       <header className="topHeaderContainer">
-        {/* Type name from API. */}
         {location.pathname === "/home" ? (
           <h1>All Swords</h1>
         ) : location.pathname === "/home/longSwords" ? (
@@ -61,11 +48,12 @@ const TopHeader = () => {
           <h1>About Us</h1>
         ) : location.pathname === "/home/support" ? (
           <h1>Support</h1>
+        ) : location.pathname === "/home/search" ? (
+          <h1>Search</h1>
         ) : (
           <h1>Error</h1>
         )}
-        {/* {console.log(flipRef.current.className)} */}
-        {/* {dropdownArrow ? (
+        {dropdownArrow ? (
           <div>
             <ExpandMore
               className={dropdown ? "expandLess" : ""}
@@ -78,19 +66,7 @@ const TopHeader = () => {
             />
             <p>More Information</p>
           </div>
-        ) : undefined} */}
-        <div>
-          <ExpandMore
-            className={dropdown ? "expandLess" : ""}
-            ref={flipRef}
-            onClick={() => {
-              !flipRef.current.classList.contains("expandLess")
-                ? toggleDropdown(true)
-                : toggleDropdown(false);
-            }}
-          />
-          <p>More Information</p>
-        </div>
+        ) : undefined}
       </header>
       {dropdown && (
         <div className="dropdownContainer">

@@ -15,7 +15,7 @@ const GetUsers = () => {
           method: "GET",
           url: "http://localhost:8080/api/users",
         });
-        console.log(res.data);
+        // console.log(res.data);
         toggleUsersLoading(false);
 
         if (!loadingUsers) {

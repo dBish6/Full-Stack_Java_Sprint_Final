@@ -191,6 +191,28 @@
   color: var(--wordsWhiteMain);
   border-radius: 0.6rem;
   cursor: pointer;
+  transition: 0.28s ease all;
+}
+
+.productGridContainer
+  .productContainer
+  .contentContainer
+  .priceBuyNowContainer
+  button:hover {
+  text-shadow: -2px 0px 2px rgba(0, 0, 0, 0.3);
+  background-color: var(--secondary400);
+  border: 1px solid var(--secondary400);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+}
+
+.productGridContainer
+  .productContainer
+  .contentContainer
+  .priceBuyNowContainer
+  button:active {
+  border-width: 2px;
+  position: relative;
+  top: 2px;
 }
 
 /* ... */

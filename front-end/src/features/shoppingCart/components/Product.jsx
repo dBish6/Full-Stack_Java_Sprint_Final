@@ -10,21 +10,26 @@ import {
   DECREASE_QUANTITY,
   INCREASE_QUANTITY,
   REMOVE_FROM_CART,
+  CLEAR_CART,
 } from "../redux/cartSlice";
 
 const Product = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="productRow">
-      {props.cartItems.length === 0 ? (
-        <h2>Currently no Items in Cart.</h2>
-      ) : (
-        props.cartItems.map((sword) => {
-          console.log(sword);
+    <>
+      <div className="cartContainer">
+        <div className="titles">
+          <h3>Product</h3>
+          <h3>Length</h3>
+          <h3>Mass</h3>
+          <h3>Name</h3>
+          <h3>Quantity</h3>
+          <h3>Price</h3>
+        </div>
+        {props.cartItems.map((sword) => {
           return (
-            <div className="cartItemContainer" key={sword.sword_id}>
-              <p>{props.quantity}</p>
+            <div className="cartItem" key={sword.sword_id}>
               <div className="cartImageContainer">
                 {!sword.image_url.includes("https") ? (
                   <img src={noImage} alt="no-image.webp" />
@@ -32,30 +37,32 @@ const Product = (props) => {
                   <img src={sword.image_url} alt="image_url" />
                 )}
               </div>
+              <h4 className="length">{sword.length}in</h4>
+              <h4 className="mass">{sword.mass} lbs</h4>
               <h4>{sword.name}</h4>
-              {/* <p>
-                <span>Length:</span> {sword.length}in
-              </p>
-              <p>
-                <span>Mass:</span> {sword.mass} lbs
-              </p> */}
               <div className="quantityContainer">
                 <RemoveCircle
                   onClick={() => dispatch(DECREASE_QUANTITY(sword))}
                 />
-                {sword.quantity}
+                <p>{sword.quantity}</p>
                 <AddCircle onClick={() => dispatch(INCREASE_QUANTITY(sword))} />
               </div>
-              <p>${sword.price}</p>
-              <div className="deleteContainer">
+              {/* <div className="priceAndDelete"> */}
+              <h4>${sword.price}</h4>
+              <div className="trashIcon">
                 <Delete onClick={() => dispatch(REMOVE_FROM_CART(sword))} />
                 <small>Delete</small>
               </div>
+              {/* </div> */}
             </div>
           );
-        })
-      )}
-    </div>
+        })}
+        <hr />
+        <button className="clearBtn" onClick={() => dispatch(CLEAR_CART())}>
+          Clear Cart
+        </button>
+      </div>
+    </>
   );
 };
 
