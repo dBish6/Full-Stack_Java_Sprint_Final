@@ -42,7 +42,6 @@
   display: none;
 }
 
-/* FIXME: .productGridContainer .productContainer .contentContainer h2 moves up when hovered:( */
 .topHeaderContainer svg:hover + p {
   display: block;
   position: absolute;

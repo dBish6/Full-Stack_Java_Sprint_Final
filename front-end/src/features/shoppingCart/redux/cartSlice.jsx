@@ -3,8 +3,7 @@ import { toast } from "react-toastify";
 
 const initialState = {
   products: [],
-  //   totalItems: 0,
-  subTotal: 0,
+  subtotal: 0,
   taxRate: 0.08,
   totalPrice: 0,
 };
@@ -20,13 +19,10 @@ const cartSlice = createSlice({
       // Finds if the product is already in the cart.
       if (productIndex >= 0) {
         state.products[productIndex].quantity++;
-        toast.info(
-          `${state.products[productIndex].name}'s quantity increased`,
-          {
-            position: "bottom-left",
-            theme: "dark",
-          }
-        );
+        toast.info(`Added another ${state.products[productIndex].name}`, {
+          position: "bottom-left",
+          theme: "dark",
+        });
       } else {
         const newProduct = { ...action.payload, quantity: 1 };
         state.products.push(newProduct);
@@ -50,8 +46,8 @@ const cartSlice = createSlice({
         (sword) => sword.sword_id === action.payload.sword_id
       );
 
-      state.products[productIndex].quantity = action.payload.quantity++;
-      toast.info(`${state.products[productIndex].name}'s quantity increased`, {
+      state.products[productIndex].quantity = action.payload.quantity + 1;
+      toast.info(`Added another ${state.products[productIndex].name}`, {
         position: "bottom-left",
         theme: "dark",
       });
@@ -62,8 +58,7 @@ const cartSlice = createSlice({
       );
 
       if (state.products[productIndex].quantity > 1) {
-        console.log(state.products[productIndex].quantity);
-        state.products[productIndex].quantity = action.payload.quantity--;
+        state.products[productIndex].quantity = action.payload.quantity - 1;
         toast.info(
           `${state.products[productIndex].name}'s quantity increased`,
           {
@@ -79,6 +74,13 @@ const cartSlice = createSlice({
         });
       }
     },
+    CLEAR_CART: (state) => {
+      state.products = [];
+      toast.error(`All items removed`, {
+        position: "bottom-left",
+        theme: "dark",
+      });
+    },
   },
 });
 
@@ -88,6 +90,9 @@ export const {
   REMOVE_FROM_CART,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  CLEAR_CART,
+  SUBTOTAL_AMOUNT,
+  GRANDTOTAL_AMOUNT,
 } = cartSlice.actions;
 // Exports the slice's reducer.
 export default cartSlice.reducer;

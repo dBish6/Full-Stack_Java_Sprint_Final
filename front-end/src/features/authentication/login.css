@@ -37,7 +37,7 @@
   border: 1px solid var(--black700Main);
   box-shadow: -4px 4px 6px 3px rgba(0, 0, 0, 0.35);
   /* FIXME: */
-  /* backdrop-filter: blur(2px); */
+  backdrop-filter: blur(2px);
 }
 
 .loginFormContainer .loginForm h1 {
@@ -76,7 +76,6 @@
 }
 
 /* Label focus */
-/* FIXME: */
 .loginFormContainer .loginForm input:focus + #LogUsernameLabel,
 .loginFormContainer .loginForm input:focus + #LogPasswordLabel,
 #usernameInput:not(:placeholder-shown) + #LogUsernameLabel,
@@ -101,7 +100,7 @@
 }
 
 .loginFormContainer .loginForm #passwordInput {
-  padding-right: 1rem;
+  padding-right: 3.3rem;
 }
 
 .loginFormContainer .loginForm input:focus {

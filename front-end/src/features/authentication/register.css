@@ -4,7 +4,7 @@
 
 .regGridContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   max-width: 100vw;
   min-height: 100vh;
 }
@@ -190,6 +190,10 @@
 .registerForm .formMain .inputError {
   position: relative;
   bottom: 11px;
+  color: var(--redColour);
+}
+
+.registerForm .formMain .userConflictErr {
   color: var(--redColour);
 }
 

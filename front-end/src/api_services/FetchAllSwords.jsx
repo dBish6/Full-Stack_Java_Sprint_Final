@@ -16,7 +16,7 @@ const FetchAllSwords = () => {
           method: "GET",
           url: "http://localhost:8080/api/swords",
         });
-        console.log(res.data);
+        // console.log(res.data);
         toggleProductLoading(false);
 
         if (!loadingProduct) {

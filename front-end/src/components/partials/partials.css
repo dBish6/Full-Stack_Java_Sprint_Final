@@ -104,7 +104,6 @@
 .barsContainer .bottomBarRight {
   display: flex;
   gap: 82px;
-  margin-right: 2.625rem;
 }
 
 .barsContainer .bottomBarRight input {
@@ -115,25 +114,39 @@
   background-color: var(--black300);
   border: 1px solid var(--primary500Main);
   border-radius: 4px;
+  outline: none;
 }
 
-/* .barsContainer .bottomBarRight input::placeholder {
-  color: black;
+.barsContainer .bottomBarRight .cartIconContainer {
+  margin-right: 2.625rem;
 }
 
-.barsContainer .bottomBarRight input::-moz-placeholder {
-  color: black;
-} */
+.barsContainer .bottomBarRight .cartIconContainerIfCartItem {
+  margin-right: 2.3rem;
+}
 
-.barsContainer .bottomBarRight svg {
+.barsContainer .bottomBarRight .cartIconContainer svg {
   color: var(--primary500Main);
   cursor: pointer;
   transition: 0.3s ease all;
 }
 
-.barsContainer .bottomBarRight svg:hover {
+.barsContainer .bottomBarRight .cartIconContainer svg:hover {
   color: var(--primary400);
   cursor: pointer;
+}
+
+.barsContainer .bottomBarRight .cartIconContainer small {
+  font-family: "Montserrat", sans-serif;
+  font-size: 8px;
+  color: var(--wordsWhiteMain);
+  background-color: rgb(187, 42, 57);
+  border-radius: 100%;
+
+  position: relative;
+  right: 6px;
+  bottom: 15px;
+  padding: 4px;
 }
 
 @media only screen and (max-width: 858px) {
@@ -147,3 +160,7 @@
 }
 
 /* <==========================================/ Footer Start \==========================================> */
+
+footer {
+  display: none;
+}

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+
+// *API Services Imports*
+import SearchSword from "../../api_services/SearchSword";
+import PostUsers from "../../features/authentication/api_services/PostUsers";
 
 // *Modal Import"
 import PasswordModal from "../modals/PasswordModal";
@@ -7,8 +13,11 @@ import PasswordModal from "../modals/PasswordModal";
 // *Design Imports*
 import blackRavenLogo from "../../assets/images/blackRavenLogo-DesignEvo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartTwoTone";
-
 import "./partials.css";
+
+// *Selector Imports*
+import { selectProducts } from "../../features/shoppingCart/redux/selectors";
+import { selectCurrentUserSession } from "../../features/authentication/redux/selectors";
 
 const Navigation = () => {
   const [isClickedFirstLink, toggleIsClickedFirstLink] = useState(false);
@@ -19,8 +28,22 @@ const Navigation = () => {
   const [isClickedShortSwords, toggleIsClickedShortSwords] = useState(false);
   const [isClickedDaggers, toggleIsClickedDaggers] = useState(false);
   const [isClickedMaces, toggleIsClickedMaces] = useState(false);
+
+  const { register, handleSubmit, watch } = useForm({
+    defaultValues: {
+      search: "",
+    },
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
+
+  const searchProduct = SearchSword();
+
+  const cartItems = useSelector(selectProducts);
+
+  const userSession = useSelector(selectCurrentUserSession);
+  const { postLogout } = PostUsers();
 
   // Stops bottom links from being active when the user clicks on the top bar links.
   useEffect(() => {
@@ -88,6 +111,15 @@ const Navigation = () => {
       toggleIsClickedShortSwords(false);
       toggleIsClickedDaggers(false);
       toggleIsClickedMaces(true);
+    } else if (location.pathname === "/home/search") {
+      toggleIsClickedFirstLink(true);
+      toggleIsClickedSecondLink(false);
+      toggleIsClickedThirdLink(false);
+
+      toggleIsClickedLongSwords(false);
+      toggleIsClickedShortSwords(false);
+      toggleIsClickedDaggers(false);
+      toggleIsClickedMaces(false);
     }
   }, [location.pathname]);
 
@@ -126,9 +158,15 @@ const Navigation = () => {
           </div>
           <div className="topBarRight">
             <PasswordModal />
-            <NavLink to="/login">login</NavLink>
-            <p>|</p>
-            <NavLink to="/register">Sign Up</NavLink>
+            {userSession ? (
+              <NavLink onClick={(e) => postLogout(e)}>Log Out</NavLink>
+            ) : (
+              <>
+                <NavLink to="/login">Login</NavLink>
+                <p>|</p>
+                <NavLink to="/register">Sign Up</NavLink>
+              </>
+            )}
           </div>
         </div>
         <div className="bottomBar">
@@ -159,8 +197,25 @@ const Navigation = () => {
             </NavLink>
           </div>
           <div className="bottomBarRight">
-            <input type="text" name="search" placeholder="Search" />
-            <ShoppingCartIcon onClick={() => navigate("/cart")} />
+            <form onSubmit={handleSubmit(() => searchProduct(watch("search")))}>
+              <input
+                {...register("search")}
+                type="text"
+                name="search"
+                placeholder="Search Sword Name"
+                autoComplete="off"
+              />
+            </form>
+            <div
+              className={
+                cartItems.length
+                  ? "cartIconContainer cartIconContainerIfCartItem"
+                  : "cartIconContainer"
+              }
+            >
+              <ShoppingCartIcon onClick={() => navigate("/cart")} />
+              {cartItems.length ? <small>{cartItems.length}</small> : undefined}
+            </div>
           </div>
         </div>
       </div>
