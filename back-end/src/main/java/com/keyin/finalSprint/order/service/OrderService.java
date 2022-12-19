@@ -45,25 +45,25 @@ public class OrderService {
         }
     }
 
-    private static OrderDetail createOrderDetailsObject(Order thisOrder, JSONArray orderDetails, int i) throws JSONException {
+    public OrderDetail createOrderDetailsObject(Order thisOrder, JSONArray orderDetails, int i) throws JSONException {
         // Creates the OrderDetails Object and Returns
         OrderDetail orderDetailItem = new OrderDetail();
 
         orderDetailItem.setQuantity((Integer) orderDetails.getJSONObject(i).get("quantity"));
         orderDetailItem.setSword_id((Integer) orderDetails.getJSONObject(i).get("sword_id"));
-        orderDetailItem.setSword_name((String) orderDetails.getJSONObject(i).get("sword_name"));
-        orderDetailItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("unit_price"));
+        orderDetailItem.setSword_name((String) orderDetails.getJSONObject(i).get("name"));
+        orderDetailItem.setUnit_price((Double) orderDetails.getJSONObject(i).get("price"));
         orderDetailItem.setOrders(thisOrder);
         return orderDetailItem;
     }
 
-    private static JSONArray createOrderDetailsJsonArray(JSONObject order) throws JSONException {
+    public JSONArray createOrderDetailsJsonArray(JSONObject order) throws JSONException {
         // Creates & Returns orderDetails JSONArray
-        JSONArray orderDetails = (JSONArray) order.get("order_details");
+        JSONArray orderDetails = (JSONArray) order.get("cartItems");
         return orderDetails;
     }
 
-    private static Order createOrdersObject(JSONObject order) throws JSONException {
+    public Order createOrdersObject(JSONObject order) throws JSONException {
         // Creating the Orders Object for this order
         Order thisOrder = new Order();
 
