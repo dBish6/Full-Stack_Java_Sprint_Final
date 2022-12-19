@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "dbish6/finalsprint_raven_api_repo:1.0.0.snapshot",
+    "Name": "dbish6/finalsprint_raven_api_repo:2.0.0.snapshot",
     "Update": "true"
   },
   "Ports": [

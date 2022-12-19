@@ -22,21 +22,21 @@ public class UserRepositoryTest {
     @Autowired
     private UserRepository repo;
 
-    @Test
-    public void testCreateUser() {
-        User user = new User();
-        user.setEmail("blake@gmail.com");
-        user.setPassword("keyin2021");
-        user.setUsername("Blake");
-
-
-        User savedUser = repo.save(user);
-
-        User existUser = entityManager.find(User.class, savedUser.getId());
-
-        assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
-
-    }
+//    @Test
+//    public void testCreateUser() {
+//        User user = new User();
+//        user.setEmail("blake@gmail.com");
+//        user.setPassword("keyin2021");
+//        user.setUsername("Blake");
+//
+//
+//        User savedUser = repo.save(user);
+//
+//        User existUser = entityManager.find(User.class, savedUser.getId());
+//
+//        assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
+//
+//    }
 
 
 }
