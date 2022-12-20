@@ -30,9 +30,6 @@ public class UserControllerTest {
 
     private MockMvc mockMvc;
 
-    ObjectMapper objectMapper = new ObjectMapper();
-    ObjectWriter objectWriter = objectMapper.writer();
-
     @Mock
     UserRepository userRepo;
 
@@ -59,8 +56,8 @@ public class UserControllerTest {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/users")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-//                .andExpect(MockMvcResultMatchers.jsonPath("$",hasSize(3)));
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$",hasSize(3)));
     }
 
 }

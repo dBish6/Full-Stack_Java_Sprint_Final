@@ -91,12 +91,11 @@ public class SwordService {
             }
             if(sword.getImage_url() != null){
                 String url = sword.getImage_url();
-                if(url.startsWith("http://") || url.startsWith("https://")){
+                if(url.startsWith("https")){
                     swordUpdated.setImage_url(sword.getImage_url());
                 } else {
-                    throw new SwordNotAcceptedException("ERROR - Invalid url ( include http:// or https:// )");
+                    throw new SwordNotAcceptedException("ERROR - Invalid url, must start with 'https'");
                 }
-
             }
             swordRepo.save(swordUpdated);
             return swordUpdated;
