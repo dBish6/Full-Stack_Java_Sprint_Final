@@ -2,7 +2,7 @@ package com.keyin.finalSprint.sword.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.keyin.finalSprint.sword.model.Sword;
-import com.keyin.finalSprint.sword.repository.SwordRepository;
+import com.keyin.finalSprint.sword.respository.SwordRepository;
 import com.keyin.finalSprint.sword.service.SwordService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
