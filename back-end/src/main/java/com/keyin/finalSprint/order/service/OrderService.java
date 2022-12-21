@@ -1,7 +1,7 @@
 package com.keyin.finalSprint.order.service;
 
 import com.keyin.finalSprint.order_detail.model.OrderDetail;
-import com.keyin.finalSprint.order_detail.respository.OrderDetailRepository;
+import com.keyin.finalSprint.order_detail.repository.OrderDetailRepository;
 import com.keyin.finalSprint.order.model.Order;
 import com.keyin.finalSprint.order.respository.OrderRepository;
 import org.json.JSONArray;
