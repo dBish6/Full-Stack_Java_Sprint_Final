@@ -63,14 +63,21 @@ const Navigation = () => {
       toggleIsClickedFirstLink(true);
       toggleIsClickedSecondLink(false);
       toggleIsClickedThirdLink(false);
+
+      // Show footer or not show footer.
+      document.querySelector("footer").style = "display: table";
     } else if (location.pathname === "/home/about") {
       toggleIsClickedFirstLink(false);
       toggleIsClickedSecondLink(true);
       toggleIsClickedThirdLink(false);
+
+      document.querySelector("footer").style = "display: none";
     } else if (location.pathname === "/home/support") {
       toggleIsClickedFirstLink(false);
       toggleIsClickedSecondLink(false);
       toggleIsClickedThirdLink(true);
+
+      document.querySelector("footer").style = "display: none";
     }
 
     // Bottom Bar Links
@@ -84,6 +91,8 @@ const Navigation = () => {
       toggleIsClickedShortSwords(false);
       toggleIsClickedDaggers(false);
       toggleIsClickedMaces(false);
+
+      document.querySelector("footer").style = "display: table";
     } else if (location.pathname === "/home/shortSwords") {
       toggleIsClickedFirstLink(true);
       toggleIsClickedSecondLink(false);
@@ -93,6 +102,8 @@ const Navigation = () => {
       toggleIsClickedShortSwords(true);
       toggleIsClickedDaggers(false);
       toggleIsClickedMaces(false);
+
+      document.querySelector("footer").style = "display: table";
     } else if (location.pathname === "/home/daggers") {
       toggleIsClickedFirstLink(true);
       toggleIsClickedSecondLink(false);
@@ -102,6 +113,8 @@ const Navigation = () => {
       toggleIsClickedShortSwords(false);
       toggleIsClickedDaggers(true);
       toggleIsClickedMaces(false);
+
+      document.querySelector("footer").style = "display: table";
     } else if (location.pathname === "/home/maces") {
       toggleIsClickedFirstLink(true);
       toggleIsClickedSecondLink(false);
@@ -111,6 +124,8 @@ const Navigation = () => {
       toggleIsClickedShortSwords(false);
       toggleIsClickedDaggers(false);
       toggleIsClickedMaces(true);
+
+      document.querySelector("footer").style = "display: table";
     } else if (location.pathname === "/home/search") {
       toggleIsClickedFirstLink(true);
       toggleIsClickedSecondLink(false);
@@ -120,6 +135,8 @@ const Navigation = () => {
       toggleIsClickedShortSwords(false);
       toggleIsClickedDaggers(false);
       toggleIsClickedMaces(false);
+
+      document.querySelector("footer").style = "display: none";
     }
   }, [location.pathname]);
 
@@ -202,7 +219,7 @@ const Navigation = () => {
                 {...register("search")}
                 type="text"
                 name="search"
-                placeholder="Search Sword Name"
+                placeholder="Search by Name"
                 autoComplete="off"
               />
             </form>

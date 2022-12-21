@@ -28,11 +28,13 @@ const ShoppingCartFeature = () => {
     <>
       {products.length === 0 ? (
         <div className="noItemsContainer">
-          <h2>Currently no Items in Cart.</h2>
-          <Link to="/home">
-            <ArrowBack />
-            <p>Continue Shopping</p>
-          </Link>
+          <div>
+            <h2>Currently no Items in Cart.</h2>
+            <Link to="/home">
+              <ArrowBack />
+              <p>Continue Shopping</p>
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="cartGridContainer">

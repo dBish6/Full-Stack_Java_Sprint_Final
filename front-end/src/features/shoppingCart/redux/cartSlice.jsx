@@ -81,6 +81,9 @@ const cartSlice = createSlice({
         theme: "dark",
       });
     },
+    ON_SUBMIT_ORDER: (state) => {
+      state.products = [];
+    },
   },
 });
 
@@ -91,8 +94,7 @@ export const {
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
   CLEAR_CART,
-  SUBTOTAL_AMOUNT,
-  GRANDTOTAL_AMOUNT,
+  ON_SUBMIT_ORDER,
 } = cartSlice.actions;
 // Exports the slice's reducer.
 export default cartSlice.reducer;

@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-// *API Services Imports*
-
 // *Design Imports*
 import { ExpandMore } from "@mui/icons-material";
 import "./topHeader.css";
@@ -21,8 +19,6 @@ const TopHeader = () => {
       "/home/shortSwords",
       "/home/daggers",
       "/home/maces",
-      "/home/about",
-      "/home/support",
     ];
 
     const ifPathIncludesMainPaths = () => {
@@ -103,7 +99,30 @@ const TopHeader = () => {
                   cm (6 to 12 in).
                 </p>
               ) : location.pathname === "/home/shortSwords" ? (
-                <p className="description"></p>
+                <p className="description">
+                  Throughout history, short swords served as secondary weapons
+                  most of the time and symbols of rank and prestige. Almost
+                  every culture has its own version of a short sword, which
+                  served as a sidearm and backup weapon for the long sword and
+                  was more efficient in close quarters combat.
+                </p>
+              ) : location.pathname === "/home/daggers" ? (
+                <p className="description">
+                  A dagger is a fighting knife with a very sharp point and
+                  usually two sharp edges, typically designed or capable of
+                  being used as a thrusting or stabbing weapon. Designed for
+                  close combat but was also often for ceremonial and sacrificial
+                  practices.
+                </p>
+              ) : location.pathname === "/home/maces" ? (
+                <p className="description">
+                  This bludgeon weapon evolving from a club has a heavy head
+                  attached to the end of a handle. Alternate designs adapted the
+                  use of flanges, knobs or spikes depending on the intended
+                  purpose. The length of maces varied greatly. The shorter of
+                  around 24-36 inches were used for hand to hand combat and the
+                  longer versions were used from horseback.
+                </p>
               ) : undefined}
               <div className="sincerely">
                 <p>Sincerely, Wikipedia</p>

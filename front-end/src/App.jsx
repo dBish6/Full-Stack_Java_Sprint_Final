@@ -40,7 +40,9 @@ import Administration from "./pages/Administration";
 import SuccessfullyDeleted from "./features/admin/pages/SuccessfullyDeleted";
 import SuccessfullyPatched from "./features/admin/pages/SuccessfullyPatched";
 import SuccessfullyPosted from "./features/admin/pages/SuccessfullyPosted";
+import SuccessfullyPutted from "./features/admin/pages/SuccessfullyPutted";
 import Create from "./features/admin/pages/Create";
+import Replace from "./features/admin/pages/Replace";
 
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
@@ -103,7 +105,9 @@ function App() {
             path="/admin/successfulPost"
             element={<SuccessfullyPosted />}
           />
+          <Route path="/admin/successfulPut" element={<SuccessfullyPutted />} />
           <Route path="/admin/create" element={<Create />} />
+          <Route path="/admin/replace" element={<Replace />} />
         </Routes>
       </BrowserRouter>
     </>

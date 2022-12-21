@@ -1,20 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// *URL Imports*
+import { LOCAL_URL, AWS_EBS_URL } from "../../../constants";
+
 // Edits a new sword from the database.
 const PatchProduct = () => {
   const navigate = useNavigate();
 
   const PATCHname = async (name, sword_id) => {
-    try {
-      const res = await axios({
+    // Checks both URLs to see if they have a response.
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           name: name,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          name: name,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -23,15 +37,25 @@ const PatchProduct = () => {
   };
 
   const PATCHtype = async (type, sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           type: type,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          type: type,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -40,15 +64,25 @@ const PatchProduct = () => {
   };
 
   const PATCHlength = async (length, sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           length: length,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          length: length,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -57,15 +91,25 @@ const PatchProduct = () => {
   };
 
   const PATCHmass = async (mass, sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           mass: mass,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          mass: mass,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -74,15 +118,25 @@ const PatchProduct = () => {
   };
 
   const PATCHprice = async (price, sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           price: price,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          price: price,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -91,15 +145,25 @@ const PatchProduct = () => {
   };
 
   const PATCHdescription = async (description, sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           description: description,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          description: description,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -108,15 +172,25 @@ const PatchProduct = () => {
   };
 
   const PATCHimageUrl = async (imageUrl, sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "PATCH",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
         data: {
           image_url: imageUrl,
         },
-      });
-      res && navigate("/admin/successfulPatch");
+      }),
+      axios({
+        method: "PATCH",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+        data: {
+          image_url: imageUrl,
+        },
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulPatch");
       console.log(res);
     } catch (error) {
       console.error(error);

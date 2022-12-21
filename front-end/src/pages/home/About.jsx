@@ -1,7 +1,14 @@
 import React from "react";
 
+// *Component Imports*
+import TopHeader from "../../components/TopHeader";
+
 const About = () => {
-  return <div>About</div>;
+  return (
+    <main>
+      <TopHeader />
+    </main>
+  );
 };
 
 export default About;

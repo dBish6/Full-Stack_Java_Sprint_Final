@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import { LOCAL_URL, AWS_EBS_URL } from "../constants";
+
 const FetchMaces = () => {
   const [maces, setMaces] = useState([]);
   const [loadingMaces, toggleMacesLoading] = useState(false);
@@ -10,25 +12,39 @@ const FetchMaces = () => {
   // Gets all swords with type Maces.
   useEffect(() => {
     const fetchProduct = async () => {
-      try {
-        toggleMacesLoading(true);
-        const res = await axios({
+      toggleMacesLoading(true);
+      // Checks both URLs to see if they have a response.
+      const requests = [
+        axios({
           method: "GET",
-          url: "http://localhost:8080/api/sword/type/Mace",
-        });
-        console.log(res.data);
-        toggleMacesLoading(false);
-
-        if (!loadingMaces) {
+          url: `${AWS_EBS_URL}/api/sword/type/Mace`,
+        }),
+        axios({
+          method: "GET",
+          url: `${LOCAL_URL}/api/sword/type/Mace`,
+        }),
+      ];
+      let success = false;
+      try {
+        const res = await Promise.any(requests);
+        if (res && res.status === 200) {
           setMaces(res.data);
+          success = true;
         }
+        console.log(res);
+        toggleMacesLoading(false);
       } catch (error) {
         console.error(error);
         navigate("/error500");
       }
+      if (success) {
+        console.warn(
+          "One server was unable to get the data, but was able to find a working server."
+        );
+      }
     };
     fetchProduct();
-  }, []);
+  }, [navigate]);
   // console.log(maces);
 
   return [maces, loadingMaces];

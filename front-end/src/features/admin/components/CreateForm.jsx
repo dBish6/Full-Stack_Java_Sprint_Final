@@ -100,8 +100,8 @@ const CreateForm = () => {
           <label htmlFor="length">"length":</label>{" "}
           <input
             name="length"
-            type="number"
-            placeholder="Length"
+            type="text"
+            placeholder="Length (Num)"
             onChange={(e) => handleLength(e)}
           />
         </div>
@@ -109,8 +109,8 @@ const CreateForm = () => {
           <label htmlFor="mass">"mass":</label>{" "}
           <input
             name="mass"
-            type="number"
-            placeholder="Mass"
+            type="text"
+            placeholder="Mass (Num)"
             onChange={(e) => handleMass(e)}
           />
         </div>
@@ -118,8 +118,8 @@ const CreateForm = () => {
           <label htmlFor="price">"price":</label>{" "}
           <input
             name="price"
-            type="number"
-            placeholder="Price"
+            type="text"
+            placeholder="Price (Num)"
             onChange={(e) => handlePrice(e)}
           />
         </div>
@@ -137,7 +137,7 @@ const CreateForm = () => {
           <input
             name="image_url"
             type="image_url"
-            placeholder="Image Url"
+            placeholder="Image Url (https)"
             onChange={(e) => handleImageUrl(e)}
           />
         </div>
