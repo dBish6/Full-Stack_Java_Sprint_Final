@@ -3,9 +3,8 @@ package com.keyin.finalSprint.sword.service;
 import com.keyin.finalSprint.sword.exceptions.SwordNotAcceptedException;
 import com.keyin.finalSprint.sword.exceptions.SwordNotFoundException;
 import com.keyin.finalSprint.sword.model.Sword;
-import com.keyin.finalSprint.sword.respository.SwordRepository;
+import com.keyin.finalSprint.sword.repository.SwordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

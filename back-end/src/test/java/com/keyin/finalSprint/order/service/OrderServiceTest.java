@@ -2,7 +2,7 @@ package com.keyin.finalSprint.order.service;
 
 import com.keyin.finalSprint.order_detail.model.OrderDetail;
 import com.keyin.finalSprint.order.model.Order;
-import com.keyin.finalSprint.order.respository.OrderRepository;
+import com.keyin.finalSprint.order.repository.OrderRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -47,7 +47,7 @@ public class OrderServiceTest {
                 "    ]\n" +
                 "}";
 
-        Order testOrder = new Order(0, 349.97, 349.97);
+        Order testOrder = new Order(0, 349.97, 349.97, "DavidTest");
         OrderDetail item1 = new OrderDetail(6, 99.99, 2, "Seax", testOrder );
         OrderDetail item2 = new OrderDetail(9, 149.99, 1, "Masonic", testOrder);
 

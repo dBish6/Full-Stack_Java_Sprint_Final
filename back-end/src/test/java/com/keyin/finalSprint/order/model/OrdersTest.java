@@ -12,9 +12,10 @@ public class OrdersTest {
         int taxRate = 15;
         double orderSubtotal = 100.00;
         double orderTotal = 115.00;
+        String username = "DavidTest";
 
         // Test 1 Constructor - With order_id
-        Order testOrder1 = new Order(orderId, taxRate, orderSubtotal, orderTotal);
+        Order testOrder1 = new Order(orderId, taxRate, orderSubtotal, orderTotal, username);
 
         Assertions.assertEquals(orderId, testOrder1.getOrder_id());
         Assertions.assertEquals(taxRate, testOrder1.getTax_rate());
@@ -33,8 +34,9 @@ public class OrdersTest {
         int taxRate = 5;
         double orderSubtotal = 500.00;
         double orderTotal = 525.00;
+        String username = "DavidTest";
 
-        Order testOrder2 = new Order(taxRate, orderSubtotal, orderTotal);
+        Order testOrder2 = new Order(taxRate, orderSubtotal, orderTotal, username);
 
         Assertions.assertEquals(taxRate, testOrder2.getTax_rate());
         Assertions.assertEquals(orderSubtotal, testOrder2.getOrder_subtotal());
@@ -52,6 +54,7 @@ public class OrdersTest {
         int taxRate = 15;
         double orderSubtotal = 100.00;
         double orderTotal = 115.00;
+        String username = "DavidTest";
 
         Order testOrder3 = new Order();
 
