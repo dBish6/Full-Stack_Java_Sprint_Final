@@ -1,10 +1,9 @@
 package com.keyin.finalSprint.sword.controller;
 
 import com.keyin.finalSprint.sword.model.Sword;
-import com.keyin.finalSprint.sword.respository.SwordRepository;
+import com.keyin.finalSprint.sword.repository.SwordRepository;
 import com.keyin.finalSprint.sword.service.SwordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
