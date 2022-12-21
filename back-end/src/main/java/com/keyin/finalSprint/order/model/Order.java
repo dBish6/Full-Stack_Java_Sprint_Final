@@ -14,6 +14,9 @@ public class Order {
     @Id
     private long order_id;
 
+    @Column(nullable = false, length = 60)
+    private String username;
+
     @Column(nullable = false)
     private double tax_rate;
 
@@ -30,17 +33,19 @@ public class Order {
     public Order() {
     }
 
-    public Order(long order_id, double tax_rate, double order_subtotal, double order_total) {
+    public Order(long order_id, double tax_rate, double order_subtotal, double order_total, String username) {
         this.order_id = order_id;
         this.tax_rate = tax_rate;
         this.order_subtotal = order_subtotal;
         this.order_total = order_total;
+        this.username = username;
     }
 
-    public Order(double tax_rate, double order_subtotal, double order_total) {
+    public Order(double tax_rate, double order_subtotal, double order_total, String username) {
         this.tax_rate = tax_rate;
         this.order_subtotal = order_subtotal;
         this.order_total = order_total;
+        this.username = username;
     }
 
     // Getters / Setters
@@ -50,6 +55,14 @@ public class Order {
 
     public void setOrder_id(long order_id) {
         this.order_id = order_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public double getTax_rate() {
@@ -78,8 +91,9 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Orders{" +
+        return "Order{" +
                 "order_id=" + order_id +
+                ", username='" + username + '\'' +
                 ", tax_rate=" + tax_rate +
                 ", order_subtotal=" + order_subtotal +
                 ", order_total=" + order_total +

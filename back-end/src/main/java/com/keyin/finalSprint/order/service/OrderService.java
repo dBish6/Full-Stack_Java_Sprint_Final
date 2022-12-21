@@ -1,9 +1,9 @@
 package com.keyin.finalSprint.order.service;
 
 import com.keyin.finalSprint.order_detail.model.OrderDetail;
-import com.keyin.finalSprint.order_detail.respository.OrderDetailRepository;
+import com.keyin.finalSprint.order_detail.repository.OrderDetailRepository;
 import com.keyin.finalSprint.order.model.Order;
-import com.keyin.finalSprint.order.respository.OrderRepository;
+import com.keyin.finalSprint.order.repository.OrderRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,6 +70,7 @@ public class OrderService {
         thisOrder.setTax_rate((Double) order.get("tax_rate"));
         thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));
         thisOrder.setOrder_total((Double) order.get("order_total"));
+        thisOrder.setUsername((String) order.get("username"));
         return thisOrder;
     }
 

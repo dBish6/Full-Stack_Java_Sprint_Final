@@ -1,9 +1,8 @@
 package com.keyin.finalSprint.sword.service;
 
 import com.keyin.finalSprint.sword.model.Sword;
-import com.keyin.finalSprint.sword.respository.SwordRepository;
+import com.keyin.finalSprint.sword.repository.SwordRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;

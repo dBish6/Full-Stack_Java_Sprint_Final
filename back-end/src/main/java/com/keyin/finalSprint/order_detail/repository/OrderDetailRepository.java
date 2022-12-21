@@ -1,4 +1,4 @@
-package com.keyin.finalSprint.order_detail.respository;
+package com.keyin.finalSprint.order_detail.repository;
 
 import com.keyin.finalSprint.order_detail.model.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;

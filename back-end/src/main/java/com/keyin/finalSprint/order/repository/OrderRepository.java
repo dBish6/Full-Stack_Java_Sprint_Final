@@ -1,4 +1,4 @@
-package com.keyin.finalSprint.order.respository;
+package com.keyin.finalSprint.order.repository;
 
 import com.keyin.finalSprint.order.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
