@@ -1,5 +1,6 @@
 package com.keyin.finalSprint.sword.controller;
 
+import com.keyin.finalSprint.sword.exceptions.SwordNotAcceptedException;
 import com.keyin.finalSprint.sword.model.Sword;
 import com.keyin.finalSprint.sword.respository.SwordRepository;
 import com.keyin.finalSprint.sword.service.SwordService;
@@ -40,8 +41,12 @@ public class SwordController {
     }
 
     @PostMapping("/sword")
-    public Sword addSword(@RequestBody Sword sword){
-        return swordRepo.save(sword);
+    public Sword addSword(@RequestBody Sword sword) {
+        if (sword.getImage_url().startsWith("https")) {
+            return swordRepo.save(sword);
+        } else {
+            throw new SwordNotAcceptedException("ERROR - Invalid url, must start with 'https'");
+        }
     }
 
     @PutMapping("/sword/{id}")
