@@ -20,9 +20,9 @@ const Product = (props) => {
     <>
       <div className="cartContainer">
         <div className="titles">
-          <h3>Product</h3>
-          <h3>Length</h3>
-          <h3>Mass</h3>
+          <h3 className="productTitle">Product</h3>
+          <h3 className="lengthTitle">Length</h3>
+          <h3 className="massTitle">Mass</h3>
           <h3>Name</h3>
           <h3>Quantity</h3>
           <h3>Price</h3>
@@ -47,13 +47,11 @@ const Product = (props) => {
                 <p>{sword.quantity}</p>
                 <AddCircle onClick={() => dispatch(INCREASE_QUANTITY(sword))} />
               </div>
-              {/* <div className="priceAndDelete"> */}
               <h4>${sword.price}</h4>
               <div className="trashIcon">
                 <Delete onClick={() => dispatch(REMOVE_FROM_CART(sword))} />
                 <small>Delete</small>
               </div>
-              {/* </div> */}
             </div>
           );
         })}

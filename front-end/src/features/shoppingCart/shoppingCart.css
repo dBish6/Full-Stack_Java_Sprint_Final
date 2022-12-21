@@ -2,12 +2,6 @@
    Shopping Cart
 */
 
-/* Globals */
-/* .cartGridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-} */
-
 /* <=======================================/ Shopping Cart Start \=======================================> */
 
 .cartGridContainer {
@@ -144,7 +138,63 @@
   width: 100%;
 }
 
-/* ... */
+@media only screen and (max-width: 1730px) {
+  .cartContainer .cartItem .trashIcon {
+    left: 40px;
+  }
+}
+
+@media only screen and (max-width: 1635px) {
+  .cartContainer .cartItem .trashIcon {
+    left: 30px;
+  }
+}
+
+@media only screen and (max-width: 1455px) {
+  .cartContainer .cartItem .trashIcon {
+    left: 20px;
+  }
+}
+
+@media only screen and (max-width: 1245px) {
+  .cartContainer .cartItem .trashIcon {
+    left: 10px;
+  }
+}
+
+@media only screen and (max-width: 562px) {
+  .cartContainer .titles,
+  .cartItem {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .lengthTitle,
+  .massTitle,
+  .length,
+  .mass {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 402px) {
+  .cartContainer .cartItem .cartImageContainer {
+    display: none;
+  }
+  .cartContainer .titles,
+  .cartItem {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .productTitle {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1214px) {
+  .cartGridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* <====================================/ Checkout Box Start \====================================> */
 
 .cartGridContainer .checkoutContainer {
   display: flex;
@@ -163,8 +213,6 @@
 
   color: var(--wordsWhiteMain);
   background-color: var(--black700Main);
-  /* TODO: Make lighter grey?. */
-  /* background-color: var(--white200Main); */
   border: 2px solid var(--primary500Main);
   border-radius: 6px;
 }
@@ -240,8 +288,80 @@
   color: var(--primary400);
 }
 
-@media only screen and (max-width: 1214px) {
-  .cartGridContainer {
-    grid-template-columns: 1fr;
-  }
+/* <===================================/ Order Page Start \===================================> */
+
+.orderContainer,
+.noItemsContainer {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.orderContainer div,
+.noItemsContainer div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.orderContainer h2,
+.noItemsContainer h2 {
+  font-family: "Raven Hell";
+  font-weight: 500;
+  font-size: 38px;
+  letter-spacing: 0.02em;
+  color: var(--wordsBlackMain);
+  -webkit-text-stroke: 1px var(--secondary500Main);
+  text-align: center;
+}
+
+.orderContainer .arriveTxt {
+  font-size: 18px;
+  color: var(--wordsBlackMain);
+  margin-top: 1rem;
+}
+
+.orderContainer span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--redColour);
+}
+
+.orderContainer a,
+.noItemsContainer a {
+  display: flex;
+  font-size: 16px;
+  text-decoration-color: var(--wordsBlackMain);
+  margin-top: 0.5rem;
+}
+
+.orderContainer a p,
+.noItemsContainer a p {
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  color: var(--wordsBlackMain);
+  transition: 0.28s ease all;
+}
+
+.orderContainer a svg,
+.noItemsContainer a svg {
+  color: var(--wordsBlackMain);
+  transition: 0.28s ease all;
+}
+
+.orderContainer a:hover,
+.noItemsContainer a:hover {
+  text-decoration-color: var(--secondary500Main);
+}
+
+.orderContainer a p:hover,
+.noItemsContainer a p:hover {
+  color: var(--secondary500Main);
+}
+
+.orderContainer a svg:hover,
+.noItemsContainer a svg:hover {
+  color: var(--secondary500Main);
 }

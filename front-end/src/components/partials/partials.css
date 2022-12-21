@@ -162,5 +162,39 @@
 /* <==========================================/ Footer Start \==========================================> */
 
 footer {
-  display: none;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--black700Main);
+  border-top: 3px solid var(--primary500Main);
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+footer .columnContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+footer div {
+  color: var(--primary400);
+}
+
+footer a {
+  color: var(--black300);
+  text-decoration-color: var(--primary500Main);
+}
+
+footer a:hover {
+  color: var(--black200);
+  text-decoration-color: var(--primary400);
+}
+
+footer .thankYouNote {
+  text-align: center;
+}
+
+footer .thankYouNote p {
+  color: var(--black300);
 }

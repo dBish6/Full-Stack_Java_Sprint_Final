@@ -31,8 +31,6 @@ const Table = (props) => {
 
   const navigate = useNavigate();
 
-  // TODO: Could have an array of all types of swords and if it's not one of those types, error and so on.
-
   return (
     <div
       style={{
@@ -99,8 +97,8 @@ const Table = (props) => {
                   <td>
                     {sword.length} <br />
                     <input
-                      type="number"
-                      placeholder="Edit Length"
+                      type="text"
+                      placeholder="Edit Length (Num)"
                       autoComplete="off"
                       onChange={(e) => setEditLength(e.target.value)}
                       onBlur={() => setSwordId(sword.sword_id)}
@@ -115,8 +113,8 @@ const Table = (props) => {
                   <td>
                     {sword.mass} <br />
                     <input
-                      type="number"
-                      placeholder="Edit Mass"
+                      type="text"
+                      placeholder="Edit Mass (Num)"
                       autoComplete="off"
                       onChange={(e) => setEditMass(e.target.value)}
                       onBlur={() => setSwordId(sword.sword_id)}
@@ -131,8 +129,8 @@ const Table = (props) => {
                   <td>
                     {sword.price} <br />
                     <input
-                      type="number"
-                      placeholder="Edit Price"
+                      type="text"
+                      placeholder="Edit Price (Num)"
                       autoComplete="off"
                       onChange={(e) => setEditPrice(e.target.value)}
                       onBlur={() => setSwordId(sword.sword_id)}
@@ -158,7 +156,7 @@ const Table = (props) => {
                     {sword.image_url} <br />
                     <input
                       type="text"
-                      placeholder="Edit Image Url"
+                      placeholder="Edit Image Url (https)"
                       autoComplete="off"
                       onChange={(e) => setEditImageUrl(e.target.value)}
                       onBlur={() => setSwordId(sword.sword_id)}
@@ -217,7 +215,7 @@ const Table = (props) => {
         >
           Create New <PostAddIcon />
         </button>
-        {/* TODO: PUT */}
+
         <button
           style={{
             display: "flex",

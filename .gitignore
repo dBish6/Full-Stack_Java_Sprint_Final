@@ -23,6 +23,9 @@ target/
 *.iml
 *.ipr
 
+# Docker
+/back-end/docker-compose.yml
+
 # NetBeans
 /nbproject/private/
 /nbbuild/
@@ -178,8 +181,5 @@ dist
 .gitignore
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-routes/.DS_Store
-views/.DS_Store
-views/partials/.DS_Store
-__tests__/m.movies.dal.test.js.zip
 .DS_Store
+

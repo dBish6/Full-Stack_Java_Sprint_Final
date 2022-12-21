@@ -12,8 +12,8 @@ const RegisterWelcome = () => {
         <h1>Thank you for your Interest in our Swords</h1>
         <ul>
           <li>
-            These swords are 100% professional by modern sword enthusiasts like
-            yourself.
+            These swords are 100% professional forged by modern sword
+            enthusiasts like yourself.
           </li>
           <li>Made here in Canada, Newfoundland.</li>
           <li>
@@ -36,27 +36,29 @@ const RegisterWelcome = () => {
           </div>
         </div>
         <div>
-          <h4>Jamie Cornick</h4>
-          <p>On the Zweihänder Sword</p>
+          <h4>Roy Brushett</h4>
+          <p>On the Spatha Sword</p>
           <div className="stars">
             <Star />
             <Star />
             <Star />
             <Star />
             <Star />
-            <p>"Woah, this sword is huge! I fell like a man holding it."</p>
+            <p>
+              "Great reparation of a Roman sword! Pizza, pizza, pizza, pizza."
+            </p>
           </div>
         </div>
         <div>
-          <h4>Jamie Cornick</h4>
-          <p>On the Zweihänder Sword</p>
+          <h4>Kennedy Azupwah</h4>
+          <p>On the Odachi Sword</p>
           <div className="stars">
             <Star />
             <Star />
             <Star />
             <Star />
             <Star />
-            <p>"Woah, this sword is huge! I fell like a man holding it."</p>
+            <p>"I am samurai."</p>
           </div>
         </div>
       </div>

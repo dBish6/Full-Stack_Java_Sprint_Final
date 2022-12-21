@@ -4,11 +4,12 @@ import axios from "axios";
 // *URL Imports*
 import { LOCAL_URL, AWS_EBS_URL } from "../../../constants";
 
-// Adds a new sword to the database.
-const PostProduct = () => {
+// Replaces sword from the database.
+const PutProduct = () => {
   const navigate = useNavigate();
 
-  const POST = async (
+  const PUT = async (
+    swordId,
     name,
     type,
     length,
@@ -20,8 +21,8 @@ const PostProduct = () => {
     // Checks both URLs to see if they have a response.
     const requests = [
       axios({
-        method: "POST",
-        url: `${AWS_EBS_URL}/api/sword`,
+        method: "PUT",
+        url: `${AWS_EBS_URL}/api/sword/${swordId}`,
         data: {
           name: name,
           type: type,
@@ -33,8 +34,8 @@ const PostProduct = () => {
         },
       }),
       axios({
-        method: "POST",
-        url: `${LOCAL_URL}/api/sword`,
+        method: "PUT",
+        url: `${LOCAL_URL}/api/sword/${swordId}`,
         data: {
           name: name,
           type: type,
@@ -48,7 +49,7 @@ const PostProduct = () => {
     ];
     try {
       const res = await Promise.any(requests);
-      res.status === 200 && navigate("/admin/successfulPost");
+      res.status === 200 && navigate("/admin/successfulPut");
 
       console.log(res);
     } catch (error) {
@@ -56,7 +57,7 @@ const PostProduct = () => {
       navigate("/error500");
     }
   };
-  return POST;
+  return PUT;
 };
 
-export default PostProduct;
+export default PutProduct;

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // *API Services Imports*
 import PostOrder from "../api_services/PostOrder";
@@ -6,8 +7,21 @@ import PostOrder from "../api_services/PostOrder";
 // *Design Imports*
 import ArrowBack from "@mui/icons-material/ArrowBackRounded";
 
+// *Selector Imports*
+import { selectCurrentUserSession } from "../../authentication/redux/selectors";
+
 const CheckoutBox = (props) => {
+  const userSession = useSelector(selectCurrentUserSession);
+  const navigate = useNavigate();
+
   const POST = PostOrder();
+
+  const ifNotLoggedIn = () => {
+    navigate("/home");
+    setTimeout(() => {
+      alert("You must create a account before placing an order.");
+    }, 1000);
+  };
 
   return (
     <div className="checkoutBox">
@@ -22,7 +36,14 @@ const CheckoutBox = (props) => {
       </h3>
       <button
         onClick={() =>
-          POST(props.cartItems, props.subtotal, props.taxRate, props.totalPrice)
+          !userSession
+            ? ifNotLoggedIn()
+            : POST(
+                props.cartItems,
+                props.subtotal,
+                props.taxRate,
+                props.totalPrice
+              )
         }
       >
         Checkout

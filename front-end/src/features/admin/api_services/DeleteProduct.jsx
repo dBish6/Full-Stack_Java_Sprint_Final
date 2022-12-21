@@ -1,16 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// *URL Imports*
+import { LOCAL_URL, AWS_EBS_URL } from "../../../constants";
+
 // Removes a sword from the database.
 const DeleteProduct = () => {
   const navigate = useNavigate();
 
   const DELETE = async (sword_id) => {
-    try {
-      const res = await axios({
+    const requests = [
+      axios({
         method: "DELETE",
-        url: `http://localhost:8080/api/sword/${sword_id}`,
-      });
+        url: `${AWS_EBS_URL}/api/sword/${sword_id}`,
+      }),
+      axios({
+        method: "DELETE",
+        url: `${LOCAL_URL}/api/sword/${sword_id}`,
+      }),
+    ];
+    try {
+      const res = await Promise.any(requests);
+      res.status === 200 && navigate("/admin/successfulDelete");
       console.log(res);
     } catch (error) {
       console.error(error);

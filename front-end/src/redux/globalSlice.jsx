@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 // This redux store is just for anything; miscellaneous.
 const initialState = {
   searchResults: [],
-  // chooseUrl: false
 };
 const globalSlice = createSlice({
   name: "globalStore",

@@ -26,7 +26,7 @@ const RegisterForm = () => {
     },
   });
   const { postRegister, userConflictErr } = PostUsers();
-  console.log(watch());
+  // console.log(watch());
 
   // Error message which shows in real time.
   const handlePhoneErrorMsg = (e) => {
