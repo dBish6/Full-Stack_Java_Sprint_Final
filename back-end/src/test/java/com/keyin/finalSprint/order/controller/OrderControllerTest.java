@@ -1,14 +1,11 @@
-package com.keyin.finalSprint.order.repository;
+package com.keyin.finalSprint.order.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.keyin.finalSprint.order.controller.OrderController;
 import com.keyin.finalSprint.order.model.Order;
-import com.keyin.finalSprint.order.respository.OrderRepository;
 import com.keyin.finalSprint.order.service.OrderService;
 import com.keyin.finalSprint.order_detail.model.OrderDetail;
-import com.keyin.finalSprint.order_detail.respository.OrderDetailRepository;
+import com.keyin.finalSprint.order_detail.repository.OrderDetailRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -45,9 +42,9 @@ public class OrderControllerTest {
     @InjectMocks
     OrderController orderController;
 
-    Order order1 = new Order(1l,.15,129.99,149.99);
-    Order order2 = new Order(2l,.15,100.00,115.00);
-    Order order3 = new Order(3l,.15,129.99,149.99);
+    Order order1 = new Order(1l,.15,129.99,"userTest");
+    Order order2 = new Order(2l,.15,100.00,"userTestest");
+    Order order3 = new Order(3l,.15,129.99,"userTester");
 
     OrderDetail od1 = new OrderDetail(1L,129.99,1,"sword name",order1);
     OrderDetail od2 = new OrderDetail(2L,100,1,"sword name",order2);
