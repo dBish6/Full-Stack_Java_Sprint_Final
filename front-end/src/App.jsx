@@ -20,7 +20,7 @@ import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
 // *Custom Hooks*
-import useChangeTitle from "./hooks/useChangeTitle";
+import useChangeTitle from "./hooks/useDocumentTitle";
 
 // *Component Imports*
 import Navigation from "./components/partials/Navigation";
@@ -71,43 +71,55 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/cart/order" element={<OrderReceived />} />
+          <Route path="/" element={<Login title="Login" />} />
+          <Route path="/login" element={<Login title="Login" />} />
+          <Route path="/register" element={<Register title="Register" />} />
+          <Route path="/cart" element={<Cart title="Cart" />} />
+          <Route
+            path="/cart/order"
+            element={<OrderReceived title="Order Received" />}
+          />
           <Route element={<ShowFooter />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/home/longSwords" element={<LongSwords />} />
-            <Route path="/home/shortSwords" element={<ShortSwordsDaggers />} />
-            <Route path="/home/daggers" element={<Daggers />} />
-            <Route path="/home/maces" element={<Maces />} />
-            <Route path="/home/search" element={<Search />} />
-            <Route path="/home/about" element={<About />} />
-            <Route path="/home/support" element={<Support />} />
+            <Route path="/home" element={<Home title="Home" />} />
+            <Route
+              path="/home/longSwords"
+              element={<LongSwords title="Long Swords" />}
+            />
+            <Route
+              path="/home/shortSwords"
+              element={<ShortSwordsDaggers title="Short Swords" />}
+            />
+            <Route path="/home/daggers" element={<Daggers title="Daggers" />} />
+            <Route path="/home/maces" element={<Maces title="Maces" />} />
+            <Route path="/home/search" element={<Search title="Search" />} />
+            <Route path="/home/about" element={<About title="About" />} />
+            <Route path="/home/support" element={<Support title="Support" />} />
 
-            <Route path="/error401" element={<Error401 />} />
-            <Route path="/error404" element={<Error404 />} />
-            <Route path="/error500" element={<Error500 />} />
+            <Route path="/error401" element={<Error401 title="ERROR" />} />
+            <Route path="/error404" element={<Error404 title="ERROR" />} />
+            <Route path="/error500" element={<Error500 title="ERROR" />} />
             {/* <Route path="*" render={() => <Navigate to="/error404" />} /> */}
-            <Route path="*" element={<Error404 />} />
+            <Route path="*" element={<Error404 title="ERROR" />} />
           </Route>
-          <Route path="/admin" element={<Administration />} />
+          <Route path="/admin" element={<Administration title="ADMIN" />} />
           <Route
             path="/admin/successfulDelete"
-            element={<SuccessfullyDeleted />}
+            element={<SuccessfullyDeleted title="SUCCESS" />}
           />
           <Route
             path="/admin/successfulPatch"
-            element={<SuccessfullyPatched />}
+            element={<SuccessfullyPatched title="SUCCESS" />}
           />
           <Route
             path="/admin/successfulPost"
-            element={<SuccessfullyPosted />}
+            element={<SuccessfullyPosted title="SUCCESS" />}
           />
-          <Route path="/admin/successfulPut" element={<SuccessfullyPutted />} />
-          <Route path="/admin/create" element={<Create />} />
-          <Route path="/admin/replace" element={<Replace />} />
+          <Route
+            path="/admin/successfulPut"
+            element={<SuccessfullyPutted title="SUCCESS" />}
+          />
+          <Route path="/admin/create" element={<Create title="POST" />} />
+          <Route path="/admin/replace" element={<Replace title="PUT" />} />
         </Routes>
       </BrowserRouter>
     </>

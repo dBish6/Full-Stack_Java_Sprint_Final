@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function SuccessfullyPosted() {
+// *Custom Hooks*
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
+
+function SuccessfullyPosted(props) {
+  // FIXME:
+  useDocumentTitle(`SUCCESS`);
+
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // *Redux Action Imports*
 import { ON_SUBMIT_ORDER } from "../redux/cartSlice";
+
+// *Selector Imports*
+import { selectCurrentUser } from "../../authentication/redux/selectors";
 
 // *URL Imports*
 import { LOCAL_URL, AWS_EBS_URL } from "../../../constants";
@@ -11,6 +14,8 @@ import { LOCAL_URL, AWS_EBS_URL } from "../../../constants";
 // Adds a new sword to the database.
 const PostOrder = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+
   const navigate = useNavigate();
 
   const POST = async (cartItems, subtotal, taxRate, grandTotal) => {
@@ -24,6 +29,7 @@ const PostOrder = () => {
           order_subtotal: subtotal,
           order_total: grandTotal,
           tax_rate: taxRate,
+          username: currentUser,
         },
       }),
       axios({
@@ -34,6 +40,7 @@ const PostOrder = () => {
           order_subtotal: subtotal,
           order_total: grandTotal,
           tax_rate: taxRate,
+          username: currentUser,
         },
       }),
     ];

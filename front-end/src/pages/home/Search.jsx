@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *Component Imports*
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
@@ -8,7 +11,8 @@ import ProductCard from "../../components/ProductCard";
 // *Selector Import*
 import { selectSearchResults } from "../../redux/selectors";
 
-const Search = () => {
+const Search = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
   const searchResults = useSelector(selectSearchResults);
 
   return (

@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const SuccessfullyDeleted = () => {
+// *Custom Hooks*
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
+
+const SuccessfullyDeleted = (props) => {
+  useDocumentTitle(`${props.title}`);
   const navigate = useNavigate();
 
   useEffect(() => {

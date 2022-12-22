@@ -1,7 +1,12 @@
 // *Feature*
 import LoginFeature from "../../features/authentication/LoginIndex";
 
-const Login = () => {
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
+const Login = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
+
   return (
     <>
       <LoginFeature />

@@ -1,5 +1,8 @@
 import React from "react";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *API Services Imports*
 import FetchLongSwords from "../../api_services/FetchLongSwords";
 
@@ -7,7 +10,8 @@ import FetchLongSwords from "../../api_services/FetchLongSwords";
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
-const LongSwords = () => {
+const LongSwords = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
   const [longSwords, loadingLongSwords] = FetchLongSwords();
 
   return (
