@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentUserSession: false,
+  currentUser: "",
 };
 const userSlice = createSlice({
   name: "user",
@@ -10,10 +11,13 @@ const userSlice = createSlice({
     USER_SESSION: (state, action) => {
       state.currentUserSession = action.payload;
     },
+    SET_CURRENT_USER: (state, action) => {
+      state.currentUser = action;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function.
-export const { USER_SESSION } = userSlice.actions;
+export const { USER_SESSION, SET_CURRENT_USER } = userSlice.actions;
 // Exports the slice's reducer.
 export default userSlice.reducer;

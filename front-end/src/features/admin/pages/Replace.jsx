@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
+
 // *Component Imports*
 import ReplaceForm from "../components/ReplaceForm";
 
-const Replace = () => {
+const Replace = (props) => {
+  // FIXME:
+  useDocumentTitle(`PUT`);
   const navigate = useNavigate();
 
   useEffect(() => {

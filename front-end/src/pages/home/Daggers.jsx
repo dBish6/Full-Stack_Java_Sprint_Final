@@ -1,5 +1,8 @@
 import React from "react";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *API Services Imports*
 import FetchDaggers from "../../api_services/FetchDaggers";
 
@@ -7,7 +10,8 @@ import FetchDaggers from "../../api_services/FetchDaggers";
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
-const Daggers = () => {
+const Daggers = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
   const [daggers, loadingDaggers] = FetchDaggers();
 
   return (

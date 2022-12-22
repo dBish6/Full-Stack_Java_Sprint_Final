@@ -1,5 +1,8 @@
 import React from "react";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *API Services Imports*
 import FetchAllSwords from "../../api_services/FetchAllSwords";
 
@@ -7,7 +10,8 @@ import FetchAllSwords from "../../api_services/FetchAllSwords";
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
-const Home = () => {
+const Home = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
   const [products, loadingProduct] = FetchAllSwords();
 
   return (

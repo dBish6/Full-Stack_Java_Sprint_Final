@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
+
 // *Component Imports*
 import CreateForm from "../components/CreateForm";
 
-const Create = () => {
+const Create = (props) => {
+  // FIXME:
+  useDocumentTitle(`POST`);
   const navigate = useNavigate();
 
   useEffect(() => {

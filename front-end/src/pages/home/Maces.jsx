@@ -1,5 +1,8 @@
 import React from "react";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *API Services Imports*
 import FetchMaces from "../../api_services/FetchMaces";
 
@@ -7,7 +10,8 @@ import FetchMaces from "../../api_services/FetchMaces";
 import TopHeader from "../../components/TopHeader";
 import ProductCard from "../../components/ProductCard";
 
-const ShortMaces = () => {
+const ShortMaces = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
   const [maces, loadingMaces] = FetchMaces();
 
   return (

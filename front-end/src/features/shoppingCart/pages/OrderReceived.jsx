@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
+
 // *Design Imports*
 import ArrowBack from "@mui/icons-material/ArrowBackRounded";
 import "../shoppingCart.css";
 
-const OrderReceived = () => {
+const OrderReceived = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
+
   return (
     <main className="orderContainer">
       <div>

@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const SuccessfullyPatched = () => {
+// *Custom Hooks*
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
+
+const SuccessfullyPatched = (props) => {
+  useDocumentTitle(`${props.title}`);
+
   const navigate = useNavigate();
 
   useEffect(() => {

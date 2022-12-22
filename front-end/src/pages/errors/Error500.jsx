@@ -1,12 +1,17 @@
 import React from "react";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *Component Imports*
 import TopHeader from "../../components/TopHeader";
 
 // *Design Imports*
 import "./errors.css";
 
-const Error500 = () => {
+const Error500 = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
+
   return (
     <main>
       <TopHeader />

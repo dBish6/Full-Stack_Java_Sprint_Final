@@ -79,9 +79,8 @@ const Navigation = () => {
 
       document.querySelector("footer").style = "display: none";
     }
-
     // Bottom Bar Links
-    if (location.pathname === "/home/longSwords") {
+    else if (location.pathname === "/home/longSwords") {
       // Keeps sword tab active when user clicks on bottom links for certain swords.
       toggleIsClickedFirstLink(true);
       toggleIsClickedSecondLink(false);
@@ -136,6 +135,8 @@ const Navigation = () => {
       toggleIsClickedDaggers(false);
       toggleIsClickedMaces(false);
 
+      document.querySelector("footer").style = "display: none";
+    } else {
       document.querySelector("footer").style = "display: none";
     }
   }, [location.pathname]);

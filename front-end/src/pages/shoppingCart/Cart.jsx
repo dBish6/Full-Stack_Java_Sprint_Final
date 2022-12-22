@@ -1,9 +1,14 @@
 import React from "react";
 
+// *Custom Hooks*
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+
 // *Feature*
 import ShoppingCartFeature from "../../features/shoppingCart";
 
-const Cart = () => {
+const Cart = (props) => {
+  useDocumentTitle(`Raven | ${props.title}`);
+
   return (
     <>
       <ShoppingCartFeature />
