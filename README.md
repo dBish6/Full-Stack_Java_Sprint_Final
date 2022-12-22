@@ -8,9 +8,9 @@ The database used was MySQL and AWS RDS for deployment. The back end was contain
 
 __DockerHub Container Repo__<br />
 `https://hub.docker.com/repository/docker/dbish6/finalsprint_raven_api_repo`
-__Deployed Stable Version of the Website__
-<br />
-http://ravenblacksmith.xyz.s3-website-us-east-1.amazonaws.com/home
+
+__Deployed Stable Version of the Website__<br />
+`http://ravenblacksmith.xyz.s3-website-us-east-1.amazonaws.com/home`
 
 ## Testing
 Testing of the back end utilized Mockito and J-Unit frameworks. There is testing of the controller mappings, Class methods and Service methods.
