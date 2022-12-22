@@ -42,9 +42,9 @@ public class OrderControllerTest {
     @InjectMocks
     OrderController orderController;
 
-    Order order1 = new Order(1l,.15,129.99,"DavidTest");
-    Order order2 = new Order(2l,.15,100.00,"DavidTest");
-    Order order3 = new Order(3l,.15,129.99,"DavidTest");
+    Order order1 = new Order(1l,.15,129.99,"userTest");
+    Order order2 = new Order(2l,.15,100.00,"userTestest");
+    Order order3 = new Order(3l,.15,129.99,"userTester");
 
     OrderDetail od1 = new OrderDetail(1L,129.99,1,"sword name",order1);
     OrderDetail od2 = new OrderDetail(2L,100,1,"sword name",order2);
