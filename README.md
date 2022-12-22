@@ -6,9 +6,9 @@ Our Challenge for this project was to produce a back end rest API with Spring Bo
 
 The database used was MySQL and AWS RDS for deployment. The back end was containerized using Docker and deployed with AWS Elastic Beanstalk. The React portion was developed in javascript and was deployed using S3 Web Hosting.
 
-_DockerHub Container Repo_
+__DockerHub Container Repo__<br />
 `https://hub.docker.com/repository/docker/dbish6/finalsprint_raven_api_repo`
-_Deployed Stable Version of the Website_
+__Deployed Stable Version of the Website__<br />
 http://ravenblacksmith.xyz.s3-website-us-east-1.amazonaws.com/home
 
 ## Testing
