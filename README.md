@@ -1,2 +1,13 @@
 # Full-Stack_SpringAPI_Sprint_Final
-This is my very last sprint project from my Solfware Development Course at Keyin Collage, Semester 4 2022. My group members were Dominic Whelan, Blake Waddleton and Chris Doucette. 
+
+This is our very last sprint project from my Solfware Development Course at Keyin Collage, Semester 4 2022. Team members included David Bishop, Dominic Whelan, Blake Waddleton and Chris Doucette. This project is an e-commerce website hosting many medi-eval and historic weapons.
+
+- Application Details
+
+Our Challenge for this project was to produce a back end rest API with Spring Boot coupled with a React front end. The back end was written in the Java language using object orientated programming. 
+
+The database used was MySQL and AWS RDS for deployment. The back end was containerized using Docker and deployed with AWS Elastic Beanstalk. The React portion was developed in javascript and was deployed using S3 Web Hosting.
+
+- Testing
+
+Testing of the back end utilized Mockito and J-Unit frameworks. There is testing of the controller mappings, Class methods and Service methods.
