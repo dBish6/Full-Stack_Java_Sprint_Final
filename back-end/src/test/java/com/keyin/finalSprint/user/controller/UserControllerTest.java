@@ -1,7 +1,4 @@
 package com.keyin.finalSprint.user.controller;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.keyin.finalSprint.user.model.User;
 import com.keyin.finalSprint.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +35,8 @@ public class UserControllerTest {
 
     @BeforeEach
     public void setup(){
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
+//        MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 

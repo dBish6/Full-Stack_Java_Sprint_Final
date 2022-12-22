@@ -49,7 +49,8 @@ public class SwordControllerTest {
 
     @BeforeEach
     public void setup(){
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
+//        MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(swordController).build();
     }
 
@@ -127,9 +128,12 @@ public class SwordControllerTest {
     }
 
     @Test
-    public void deleteSwordTest_Success(){
-        // to be continued
-    }
+    public void deleteSwordTest_Success() throws Exception {
 
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete("/api/sword/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 
 }
