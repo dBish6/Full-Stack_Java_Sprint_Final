@@ -18,10 +18,10 @@ __Deployed Stable Version of the Website:__<br />
 Testing of the back end utilized Mockito and J-Unit frameworks. There is testing of the controller mappings, Class methods and Service methods.
 
 ## Getting Started
-__Back-End:__<br />
+  __Back-End:__<br />
 To get started **locally** with the back end you need environment variables. First, create a MySQL database to store the data. Then, located at back-end/src/main/resources/application.properties - the first variables you'll have to change is the RDS_ENDPOINT, you can configure you're own RDS database if you wish, but most likly you're going have to just change this to localhost:8080. These variables will not be available to the public so you also have to change the DB_USERNAME and DB_PASSWORD and replace these with whatever the credentials you put in for you're MySQL database. You can now start up the server at back-end/src/main/java/com/keyin/finalSprint/**FinalSprintApplication.java**.
 
-__MOCK_DATA.csv:__
+__MOCK_DATA.csv:__<br />
 To import the mock data to your MySQL database right click the schema, "s4_finalsprint", and use the "Table Data Import Wizard" and select the sword table, which is our products.
 
 __Front-End:__<br />
