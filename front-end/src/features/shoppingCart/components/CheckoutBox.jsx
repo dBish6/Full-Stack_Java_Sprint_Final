@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import PostOrder from "../api_services/PostOrder";
 
 // *Design Imports*
-import ArrowBack from "@mui/icons-material/ArrowBackRounded";
+import ArrowBack from "@material-ui/icons/ArrowBackRounded";
 
 // *Selector Imports*
 import { selectCurrentUserSession } from "../../authentication/redux/selectors";

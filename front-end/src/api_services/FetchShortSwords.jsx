@@ -32,7 +32,11 @@ const FetchShortSwords = () => {
           success = true;
         }
         console.log(res);
-        toggleShortSwordsLoading(false);
+
+        // Gives time for images to load too.
+        setTimeout(() => {
+          toggleShortSwordsLoading(false);
+        }, 1000);
       } catch (error) {
         console.error(error);
         navigate("/error500");

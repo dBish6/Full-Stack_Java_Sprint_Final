@@ -7,7 +7,7 @@ import PatchProduct from "../api_services/PatchProduct";
 import DeleteProduct from "../api_services/DeleteProduct";
 
 // *Design Imports*
-import PostAddIcon from "@mui/icons-material/PostAdd";
+import PostAddIcon from "@material-ui/icons/PostAdd";
 
 const Table = (props) => {
   const [swordId, setSwordId] = useState(0);

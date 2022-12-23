@@ -34,7 +34,10 @@ const FetchDaggers = () => {
         }
         console.log(res);
 
-        toggleDaggersLoading(false);
+        // Gives time for images to load too.
+        setTimeout(() => {
+          toggleDaggersLoading(false);
+        }, 1000);
       } catch (error) {
         console.error(error);
         navigate("/error500");

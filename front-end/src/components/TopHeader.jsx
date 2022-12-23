@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // *Design Imports*
-import { ExpandMore } from "@mui/icons-material";
+import { ExpandMore } from "@material-ui/icons";
 import "./topHeader.css";
 
 const TopHeader = () => {

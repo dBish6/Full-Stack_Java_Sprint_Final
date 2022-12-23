@@ -11,7 +11,7 @@ import {
   VisibilityTwoTone,
   VisibilityOffTwoTone,
   ContactSupportTwoTone,
-} from "@mui/icons-material";
+} from "@material-ui/icons";
 import blackRavenLogo from "../../../../assets/images/blackRavenLogo-DesignEvo.png";
 
 const LoginForm = () => {

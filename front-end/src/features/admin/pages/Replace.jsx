@@ -8,8 +8,7 @@ import useDocumentTitle from "../../../hooks/useDocumentTitle";
 import ReplaceForm from "../components/ReplaceForm";
 
 const Replace = (props) => {
-  // FIXME:
-  useDocumentTitle(`PUT`);
+  useDocumentTitle(`${props.title}`);
   const navigate = useNavigate();
 
   useEffect(() => {

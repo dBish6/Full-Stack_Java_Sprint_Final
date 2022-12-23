@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useDocumentTitle from "../../../hooks/useDocumentTitle";
 
 // *Design Imports*
-import ArrowBack from "@mui/icons-material/ArrowBackRounded";
+import ArrowBack from "@material-ui/icons/ArrowBackRounded";
 import "../shoppingCart.css";
 
 const OrderReceived = (props) => {

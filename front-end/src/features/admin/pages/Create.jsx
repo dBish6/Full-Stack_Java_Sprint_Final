@@ -8,8 +8,7 @@ import useDocumentTitle from "../../../hooks/useDocumentTitle";
 import CreateForm from "../components/CreateForm";
 
 const Create = (props) => {
-  // FIXME:
-  useDocumentTitle(`POST`);
+  useDocumentTitle(`${props.title}`);
   const navigate = useNavigate();
 
   useEffect(() => {

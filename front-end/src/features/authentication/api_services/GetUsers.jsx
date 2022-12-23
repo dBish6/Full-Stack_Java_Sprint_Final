@@ -38,7 +38,7 @@ const GetUsers = () => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [navigate]);
   // console.log(users);
 
   return [users, loadingUsers];

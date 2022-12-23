@@ -2,7 +2,7 @@ import React from "react";
 
 // *Design Imports*
 import ravenFeathers from "../../assets/images/ravenFeathers-pngwing.com.png";
-import Star from "@mui/icons-material/Star";
+import Star from "@material-ui/icons/Star";
 
 const RegisterWelcome = () => {
   return (

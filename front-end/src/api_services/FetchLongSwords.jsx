@@ -33,7 +33,10 @@ const FetchLongSwords = () => {
         }
         console.log(res);
 
-        toggleLongSwordsLoading(false);
+        // Gives time for images to load too.
+        setTimeout(() => {
+          toggleLongSwordsLoading(false);
+        }, 1000);
       } catch (error) {
         console.error(error);
         navigate("/error500");

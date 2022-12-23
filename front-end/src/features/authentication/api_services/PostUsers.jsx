@@ -5,11 +5,7 @@ import { useDispatch } from "react-redux";
 import bcrypt from "bcryptjs";
 
 // *Redux Action Imports*
-import {
-  USER_SESSION,
-  SET_CURRENT_USER,
-  CLEAR_CURRENT_USER,
-} from "../redux/userSlice";
+import { USER_SESSION, SET_CURRENT_USER } from "../redux/userSlice";
 
 // *API Services Imports*
 import GetUsers from "./GetUsers";

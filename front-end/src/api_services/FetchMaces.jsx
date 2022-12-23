@@ -32,7 +32,11 @@ const FetchMaces = () => {
           success = true;
         }
         console.log(res);
-        toggleMacesLoading(false);
+
+        // Gives time for images to load too.
+        setTimeout(() => {
+          toggleMacesLoading(false);
+        }, 1000);
       } catch (error) {
         console.error(error);
         navigate("/error500");

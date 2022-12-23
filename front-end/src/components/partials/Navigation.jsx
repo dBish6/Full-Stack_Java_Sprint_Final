@@ -12,7 +12,7 @@ import PasswordModal from "../modals/PasswordModal";
 
 // *Design Imports*
 import blackRavenLogo from "../../assets/images/blackRavenLogo-DesignEvo.png";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCartTwoTone";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCartTwoTone";
 import "./partials.css";
 
 // *Selector Imports*

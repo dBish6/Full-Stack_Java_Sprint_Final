@@ -5,7 +5,6 @@
 .topHeaderContainer {
   display: flex;
   justify-content: center;
-  /* width: 100vw; */
 
   background-color: var(--black700Main);
   border-bottom: 3px solid var(--primary500Main);
@@ -106,12 +105,10 @@
 @keyframes fade {
   from {
     opacity: 0;
-    visibility: hidden;
     transform: translateY(-12px);
   }
   to {
     opacity: 1;
-    visibility: visible;
     transform: translateY(0);
   }
 }

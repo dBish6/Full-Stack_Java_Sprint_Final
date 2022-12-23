@@ -7,7 +7,7 @@ import Product from "./components/Product";
 import CheckoutBox from "./components/CheckoutBox";
 
 // *Design Imports*
-import ArrowBack from "@mui/icons-material/ArrowBackRounded";
+import ArrowBack from "@material-ui/icons/ArrowBackRounded";
 import "./shoppingCart.css";
 
 // *Selectors Imports*

@@ -6,21 +6,12 @@
 */
 
 import React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 // *Design Imports*
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
-
-// *Custom Hooks*
-import useChangeTitle from "./hooks/useDocumentTitle";
 
 // *Component Imports*
 import Navigation from "./components/partials/Navigation";
@@ -98,7 +89,6 @@ function App() {
             <Route path="/error401" element={<Error401 title="ERROR" />} />
             <Route path="/error404" element={<Error404 title="ERROR" />} />
             <Route path="/error500" element={<Error500 title="ERROR" />} />
-            {/* <Route path="*" render={() => <Navigate to="/error404" />} /> */}
             <Route path="*" element={<Error404 title="ERROR" />} />
           </Route>
           <Route path="/admin" element={<Administration title="ADMIN" />} />

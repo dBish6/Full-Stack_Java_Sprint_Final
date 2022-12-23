@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 // *Design Imports*
 import noImage from "../../../assets/images/no-image.webp";
-import { AddCircle, RemoveCircle, Delete } from "@mui/icons-material";
+import { AddCircle, RemoveCircle, Delete } from "@material-ui/icons";
 
 // *Redux Action Imports*
 import {

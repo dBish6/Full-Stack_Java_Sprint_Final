@@ -34,7 +34,10 @@ const FetchAllSwords = () => {
         }
         console.log(res);
 
-        toggleProductLoading(false);
+        // Gives time for images to load too.
+        setTimeout(() => {
+          toggleProductLoading(false);
+        }, 1000);
       } catch (error) {
         console.error(error);
         navigate("/error500");

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 
 // *Modal Import"
@@ -14,15 +14,6 @@ import { ADD_TO_CART } from "../features/shoppingCart/redux/cartSlice";
 
 const ProductCard = (props) => {
   const dispatch = useDispatch();
-
-  // FIXME: Room for product loading skeletons.
-  // useEffect(() => {
-  //   if (props.isLoading) {
-  //     document.querySelector("footer").style = "margin-top: 7rem";
-  //   } else {
-  //     document.querySelector("footer").style = "margin-top: 0";
-  //   }
-  // }, [props.isLoading]);
 
   if (props.searchResults) {
     console.log(props.searchResults);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // *Design Imports*
-import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import ReadMoreIcon from "@material-ui/icons/MoreRounded";
 import "./modals.css";
 
 const ReadMoreModal = (props) => {
