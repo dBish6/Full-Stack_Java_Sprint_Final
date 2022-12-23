@@ -70,7 +70,7 @@ public class OrderService {
         thisOrder.setTax_rate((Double) order.get("tax_rate"));
         thisOrder.setOrder_subtotal((Double) order.get("order_subtotal"));
         thisOrder.setOrder_total((Double) order.get("order_total"));
-        thisOrder.setUsername((String) order.get("username"));
+        thisOrder.setUsername(order.getString("username"));
         return thisOrder;
     }
 
