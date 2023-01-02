@@ -1,5 +1,3 @@
-import React from "react";
-
 // *Design Imports*
 import ravenFeathers from "../../assets/images/ravenFeathers-pngwing.com.png";
 import Star from "@material-ui/icons/Star";

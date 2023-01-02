@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // *API Services Imports*
 import PutProduct from "../api_services/PutProduct";

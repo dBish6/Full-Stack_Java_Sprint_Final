@@ -1,5 +1,3 @@
-import React from "react";
-
 // *Component Imports*
 import TopSpan from "./components/register/TopSpan";
 import RegisterForm from "./components/register/RegisterForm";

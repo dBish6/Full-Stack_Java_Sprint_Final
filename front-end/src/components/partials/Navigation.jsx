@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -142,7 +142,7 @@ const Navigation = () => {
   }, [location.pathname]);
 
   return (
-    <div className="navContainer">
+    <nav className="navContainer">
       <div className="logoContainer">
         <NavLink to="/home">
           <img src={blackRavenLogo} alt="blackRavenLogo-DesignEvo.png" />
@@ -237,7 +237,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

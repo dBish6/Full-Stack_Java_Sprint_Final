@@ -5,7 +5,6 @@
    Creation Date: December 6, 2022
 */
 
-import React from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 

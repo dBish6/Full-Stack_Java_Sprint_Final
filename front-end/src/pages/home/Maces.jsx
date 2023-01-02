@@ -1,5 +1,3 @@
-import React from "react";
-
 // *Custom Hooks*
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 

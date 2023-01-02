@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // *API Services Imports*
 import PostProduct from "../api_services/PostProduct";

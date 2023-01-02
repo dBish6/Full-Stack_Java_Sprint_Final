@@ -6,7 +6,6 @@ import useDocumentTitle from "../../../hooks/useDocumentTitle";
 
 const SuccessfullyPatched = (props) => {
   useDocumentTitle(`${props.title}`);
-
   const navigate = useNavigate();
 
   useEffect(() => {

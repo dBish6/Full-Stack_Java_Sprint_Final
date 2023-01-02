@@ -5,9 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useDocumentTitle from "../../../hooks/useDocumentTitle";
 
 function SuccessfullyPosted(props) {
-  // FIXME:
-  useDocumentTitle(`SUCCESS`);
-
+  useDocumentTitle(`${props.title}`);
   const navigate = useNavigate();
 
   useEffect(() => {
