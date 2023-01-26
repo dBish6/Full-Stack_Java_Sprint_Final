@@ -52,7 +52,6 @@ const LoginForm = () => {
         <input
           {...register("username", {
             required: "Username is required.",
-            maxLength: 20,
           })}
           name="username"
           id="usernameInput"
